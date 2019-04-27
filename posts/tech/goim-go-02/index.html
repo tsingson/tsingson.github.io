@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="tsingson"/>
+
+  
+  <meta name="description" content="从goim定制, 浅谈 golang 的 interface 解耦合与gRPC"/>
+  
+
+  
+  
+  <meta name="keywords" content="tsingson"/>
+  
+
+  
+  <link rel="canonical" href="https://tsingson.github.io/posts/tech/goim-go-02/"/>
+
+  
+
+  <title>从goim定制, 浅谈 golang 的 interface 解耦合与gRPC &middot; 三明智</title>
+
+  <link rel="shortcut icon" href="https://tsingson.github.io/images/favicon.ico"/>
+  <link rel="stylesheet" href="https://tsingson.github.io/css/animate.min.css"/>
+  <link rel="stylesheet" href="https://tsingson.github.io/css/remixicon.css"/>
+  <link rel="stylesheet" href="https://tsingson.github.io/css/zozo.css"/>
+  <link rel="stylesheet" href="https://tsingson.github.io/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/tech/">技术</a>
+      </li>
+      
+      <li>
+        <a href="/posts/design/">设计</a>
+      </li>
+      
+      <li>
+        <a href="/posts/music/">音乐</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/about/about/">关于我</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="https://tsingson.github.io">
+
+          <img src="https://tsingson.github.io/images/logo.svg" width=150px/>   <span>三明智</span>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title">programming.design.music</p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/tsingson" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        <a href="https://twitter.com/tsingson" title="twitter" target="_blank"><i class="remixicon-twitter-fill"></i></a>
+        
+        
+        <a href="https://tsingson.github.io/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/tech/goim-go-02/'>从goim定制, 浅谈 golang 的 interface 解耦合与gRPC</a></h2>
+          <span class="date">2019.04.23</span>
+        </div>
+        <div class="post_content markdown">
+
+<h1 id="从goim定制-浅谈-golang-的-interface-解耦合与grpc">从goim定制, 浅谈 golang 的 interface 解耦合与gRPC</h1>
+
+<h2 id="0-背景及动机">0. 背景及动机</h2>
+
+<p>继上一篇文章 <a href="https://juejin.im/post/5cbb9e68e51d456e51614aab">goim 架构与定制</a> , 再谈 <a href="https://github.com/Terry-Mao/goim">goim</a> 的定制扩展, 这一次谈一弹 goim 从 kafka 转到 nats</p>
+
+<p>github 上的 issue 在这里<a href="https://github.com/Terry-Mao/goim/issues/262">https://github.com/Terry-Mao/goim/issues/262</a></p>
+
+<p>简要说明一下 golang 的 interface:
+在 <a href="https://juejin.im/post/5a6873fd518825734501b3c5">吴德宝AllenWu</a> 文章<a href="https://juejin.im/post/5a6873fd518825734501b3c5">Golang interface接口深入理解</a> 中这样写到:</p>
+
+<blockquote>
+<p>为什么要用接口呢？在Gopher China 上的分享中，有大神给出了下面的理由：</p>
+
+<blockquote>
+<p>writing generic algorithm （类似泛型编程）</p>
+
+<p>hiding implementation detail （隐藏具体实现）</p>
+
+<p>providing interception points (提供拦截点-----&gt; 也可称叫提供 HOOKS , 一个插入其他业务逻辑的钩子)</p>
+</blockquote>
+</blockquote>
+
+<hr />
+
+<h2 id="换个方式说-interface-就是-de-couple-解耦合在-golang-中的实施-这是现代编程中比较重要的-分层-解耦合-架构设计方法">换个方式说, interface 就是 de-couple 解耦合在 golang 中的实施, 这是现代编程中比较重要的&quot;分层, 解耦合&quot; 架构设计方法</h2>
+
+<p>在QQ群&quot;golang中国&quot; 中, 有关于 de-couple 解耦合的话题中, 闪侠这样说到:</p>
+
+<p><img src="https://user-gold-cdn.xitu.io/2019/4/22/16a433ad4d48cb54?w=762&amp;h=408&amp;f=png&amp;s=50814" alt="" /></p>
+
+<p><img src="https://user-gold-cdn.xitu.io/2019/4/22/16a433a9b899ecc4?w=956&amp;h=448&amp;f=png&amp;s=61009" alt="" /></p>
+
+<p>这里, 就来看看 interface 如何实现 goim 从 <a href="https://kafka.apache.org">kafka</a> 转到 <a href="https://nats.io">NATS</a></p>
+
+<h2 id="1-goim-中的-kafka">1. goim 中的 kafka</h2>
+
+<p>看图, 不说话, 哈哈</p>
+
+<p><img src="https://user-gold-cdn.xitu.io/2019/4/22/16a433e3b20e5a9f?w=1320&amp;h=768&amp;f=png&amp;s=86616" alt="" /></p>
+
+<p>上图中,
+1. 在 logic 这个网元中, 有 logic 向 kafka 的消息发布
+2. 在 job 网元中, job 从 kafka 订阅消息, 再赂 comet 网元分发</p>
+
+<p>那我们的目标很简单了, 换了!!! ----------&gt; <strong>等等</strong>.......能保留原有 kafka 实现不? 在必要时, 可以使用开关项, 切换 nats 或 kafka ??</p>
+
+<p><strong>当然......可以!</strong></p>
+
+<hr />
+
+<h2 id="2-don-t-talk-show-me-the-code">2. Don't talk, show me the code!!</h2>
+
+<p>下面就比较简单, 看码</p>
+
+<h3 id="2-1-发布接口第一步-阅读原代码">2.1 发布接口第一步, 阅读原代码</h3>
+
+<p>先看源代码( <strong>注意下面代码中的注释</strong>)</p>
+
+<blockquote>
+<p>代码在 <a href="https://github.com/Terry-Mao/goim/blob/master/internal/logic/push.go">https://github.com/Terry-Mao/goim/blob/master/internal/logic/push.go</a> 大约第33行</p>
+</blockquote>
+
+<pre><code>// PushMids push a message by mid.
+func (l *Logic) PushMids(c context.Context, op int32, mids []int64, msg []byte) (err error) {
+	keyServers, _, err := l.dao.KeysByMids(c, mids)
+	if err != nil {
+		return
+	}
+	keys := make(map[string][]string)
+	for key, server := range keyServers {
+		if key == &quot;&quot; || server == &quot;&quot; {
+			log.Warningf(&quot;push key:%s server:%s is empty&quot;, key, server)
+			continue
+		}
+		keys[server] = append(keys[server], key)
+	}
+	for server, keys := range keys {
+	    // 
+	    //  主要向 kafka 发送消息, 是下面这一行
+	    //  l.dao.PushMsg(c, op, server, keys, msg)
+	    //  方法名是 PushMsg
+	    //
+		if err = l.dao.PushMsg(c, op, server, keys, msg); err != nil {
+			return
+		}
+	}
+	return
+}
+</code></pre>
+
+<p>再看一下 dao 是什么:</p>
+
+<blockquote>
+<p>代码在 <a href="https://github.com/Terry-Mao/goim/blob/master/internal/logic/logic.go">https://github.com/Terry-Mao/goim/blob/master/internal/logic/logic.go</a> 大约第20行</p>
+</blockquote>
+
+<pre><code>// Logic struct
+type Logic struct {
+	c   *conf.Config
+	dis *naming.Discovery
+	//
+	//
+	// 下面这个 dao.Dao 提供了 PushMsg 方法
+	// 带个星, 这是个引用
+	//
+	//
+	dao *dao.Dao
+	// online
+	totalIPs   int64
+	totalConns int64
+	roomCount  map[string]int32
+	// load balancer
+	nodes        []*naming.Instance
+	loadBalancer *LoadBalancer
+	regions      map[string]string // province -&gt; region
+}
+</code></pre>
+
+<p>最后, <strong>重点来了</strong>, 查到 dao 源头实现</p>
+
+<blockquote>
+<blockquote>
+<p>下面是我们需要扩展的地方, 在 <a href="https://github.com/Terry-Mao/goim/blob/master/internal/logic/dao/">https://github.com/Terry-Mao/goim/blob/master/internal/logic/dao/</a>中
+dao, 这名称很 java (DAO-------&gt; Data Access Objects 数据存取对象), 这里也说明了 bilibili 们在代码纺织上, 挺规范</p>
+</blockquote>
+
+<p>代码在 <a href="https://github.com/Terry-Mao/goim/blob/master/internal/logic/dao/dao.go">https://github.com/Terry-Mao/goim/blob/master/internal/logic/dao/dao.go</a> 大约第10行开始</p>
+</blockquote>
+
+<pre><code>// Dao dao.
+type Dao struct {
+	c           *conf.Config
+	//
+	// ******************************************************************
+	// 下面这个 kafkaPub 很清楚, 是 kafka 的同步发布者 kafka.SyncProducer
+	// 
+	//  这个是我们要换成 interface 的地方
+	//
+	// ******************************************************************
+	//
+	kafkaPub    kafka.SyncProducer
+	redis       *redis.Pool
+	redisExpire int32
+}
+
+// New new a dao and return.
+func New(c *conf.Config) *Dao {
+	d := &amp;Dao{
+		c:           c,
+		//
+    	// ******************************************************************
+	    // 下面这个 newKafkaPub(c.Kafka) 即是初始化 kafka
+    	//  也就是连接上 kafka
+    	//  下面, 我们先改写一下这个函数, 变通一下代码形式
+    	//
+    	// ******************************************************************
+    	//
+		kafkaPub:    newKafkaPub(c.Kafka),
+		redis:       newRedis(c.Redis),
+		redisExpire: int32(time.Duration(c.Redis.Expire) / time.Second),
+	}
+	return d
+}
+
+//  这是连接 kafka 的初化函数( function ) 
+//  
+func newKafkaPub(c *conf.Kafka) kafka.SyncProducer {
+	kc := kafka.NewConfig()
+	kc.Producer.RequiredAcks = kafka.WaitForAll // Wait for all in-sync replicas to ack the message
+	kc.Producer.Retry.Max = 10                  // Retry up to 10 times to produce the message
+	kc.Producer.Return.Successes = true
+	pub, err := kafka.NewSyncProducer(c.Brokers, kc)
+	if err != nil {
+		panic(err)
+	}
+	return pub
+}
+</code></pre>
+
+<p>这里, 先小改一下 func New(c *conf.Config) *Dao  这个函数
+改成如下代码形式</p>
+
+<pre><code>// New new a dao and return.
+func New(c *conf.Config) *Dao {
+	d := &amp;Dao{
+		c:           c,
+		//
+		//
+        // 注意, 下面这行被移出去
+        // kafkaPub: newKafkaPub(c.Kafka),
+        //
+        //
+		redis:       newRedis(c.Redis),
+		redisExpire: int32(time.Duration(c.Redis.Expire) / time.Second),
+	}
+	//
+    // 变成这样了, 功能没变化
+    //
+	d.kafkaPub = newKafkaPub(c.Kafka)
+		
+	return d
+}
+</code></pre>
+
+<h3 id="2-2-发布接口第二步-检查一下哪个方法-method-需要被-interface-实现">2.2 发布接口第二步, 检查一下哪个方法( method )需要被 interface 实现</h3>
+
+<p>还是看源代码
+&gt; 代码在 <a href="https://github.com/Terry-Mao/goim/blob/master/internal/logic/dao/kafka.go">https://github.com/Terry-Mao/goim/blob/master/internal/logic/dao/kafka.go</a> 大约第13行开始</p>
+
+<pre><code>// PushMsg push a message to databus.
+func (d *Dao) PushMsg(c context.Context, op int32, server string, keys []string, msg []byte) (err error) {
+	pushMsg := &amp;pb.PushMsg{
+		Type:      pb.PushMsg_PUSH,
+		Operation: op,
+		Server:    server,
+		Keys:      keys,
+		Msg:       msg,
+	}
+	b, err := proto.Marshal(pushMsg)
+	if err != nil {
+		return
+	}
+	
+	//
+	// ********************************
+	//
+	// 实际发布消息, 就是下面这个几行语句
+	// 1. 组织一下需要发送的信息, 以 kafka 的发布接口要求的形式
+	// 2. 尝试发布信息, 处理发布信息可能的错误
+	//
+	// 重点注意下面这几行, 后面会改掉
+	// 重点注意下面这几行, 后面会改掉
+	// 重点注意下面这几行, 后面会改掉
+	//
+	// ********************************
+	//
+	m := &amp;sarama.ProducerMessage{
+		Key:   sarama.StringEncoder(keys[0]),
+		Topic: d.c.Kafka.Topic,
+		Value: sarama.ByteEncoder(b),
+	}
+
+	if _, _, err = d.kafkaPub.SendMessage(m); err != nil {
+		log.Errorf(&quot;PushMsg.send(push pushMsg:%v) error(%v)&quot;, pushMsg, err)
+	}
+	return
+}
+
+// BroadcastRoomMsg push a message to databus.
+func (d *Dao) BroadcastRoomMsg(c context.Context, op int32, room string, msg []byte) (err error) {
+	pushMsg := &amp;pb.PushMsg{
+		Type:      pb.PushMsg_ROOM,
+		Operation: op,
+		Room:      room,
+		Msg:       msg,
+	}
+	b, err := proto.Marshal(pushMsg)
+	if err != nil {
+		return
+	}
+	m := &amp;sarama.ProducerMessage{
+		Key:   sarama.StringEncoder(room),
+		Topic: d.c.Kafka.Topic,
+		Value: sarama.ByteEncoder(b),
+	}
+	//
+	// ********************************
+	// 实际发布消息, 就是下面这个语句
+	// ********************************
+	//
+	if _, _, err = d.kafkaPub.SendMessage(m); err != nil {
+		log.Errorf(&quot;PushMsg.send(broadcast_room pushMsg:%v) error(%v)&quot;, pushMsg, err)
+	}
+	return
+}
+</code></pre>
+
+<hr />
+
+<h3 id="2-3-换用-interface-实现这个-sendmessage-m-方法-method">2.3 换用 interface 实现这个 SendMessage(m) 方法( method )</h3>
+
+<p>先上代码, 代码会说话( <strong>golang 简单就在这里, 代码会说话</strong> ) , 后加说明</p>
+
+<pre><code>
+// PushMsg  interface for kafka / nats 
+// ******************** 这里是新加的 interface 定义 *****************
+type PushMsg interface {
+	PublishMessage(topic, ackInbox string, key string, msg []byte) error  // ****** 这里小改了个方法名!!! 注意
+	Close() error
+}
+
+// Dao dao.
+type Dao struct {
+	c           *conf.Config
+	push        PushMsg   // ******************** 看这里 *****************
+	redis       *redis.Pool
+	redisExpire int32
+}
+
+// New new a dao and return.
+func New(c *conf.Config) *Dao {
+
+	d := &amp;Dao{
+		c:           c,
+		redis:       newRedis(c.Redis),
+		redisExpire: int32(time.Duration(c.Redis.Expire) / time.Second),
+	}
+
+	if c.UseNats {   // ******************** 在配置中加一个 bool 布尔值的开关项 *****************
+		d.push = NewNats(c) // ******************** 这里支持 nats  *****************
+	} else {
+		d.push = NewKafka(c) //// ******************** 这里是原来的 kafka *****************
+	}
+	return d
+}
+</code></pre>
+
+<hr />
+
+<p>kafka 实现 interface 接口的代码</p>
+
+<pre><code>// Dao dao.
+type kafkaDao struct {
+	c    *conf.Config
+	push kafka.SyncProducer
+}
+
+// New new a dao and return.
+func NewKafka(c *conf.Config) *kafkaDao {
+	d := &amp;kafkaDao{
+		c:    c,
+		push: newKafkaPub(c.Kafka),
+	}
+	return d
+}
+
+// PublishMessage  push message to kafka
+func (d *kafkaDao) PublishMessage(topic, ackInbox string, key string, value []byte) error {
+
+	m := &amp;kafka.ProducerMessage{
+		Key:   sarama.StringEncoder(key),
+		Topic: d.c.Kafka.Topic,
+		Value: sarama.ByteEncoder(value),
+	}
+	_, _, err := d.push.SendMessage(m)
+
+	return err
+}
+
+</code></pre>
+
+<hr />
+
+<p>nats 对 interface 的实现</p>
+
+<pre><code>
+// natsDao dao for nats
+type natsDao struct {
+	c    *conf.Config
+	push *nats.Conn
+}
+
+// New new a dao and return.
+func NewNats(c *conf.Config) *natsDao {
+
+	conn, err := newNatsClient(c.Nats.Brokers, c.Nats.Topic, c.Nats.TopicID)
+	if err != nil {
+		return nil
+	}
+	d := &amp;natsDao{
+		c:    c,
+		push: conn,
+	}
+	return d
+}
+
+// PublishMessage  push message to nats
+func (d *natsDao) PublishMessage(topic, ackInbox string, key string, value []byte) error {
+	if d.push == nil {
+		return errors.New(&quot;nats error&quot;)
+	}
+	msg := &amp;nats.Msg{Subject: topic, Reply: ackInbox, Data: value}
+	return d.push.PublishMsg(msg)
+
+}
+</code></pre>
+
+<hr />
+
+<p>最后, 调用 interface 的变更</p>
+
+<pre><code>// PushMsg push a message to databus.
+func (d *Dao) PushMsg(c context.Context, op int32, server string, keys []string, msg []byte) (err error) {
+	pushMsg := &amp;pb.PushMsg{
+		Type:      pb.PushMsg_PUSH,
+		Operation: op,
+		Server:    server,
+		Keys:      keys,
+		Msg:       msg,
+	}
+	b, err := proto.Marshal(pushMsg)
+	if err != nil {
+		return
+	}
+	//
+	// ********************************
+	//
+	// 实际发布消息, 就是下面这个几行语句
+	// 1. 组织一下需要发送的信息, 以 kafka 的发布接口要求的形式
+	// 2. 尝试发布信息, 处理发布信息可能的错误
+	//
+	// 重点注意下面这几行, 实际更改
+	// 重点注意下面这几行, 实际更改
+	// 重点注意下面这几行, 实际更改
+	//
+	// ********************************
+	if err = d.push.PublishMessage(d.c.Kafka.Topic, d.c.Nats.AckInbox, keys[0], b); err != nil {
+		log.Errorf(&quot;PushMsg.send(push pushMsg:%v) error(%v)&quot;, pushMsg, err)
+	}
+	return
+}
+</code></pre>
+
+<p>OK, 修改完成</p>
+
+<h3 id="2-4-小结">2.4 小结</h3>
+
+<h4 id="2-4-1-接口定义-带命名的方法集合">2.4.1 接口定义 (带命名的方法集合)</h4>
+
+<p>简明来说,  interface 接口定义一下名称, 再定义接口中要实现的方法 method ( 方法集合 )</p>
+
+<pre><code>// PushMsg  interface for kafka / nats 
+// ******************** 这里是新加的 interface 定义 *****************
+type PushMsg interface {
+	PublishMessage(topic, ackInbox string, key string, msg []byte) error  // ****** 这里小改了个方法名!!! 注意
+	Close() error
+}
+
+// Dao dao.
+type Dao struct {
+	c           *conf.Config
+	push        PushMsg   // ******************** 看这里 *****************
+	redis       *redis.Pool
+	redisExpire int32
+}
+</code></pre>
+
+<p>上面 定义了 PushMsg 这个interface , 这是一个 方法( method)集合</p>
+
+<h4 id="2-4-2-方法定义与实现">2.4.2 方法定义与实现</h4>
+
+<ol>
+<li>方法名 , 比如 PublishMessage</li>
+<li>input 数据, 就是这些 topic, ackInbox string, key string, msg []byte, 分别是
+&gt; 1. topic 这是 kafka 或 nats 里的主题, 也就是 pub/sub 发布/订阅的频道
+&gt; 2. ackInbox 这是 publish 发布的 confirm 确认频道
+&gt; 3. key 消息体( payload ) 的键
+&gt; 4. msg 这是消息体 payload</li>
+<li>ouput 数据, 这里是 error , 标示 PublishMessage 方法( method ) 的输出</li>
+</ol>
+
+<p>这就是一个接口定义, 方法名/ 输入/ 输出, 至于方法的具体实现, 交由下面的实体去实现( 可以看 kafka / nats 中分别对应的 PublishMessage 的方法实现)</p>
+
+<h4 id="2-4-3-接口实例化-以便后面方法调用">2.4.3 接口实例化, 以便后面方法调用</h4>
+
+<p>很清楚, 方法是由具体实现来完成, 下面就是实例化方法</p>
+
+<blockquote>
+<p>是用哪一个具体实现呢, 就看实例化哪一个了, interface 最终落地, 就在这里</p>
+</blockquote>
+
+<pre><code>	if c.UseNats {   // ******************** 在配置中加一个 bool 布尔值的开关项 *****************
+		d.push = NewNats(c) // ******************** 这里支持 nats  *****************
+	} else {
+		d.push = NewKafka(c) //// ******************** 这里是原来的 kafka *****************
+	}
+</code></pre>
+
+<p>而在 func (d *Dao) PushMsg(c context.Context, op int32, server string, keys []string, msg []byte) (err error) 中, 则简单调用 interface 定义的方法</p>
+
+<h4 id="2-4-4-接口方法调用">2.4.4 接口方法调用</h4>
+
+<p>与其他方法 method 或函数 function 是一样的, 没什么特别的</p>
+
+<pre><code>	// ********************************
+	if err = d.push.PublishMessage(d.c.Kafka.Topic, d.c.Nats.AckInbox, keys[0], b); err != nil {
+		log.Errorf(&quot;PushMsg.send(push pushMsg:%v) error(%v)&quot;, pushMsg, err)
+	}
+</code></pre>
+
+<h3 id="3-浅谈-golang-的-interface-解耦合">3. 浅谈 golang 的 interface --&gt; 解耦合!!</h3>
+
+<p>再一次回看,</p>
+
+<p>在 <a href="https://juejin.im/post/5a6873fd518825734501b3c5">吴德宝AllenWu</a> 文章<a href="https://juejin.im/post/5a6873fd518825734501b3c5">Golang interface接口深入理解</a> 中这样写到:</p>
+
+<blockquote>
+<p>为什么要用接口呢？在Gopher China 上的分享中，有大神给出了下面的理由：</p>
+
+<blockquote>
+<p>writing generic algorithm （类似泛型编程）</p>
+
+<p>hiding implementation detail （隐藏具体实现）</p>
+
+<p>providing interception points (提供拦截点-----&gt; 也可称叫提供 HOOKS , 一个插入其他业务逻辑的钩子)</p>
+</blockquote>
+</blockquote>
+
+<p>interface 确是<strong>隐藏了具体实现</strong>, 能让我们很容易的把 goim 对 kafka 的依赖, 切换到 nats , 并且通过一个开关项, 来确定使用哪一个具体实现</p>
+
+<p>扩展一下, 这个 interface 也可以实现从 kafka 切换到 rabbitMQ / activeMQ / redis (pub/sub) ....
+只要简单实现 PushMsg 这个 interface 就好啦</p>
+
+<h3 id="4-源代码及其他补充">4. 源代码及其他补充</h3>
+
+<p>另有 goim 在 job 网元上的 subscribe 订阅接口, 支持 interface 代码是一路子方法, 直接看源码吧, 有交流讨论再另写.</p>
+
+<blockquote>
+<p>注: job 代码中, 我把某个方法( method ) 拆解成了函数( function ), 有兴趣的朋友可以查一下, 有些小区别,但效果一样.</p>
+</blockquote>
+
+<p>goim 源代码在<a href="https://github.com/Terry-Mao/goim">https://github.com/Terry-Mao/goim</a></p>
+
+<p>示例代码在<a href="https://github.com/tsingson/goim">https://github.com/tsingson/goim</a></p>
+
+<h3 id="5-扩展-看看-grpc-中的解耦合">5. 扩展, 看看 gRPC 中的解耦合</h3>
+
+<p>gRPC , 就是 google 的 RPC  ( Remote Procedure Call) , 看一下 gRPC 以 go 实现的 interface 定义</p>
+
+<h4 id="5-1-先看原始的-protobuf-定义">5.1 先看原始的 protobuf 定义</h4>
+
+<blockquote>
+<p><strong>protobuf 是 gRPC 中默认的 接口定义, 就像 爱立信 ICE ( 开源版本是 zeroICE ) 的 clice , apache 的 thrift</strong></p>
+</blockquote>
+
+<p>在 goim 中, 网元间用 gRPC 通讯, 再看图</p>
+
+<p><img src="https://user-gold-cdn.xitu.io/2019/4/22/16a43da4dc840cdb?w=1328&amp;h=790&amp;f=png&amp;s=92400" alt="" />
+看图上的 grpc 标示, 注意, 图上标示箭头不完全准确:</p>
+
+<p>grpc 同时支持
+&gt; * 普通 Client / Server 调用(北向)接口
+&gt; * Client 向 Server 的流式(北向)流式接口
+&gt; * Server 向 Cinet 调用(南向)流式接口
+&gt; * 以及 Server / Client 双向流式接口</p>
+
+<p>网上文章很多, 不一一展开了. 我们重点关注一下, golang 中对 gRPC 的实现, 也就是 golang 如何把 protobuf 定义的接口, 定义为 golang 中的 interface , 以及如何具体实现 interface .</p>
+
+<hr />
+
+<p><strong>看码, 看码, 看码:</strong></p>
+
+<blockquote>
+<p>源码在<a href="https://github.com/Terry-Mao/goim/blob/master/api/comet/grpc/api.proto">https://github.com/Terry-Mao/goim/blob/master/api/comet/grpc/api.proto</a></p>
+</blockquote>
+
+<pre><code>syntax = &quot;proto3&quot;;
+
+package goim.comet;
+option go_package = &quot;grpc&quot;;
+
+//......
+//
+// ************************
+// 这里定义 input 输入
+
+message PushMsgReq {
+    repeated string keys = 1;
+    int32 protoOp = 3;
+    Proto proto = 2;
+}
+//
+// ************************
+// 这里定义 output 输出 
+message PushMsgReply {}
+
+//.........
+
+service Comet { 
+    // ..........
+    //PushMsg push by key or mid
+    //
+    // ************************
+    // 这里定义接口, 这个接口可以由
+    // golang / java / rust / js / python / php ...实现
+    //
+    // 这是解耦合的极致啊!!!!!!!!!!!!!!!!
+    //
+    // ************************
+    //
+    rpc PushMsg(PushMsgReq) returns (PushMsgReply);
+    // Broadcast send to every enrity
+    // ...........
+}
+
+</code></pre>
+
+<h4 id="5-2-grpc-中-go-实现的-interface-定义">5.2 gRPC 中 go 实现的 interface 定义</h4>
+
+<p>注意, 下面的源码是 protobuf 自动生成的, 不需要编辑更改, 注释是方便沟通额外加的</p>
+
+<blockquote>
+<p>源码在 <a href="https://github.com/Terry-Mao/goim/blob/master/api/comet/grpc/api.pb.go">https://github.com/Terry-Mao/goim/blob/master/api/comet/grpc/api.pb.go</a></p>
+</blockquote>
+
+<pre><code>// Server API for Comet service
+// ************************
+// 这里定义接口, golang 实现服务器端
+// ************************
+    
+type CometServer interface {
+    ...
+	// PushMsg push by key or mid
+	//
+    // ************************
+    // 这里定义接口, golang 的接口中的方法
+    // ************************
+    //
+	PushMsg(context.Context, *PushMsgReq) (*PushMsgReply, error)
+    ...
+}
+</code></pre>
+
+<h4 id="5-3-grpc-中-go-实现的-interface-实例化">5.3 gRPC 中 go 实现的 interface 实例化</h4>
+
+<p>最后, 具体实例化代码实现, 在</p>
+
+<p><a href="https://github.com/Terry-Mao/goim/blob/master/internal/comet/grpc/server.go">https://github.com/Terry-Mao/goim/blob/master/internal/comet/grpc/server.go</a></p>
+
+<p>代码会说话儿, 这里就不展示了.</p>
+
+<h3 id="6-郑重警告">6. 郑重警告</h3>
+
+<p>谢谢朋友们看到最后, 写码挣钱的朋友都是有一说一, 这里声明一下:</p>
+
+<p><strong>代码中把 kafka 写成可用 nats 替换, 只是技术上的学习与尝试, 并不是建议或推荐使用 nats:</strong></p>
+
+<ul>
+<li>nats 并不保障消息送达</li>
+<li>nats 并不提供持久化</li>
+<li>nats 用在 goim 上的效率, 还需要压测</li>
+</ul>
+
+<p>所以, case by case , 具体业务场景具体分析, 商用项目的选型, 是一个慎重而严谨的事儿</p>
+
+<p>请自行评估风险/成本</p>
+
+<p>.</p>
+
+<p>.</p>
+
+<p>感谢 <a href="https://www.bilibili.com">https://www.bilibili.com</a> &amp; <a href="https://github.com/Terry-Mao">毛剑</a> 及众多开源社区的朋友们</p>
+
+<p>欢迎交流与批评.....
+.</p>
+
+<p>.</p>
+
+<h3 id="关于我">关于我</h3>
+
+<p>网名 tsingson (三明智, 江湖人称3爷)</p>
+
+<p>原 ustarcom IPTV/OTT 事业部播控产品线技术架构湿/解决方案工程湿角色(8年), 自由职业者,</p>
+
+<p>喜欢音乐(口琴,是第三/四/五届广东国际口琴嘉年华的主策划人之一), 摄影与越野,</p>
+
+<p>喜欢 golang 语言 (商用项目中主要用 postgres + golang )</p>
+
+<p><a href="https://github.com/tsingson">tsingson</a> 写于中国深圳 小罗号口琴音乐中心,   2019/04/22</p>
+</div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="https://tsingson.github.io/tags/golang/">golang</a>
+                
+                <a href="https://tsingson.github.io/tags/go/">go</a>
+                
+                <a href="https://tsingson.github.io/tags/goim/">goim</a>
+                
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>技术.设计.音乐</span>
+  </div>
+</footer>
+
+
+
+<script src="https://tsingson.github.io/js/jquery-3.3.1.min.js"></script>
+<script src="https://tsingson.github.io/js/zozo.js"></script>
+<script src="https://tsingson.github.io/js/highlight.pack.js"></script>
+<link  href="https://tsingson.github.io/css/fancybox.min.css" rel="stylesheet">
+<script src="https://tsingson.github.io/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

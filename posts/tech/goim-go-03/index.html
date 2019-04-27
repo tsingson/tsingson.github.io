@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="tsingson"/>
+
+  
+  <meta name="description" content="bilibili/discovery 基本概念及在 goim中的使用"/>
+  
+
+  
+  
+  <meta name="keywords" content="tsingson"/>
+  
+
+  
+  <link rel="canonical" href="https://tsingson.github.io/posts/tech/goim-go-03/"/>
+
+  
+
+  <title>bilibili/discovery 基本概念及在 goim中的使用 &middot; 三明智</title>
+
+  <link rel="shortcut icon" href="https://tsingson.github.io/images/favicon.ico"/>
+  <link rel="stylesheet" href="https://tsingson.github.io/css/animate.min.css"/>
+  <link rel="stylesheet" href="https://tsingson.github.io/css/remixicon.css"/>
+  <link rel="stylesheet" href="https://tsingson.github.io/css/zozo.css"/>
+  <link rel="stylesheet" href="https://tsingson.github.io/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/tech/">技术</a>
+      </li>
+      
+      <li>
+        <a href="/posts/design/">设计</a>
+      </li>
+      
+      <li>
+        <a href="/posts/music/">音乐</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/about/about/">关于我</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="https://tsingson.github.io">
+
+          <img src="https://tsingson.github.io/images/logo.svg" width=150px/>   <span>三明智</span>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title">programming.design.music</p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/tsingson" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        <a href="https://twitter.com/tsingson" title="twitter" target="_blank"><i class="remixicon-twitter-fill"></i></a>
+        
+        
+        <a href="https://tsingson.github.io/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/tech/goim-go-03/'>bilibili/discovery 基本概念及在 goim中的使用</a></h2>
+          <span class="date">2019.04.24</span>
+        </div>
+        <div class="post_content markdown">
+
+<h2 id="0-背景与动机">0. 背景与动机</h2>
+
+<p>在学习 goim 过程中, <a href="https://github.com/bilibili/discovery">bilibili/discovery</a> 是一个服务注册/发现的依赖网元, golang 实现了 <a href="https://github.com/Netflix/eureka">netflix/eureka</a> 并作了一些扩展改进</p>
+
+<p>这里顺带记录了对  <a href="https://github.com/bilibili/discovery">bilibili/discovery</a> 学习过程中的一些理解</p>
+
+<h2 id="1-discovery-在goim-中的角色与作用">1. discovery 在goim 中的角色与作用</h2>
+
+<p><img src="https://user-gold-cdn.xitu.io/2019/4/25/16a522a08fd354cd?w=1329&amp;h=831&amp;f=png&amp;s=92443" alt="" /></p>
+
+<p>上图标示了  <a href="https://github.com/bilibili/discovery">bilibili/discovery</a> 在 <a href="https://github.com/Terry-Mao/goim">goim</a> 中的位置, 与作用(以 comet / job 为例):</p>
+
+<p><img src="https://user-gold-cdn.xitu.io/2019/4/25/16a531eb473f3ba8?w=1079&amp;h=619&amp;f=png&amp;s=60681" alt="" /></p>
+
+<ul>
+<li>部署一到多分 discovery 作为服务注册/发现网元 ( discovery 相互间会同步注册数据,细节见后)</li>
+<li>comet 一到多个部署, 这里是一个 comet gRPC server 服务端
+
+<ul>
+<li>comet 启动果, 每一个部署向 discovery 进行--&gt; <strong>服务注册</strong></li>
+<li>注册成功后与 discovery 之间保持一个健康状态同步( renew ), 见标示 1</li>
+<li>comet 如果下线, discovery 会标示下线状态</li>
+</ul></li>
+<li>job 一到多个部署, 这里是一个 comet gRPC client 客户端
+
+<ul>
+<li>job 启动后, 向 discovery 进行 polls 获取 goim-comet 所有服务实例列表--&gt; <strong>服务发现</strong></li>
+<li>job 持续监听 discovery 中的 goim-conet 服务节点列表, 同步到本地</li>
+<li>job 向 goim-comet 实例( 整个列表) 分发 goim 消息 ---&gt; <strong>job 的主体业务功能</strong></li>
+</ul></li>
+</ul>
+
+<p>如果 discovery 网元不存在, 那很简单, job 在配置文件中写死 comet 地址( 一到多个), job 的 comet-gRPC-client 直接向 comet 的 comet-gRPC-server 进行互通完成业务. 这样就失去了分布式的动态扩展能力</p>
+
+<hr />
+
+<p>discovery 之间, 会同步注册的服务实例信息</p>
+
+<p><strong>注意</strong>
+在 bilibili/discovery 中, discovery 本身被标记为</p>
+
+<pre><code>_appid = &quot;infra.discovery&quot;
+</code></pre>
+
+<p>相互之间一样进行相互注册/更新, 同在相互之间同步 名为&quot;infra.discovery&quot; 与其他 app 的实例信息</p>
+
+<p>在 discovery 的配置文件中, discovery 实例被称为 node , 由 nodes 参数进行配置, 配置定义如下</p>
+
+<pre><code>// Config discovery configures.
+type Config struct {
+	Nodes  []string  # ******************** 这是配置一到多个 discovery 实例的定义
+	Region string
+	Zone   string
+	Env    string
+	Host   string
+}
+</code></pre>
+
+<h2 id="2-discovery-eureka-的基本概念">2. discovery / eureka 的基本概念</h2>
+
+<h3 id="2-1-基本概念">2.1 基本概念</h3>
+
+<p><img src="https://user-gold-cdn.xitu.io/2019/4/25/16a531f0be908f57?w=1079&amp;h=703&amp;f=png&amp;s=125303" alt="" /></p>
+
+<p>discovery / eureka 中的基本概念, 如上图所示, 就是一个分区进行注册/调度的简单划分
+* Region 地区, 例如, 中国区, 南美区, 北美区...
+* Zone 可用区域, 例如中国区下的 gd 广东地区, sh 上海地区, 一般是指骨干 IDC 机房, 或者跨地区的逻辑区域, 这是同区内调度的主要划分点. 一般是同区内调度, 不会跨区调度
+* Env 再划分小一点的运行环境划分, 比如 Env = dev 开发环境, Env = trial 试商用...
+* appID 这是注册应用的名称, 服务注册与发现, 依赖的是 name ----&gt; address 名称到地址的注册(写入/更新) 与发现( 获取名称对应的服务地址或服务地址列表)</p>
+
+<hr />
+
+<blockquote>
+<p><strong>注</strong>: bilibili/discovery 是以 http 方式提供注册/更新/发现/同步...等服务注册与发现等业务功能</p>
+</blockquote>
+
+<p>所以, 可以看到 discorevy 获取一个服务器节点, 是如下方式</p>
+
+<pre><code>curl 'http://127.0.0.1:7171/discovery/fetch?zone=gd&amp;env=dev&amp;appid=goim.comet&amp;status=1'
+</code></pre>
+
+<p>上面 URL 中, zone 对应就是获取 gd 广东区域内, 环境定义为 dev , appID 为 goim.comet 的服务器实例, 当然, status 是附加约束, 这里 status=1 表示过滤名称为 goim.comet 的服务器实例状态要求为 status = 1 ( 即接收服务请求的 goim.comet 实例<strong>列表</strong>)</p>
+
+<p>上面的 curl 会返回以下结果</p>
+
+<pre><code>{
+    &quot;code&quot;: 0,
+    &quot;data&quot;: {
+        &quot;instances&quot;: {
+            &quot;gd&quot;: [
+                {
+                    &quot;zone&quot;: &quot;gd&quot;,                # *** ** 可用区域
+                    &quot;env&quot;: &quot;dev&quot;,                # ****** 运行环境
+                    &quot;appid&quot;: &quot;goim.comet&quot;,       # ****** appID 名称
+                    &quot;hostname&quot;: &quot;hostname000000&quot;,
+                    &quot;version&quot;: &quot;111&quot;,
+                    &quot;metadata&quot;: {
+                        &quot;provider&quot;: &quot;&quot;,
+                        &quot;weight&quot;: &quot;10&quot;
+                    },
+                    &quot;addrs&quot;: [
+                        &quot;http://172.1.1.1:8080&quot;,
+                        &quot;gorpc://172.1.1.1:8089&quot; # ****** 有效的 gRPC 地址
+                    ],
+                    &quot;status&quot;: 1,
+                    &quot;reg_timestamp&quot;: 1525948301833084700,
+                    &quot;up_timestamp&quot;: 1525948301833084700,
+                    &quot;renew_timestamp&quot;: 1525949202959821300,
+                    &quot;dirty_timestamp&quot;: 1525948301848680000,
+                    &quot;latest_timestamp&quot;: 1525948301833084700
+                }
+            ]
+        },
+        &quot;latest_timestamp&quot;: 1525948301833084700
+    }
+}
+</code></pre>
+
+<p>discovery/ eureka 换成 DNS 域名 可以在逻辑上表示为 schema://appID.Env.Zone.Region , 类似于 grpc://goim.comet.dev.gd.china.xxxxx.com</p>
+
+<p>换成 etcd 可以表示为 /Region/Zone/Env/appID, 例如  &quot;/china/gd/dev/goim.comet&quot;</p>
+
+<h3 id="2-2-小结与配置建议">2.2 小结与配置建议</h3>
+
+<p>由上小节可知, bilibili/discovery 或 netflix/eureka 的配置中, 以下4个关键参数, 需要一一对应
+* region
+* zone
+* env 或 deployEnv
+* appID</p>
+
+<p>在 goim 中, appID 已经在代码中标记为常量, 如下</p>
+
+<pre><code># github.com/Terry-Mao/goim/cmd/comet/main.go
+
+const (
+	ver   = &quot;2.0.0&quot;
+	appid = &quot;goim.comet&quot;
+)
+
+# github.com/Terry-Mao/goim/cmd/logic/main.go
+const (
+	ver   = &quot;2.0.0&quot;
+	appid = &quot;goim.logic&quot;
+)
+
+</code></pre>
+
+<h2 id="3-goim-中使用-bilibili-discovery">3. goim 中使用 bilibili/discovery</h2>
+
+<p>还是以 logic / comet 之间的 gRPC 为例</p>
+
+<p>所有使用 bilibili/discovery 的配置是类似的, 在配置中, 包含以下定义</p>
+
+<blockquote>
+<p>原始定义在 <a href="https://github.com/bilibili/discovery/blob/master/naming/client.go">https://github.com/bilibili/discovery/blob/master/naming/client.go</a> 第 46行开始</p>
+</blockquote>
+
+<pre><code>// Config discovery configures.
+type Config struct {
+	Nodes  []string  # ******************** 这是配置一到多个 discovery 实例的定义
+	Region string
+	Zone   string
+	Env    string
+	Host   string
+}
+</code></pre>
+
+<p>在 comet 配置中定义为</p>
+
+<blockquote>
+<p>在 comet 配置源文件中 <a href="https://github.com/Terry-Mao/goim/blob/master/internal/comet/conf/conf.go">https://github.com/Terry-Mao/goim/blob/master/internal/comet/conf/conf.go</a> 第 112 行</p>
+</blockquote>
+
+<pre><code>// Config is comet config.
+type Config struct {
+	Debug     bool
+	Env       *Env            # ******************** 这里这里这里
+	Discovery *naming.Config  # ******************** 这里这里这里
+	TCP       *TCP
+	Websocket *Websocket
+	Protocol  *Protocol
+	Bucket    *Bucket
+	RPCClient *RPCClient
+	RPCServer *RPCServer
+	Whitelist *Whitelist
+}
+</code></pre>
+
+<blockquote>
+<p>在 job 配置源文件中 <a href="https://github.com/Terry-Mao/goim/blob/master/internal/job/conf/conf.go">https://github.com/Terry-Mao/goim/blob/master/internal/job/conf/conf.go</a> 第 59 行</p>
+</blockquote>
+
+<pre><code>// Config is job config.
+type Config struct {
+	Env       *Env            # ******************** 这里这里这里
+	Kafka     *Kafka
+	Discovery *naming.Config  # ******************** 这里这里这里
+	Comet     *Comet
+	Room      *Room
+}
+</code></pre>
+
+<p>就像第二节所说的, regoin / zone / env ,  所以, 重点关注 Env / Discovery 两个配置定义, 重点在 Discovery 配置naming.Config 即可</p>
+
+<h3 id="3-1-在-comet-中的服务注册-与服务更新">3.1 在 comet 中的服务注册, 与服务更新</h3>
+
+<h4 id="3-1-1-注册如下">3.1.1 注册如下</h4>
+
+<blockquote>
+<p>源代码见 <a href="https://github.com/Terry-Mao/goim/blob/master/cmd/comet/main.go">https://github.com/Terry-Mao/goim/blob/master/cmd/comet/main.go</a> 第42/43 行</p>
+</blockquote>
+
+<pre><code>	// register discovery
+	dis := naming.New(conf.Conf.Discovery)
+	resolver.Register(dis)
+	
+</code></pre>
+
+<h4 id="3-1-2-更新如下">3.1.2 更新如下</h4>
+
+<p>该 comet 的注册信息更新代码放在一个 goroutine 中, 每10秒更新一次</p>
+
+<blockquote>
+<p>源代码见 <a href="https://github.com/Terry-Mao/goim/blob/master/cmd/comet/main.go">https://github.com/Terry-Mao/goim/blob/master/cmd/comet/main.go</a> 第42/43 行</p>
+</blockquote>
+
+<pre><code>			if err = dis.Set(ins); err != nil {
+				log.Errorf(&quot;dis.Set(%+v) error(%v)&quot;, ins, err)
+				time.Sleep(time.Second)
+				continue
+			}
+			time.Sleep(time.Second * 10)
+</code></pre>
+
+<p>### 3.2 在 job 中的服务发现</p>
+
+<p>#### 3.2.1 job 中的注册代码, 实际是无用代码
+ 在 job 代码中, 含有服务注册代码, 实际上是无用代码, 原因是, 只有服务端才需要进行服务注册, 而 job 实际上只有两个业务关联逻辑
+ 1. 对 kafka 进行消息订阅
+ 2. 向 tomet 中的 comet gRPC server 进行消息 push 推送</p>
+
+<blockquote>
+<p>代码在 <a href="https://github.com/Terry-Mao/goim/blob/master/cmd/job/main.go">https://github.com/Terry-Mao/goim/blob/master/cmd/job/main.go</a> 第 28行</p>
+</blockquote>
+
+<pre><code>	// grpc register naming
+	dis := naming.New(conf.Conf.Discovery)
+	resolver.Register(dis)
+</code></pre>
+
+<h4 id="3-2-2-job-中的服务发现代码">3.2.2 job 中的服务发现代码</h4>
+
+<blockquote>
+<p>代码在 <a href="https://github.com/Terry-Mao/goim/blob/master/internal/job/job.go">https://github.com/Terry-Mao/goim/blob/master/internal/job/job.go</a> 第 85行</p>
+
+<pre><code>
+func (j *Job) watchComet(c *naming.Config) {
+	dis := naming.New(c)       # **************************** 构造符合 gRPC 要求的服务发现实例
+	resolver := dis.Build(&quot;goim.comet&quot;)
+	event := resolver.Watch()  # **************************** 监听 服务发现, 这里返回一个 channel
+	select {                   # **************************** 从 channel 中循环获取返回
+	case _, ok := &lt;-event:
+		if !ok {
+			panic(&quot;watchComet init failed&quot;)
+		}
+		if ins, ok := resolver.Fetch(); ok {   # **************************** ins 即是返回的实例
+			if err := j.newAddress(ins.Instances); err != nil {
+				panic(err)
+			}
+			log.Infof(&quot;watchComet init newAddress:%+v&quot;, ins)
+		}
+	case &lt;-time.After(10 * time.Second):
+		log.Error(&quot;watchComet init instances timeout&quot;)
+	}
+	go func() {
+		for {
+			if _, ok := &lt;-event; !ok {
+				log.Info(&quot;watchComet exit&quot;)
+				return
+			}
+			ins, ok := resolver.Fetch()     # **************************** ins 即是返回的实例
+			if ok {
+				if err := j.newAddress(ins.Instances); err != nil {
+					log.Errorf(&quot;watchComet newAddress(%+v) error(%+v)&quot;, ins, err)
+					continue
+				}
+				log.Infof(&quot;watchComet change newAddress:%+v&quot;, ins)
+			}
+		}
+	}()
+}
+</code></pre>
+</blockquote>
+
+<h2 id="4-bilibili-discovery-架构与实现简要解读">4. bilibili/discovery 架构与实现简要解读</h2>
+
+<p>.............稍后一一道来, 哈, 先去挣点钱先.............</p>
+
+<p>.</p>
+
+<p>.</p>
+
+<p>.</p>
+
+<p>欢迎交流与批评.....
+.</p>
+
+<p>.</p>
+
+<p>关于我</p>
+
+<p>网名 tsingson (三明智, 江湖人称3爷)</p>
+
+<p>原 ustarcom IPTV/OTT 事业部播控产品线技术架构湿/解决方案工程湿角色(8年), 自由职业者,</p>
+
+<p>喜欢音乐(口琴,是第三/四/五届广东国际口琴嘉年华的主策划人之一), 摄影与越野,</p>
+
+<p>喜欢 golang 语言 (商用项目中主要用 postgres + golang )</p>
+
+<p><a href="https://github.com/tsingson">tsingson</a> 写于中国深圳 <a href="https://zhuanlan.zhihu.com/tsingsonqin">小罗号口琴音乐中心</a>, 2019/04/25</p>
+</div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="https://tsingson.github.io/tags/golang/">golang</a>
+                
+                <a href="https://tsingson.github.io/tags/go/">go</a>
+                
+                <a href="https://tsingson.github.io/tags/goim/">goim</a>
+                
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>技术.设计.音乐</span>
+  </div>
+</footer>
+
+
+
+<script src="https://tsingson.github.io/js/jquery-3.3.1.min.js"></script>
+<script src="https://tsingson.github.io/js/zozo.js"></script>
+<script src="https://tsingson.github.io/js/highlight.pack.js"></script>
+<link  href="https://tsingson.github.io/css/fancybox.min.css" rel="stylesheet">
+<script src="https://tsingson.github.io/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>
