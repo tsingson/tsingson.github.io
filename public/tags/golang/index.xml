@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on 三明智</title>
+    <link>https://tsingson.github.io/tags/golang/</link>
+    <description>Recent content in golang on 三明智</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 24 Apr 2019 22:02:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://tsingson.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>bilibili/discovery 基本概念及在 goim中的使用</title>
+      <link>https://tsingson.github.io/posts/tech/goim-go-03/</link>
+      <pubDate>Wed, 24 Apr 2019 22:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/posts/tech/goim-go-03/</guid>
+      <description>0. 背景与动机 在学习 goim 过程中, bilibili/discovery 是一个服务注册/发现的依赖网元, golang 实现了 netflix/eureka 并作了一些扩展改进 这里顺带记录了对 bilibili/discovery 学习过程中的一些理解 1. discovery 在goim 中的角色与作用 上图标示了 bilibili/discovery 在 goim 中的位置, 与作用(以 comet / job 为</description>
+    </item>
+    
+    <item>
+      <title>从goim定制, 浅谈 golang 的 interface 解耦合与gRPC</title>
+      <link>https://tsingson.github.io/posts/tech/goim-go-02/</link>
+      <pubDate>Tue, 23 Apr 2019 22:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/posts/tech/goim-go-02/</guid>
+      <description>从goim定制, 浅谈 golang 的 interface 解耦合与gRPC 0. 背景及动机 继上一篇文章 goim 架构与定制 , 再谈 goim 的定制扩展, 这一次谈一弹 goim 从 kafka 转到 nats github 上的 issue 在这里https://github.com/Terry-Mao/goi</description>
+    </item>
+    
+    <item>
+      <title>goim 架构与定制</title>
+      <link>https://tsingson.github.io/posts/tech/goim-go-01/</link>
+      <pubDate>Sun, 21 Apr 2019 22:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/posts/tech/goim-go-01/</guid>
+      <description>0. 关于 goim 及文章撰写动机 goim 官网 http://goim.io goim 源码 https://github.com/Terry-Mao/goim goim 是 非常成功的 IM (Instance Message) 即时消息平台, 依赖项为 kafka ( 消息队列) + zookeeper ( 扩展/均衡 ) + bilibili/discovery( 在 netflix/eureka上扩展的服务注册与发现, golang 实现) 作为一个曾经的架构师(</description>
+    </item>
+    
+  </channel>
+</rss>
