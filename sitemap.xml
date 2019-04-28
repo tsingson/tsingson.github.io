@@ -66,6 +66,12 @@
   </url>
   
   <url>
+    <loc>https://tsingson.github.io/categories/photography/</loc>
+    <lastmod>2018-11-28T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://tsingson.github.io/tags/photography/</loc>
     <lastmod>2018-11-28T22:02:57+08:00</lastmod>
     <priority>0</priority>
@@ -73,12 +79,6 @@
   
   <url>
     <loc>https://tsingson.github.io/series/photography/</loc>
-    <lastmod>2018-11-28T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/categories/photography/</loc>
     <lastmod>2018-11-28T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
