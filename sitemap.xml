@@ -9,12 +9,36 @@
   </url>
   
   <url>
+    <loc>https://tsingson.github.io/tags/</loc>
+    <lastmod>2019-04-24T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://tsingson.github.io/tech/goim-go-03/</loc>
     <lastmod>2019-04-24T22:02:57+08:00</lastmod>
   </url>
   
   <url>
+    <loc>https://tsingson.github.io/tags/go/</loc>
+    <lastmod>2019-04-24T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/goim/</loc>
+    <lastmod>2019-04-24T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://tsingson.github.io/series/goim/</loc>
+    <lastmod>2019-04-24T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/golang/</loc>
     <lastmod>2019-04-24T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -36,8 +60,72 @@
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/about/about/</loc>
+    <loc>https://tsingson.github.io/tags/blues/</loc>
     <lastmod>2019-04-20T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/design/</loc>
+    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/harmonica/</loc>
+    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/jeep/</loc>
+    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/photography/</loc>
+    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/programming/</loc>
+    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/tsingson/</loc>
+    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/about/about-studio/</loc>
+    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/about/about-me/</loc>
+    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/gdihf/</loc>
+    <lastmod>2018-07-28T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/poster/</loc>
+    <lastmod>2018-07-28T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/design/gdihf-01/</loc>
+    <lastmod>2018-07-28T22:02:57+08:00</lastmod>
   </url>
   
   <url>
@@ -68,6 +156,11 @@
   <url>
     <loc>https://tsingson.github.io/music/</loc>
     <lastmod>2017-03-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/categories/</loc>
+    <priority>0</priority>
   </url>
   
 </urlset>
