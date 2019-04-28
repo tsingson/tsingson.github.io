@@ -66,59 +66,13 @@
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/blues/</loc>
-    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
+    <loc>https://tsingson.github.io/series/go-web-dev/</loc>
+    <lastmod>2018-07-28T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://tsingson.github.io/tags/design/</loc>
-    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/harmonica/</loc>
-    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/jeep/</loc>
-    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/photography/</loc>
-    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/programming/</loc>
-    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/tsingson/</loc>
-    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/about/about-studio/</loc>
-    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/about/about-me/</loc>
-    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/series/go-web-dev/</loc>
     <lastmod>2018-07-28T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -168,6 +122,52 @@
   <url>
     <loc>https://tsingson.github.io/music/</loc>
     <lastmod>2017-03-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/blues/</loc>
+    <lastmod>2016-05-20T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/harmonica/</loc>
+    <lastmod>2016-05-20T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/jeep/</loc>
+    <lastmod>2016-05-20T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/photography/</loc>
+    <lastmod>2016-05-20T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/programming/</loc>
+    <lastmod>2016-05-20T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/tsingson/</loc>
+    <lastmod>2016-05-20T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/about/about-studio/</loc>
+    <lastmod>2016-05-20T22:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/about/about-me/</loc>
+    <lastmod>2016-04-20T22:02:57+08:00</lastmod>
   </url>
   
 </urlset>
