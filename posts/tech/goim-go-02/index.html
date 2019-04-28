@@ -106,10 +106,11 @@
         <div class="post_title post_detail_title">
           <h2><a href='/posts/tech/goim-go-02/'>从goim定制, 浅谈 golang 的 interface 解耦合与gRPC</a></h2>
           <span class="date">2019.04.23</span>
+          
+          <span class="date">  By <strong class="post-author">tsingson</strong></span>
+          
         </div>
-        <div class="post_content markdown">
-
-<h1 id="从goim定制-浅谈-golang-的-interface-解耦合与grpc">从goim定制, 浅谈 golang 的 interface 解耦合与gRPC</h1>
+        <div class="post_content markdown"><p>[简述]  <a href="http://goim.io">http://goim.io</a> 实例讲解 goim 从 kafka 切换到 nats 的定制过程, 兼谈 谈 golang 的 interface 解耦合, 及 gRPC 在多语言网元之间实现解耦合接口的优点</p>
 
 <h2 id="0-背景及动机">0. 背景及动机</h2>
 
@@ -121,15 +122,10 @@
 在 <a href="https://juejin.im/post/5a6873fd518825734501b3c5">吴德宝AllenWu</a> 文章<a href="https://juejin.im/post/5a6873fd518825734501b3c5">Golang interface接口深入理解</a> 中这样写到:</p>
 
 <blockquote>
-<p>为什么要用接口呢？在Gopher China 上的分享中，有大神给出了下面的理由：</p>
-
-<blockquote>
-<p>writing generic algorithm （类似泛型编程）</p>
-
-<p>hiding implementation detail （隐藏具体实现）</p>
-
-<p>providing interception points (提供拦截点-----&gt; 也可称叫提供 HOOKS , 一个插入其他业务逻辑的钩子)</p>
-</blockquote>
+<p>为什么要用接口呢？在Gopher China 上的分享中，有大神给出了下面的理由：
+&gt; writing generic algorithm （类似泛型编程）
+&gt; hiding implementation detail （隐藏具体实现）
+&gt; providing interception points (提供拦截点-----&gt; 也可称叫提供 HOOKS , 一个插入其他业务逻辑的钩子)</p>
 </blockquote>
 
 <hr />
@@ -778,8 +774,7 @@ type CometServer interface {
 
 <p>喜欢 golang 语言 (商用项目中主要用 postgres + golang )</p>
 
-<p><a href="https://github.com/tsingson">tsingson</a> 写于中国深圳 小罗号口琴音乐中心,   2019/04/22</p>
-</div>
+<p><a href="https://github.com/tsingson">tsingson</a> 写于中国深圳 小罗号口琴音乐中心,   2019/04/22</p></div>
         <div class="post_footer">
           
           <div class="meta">
