@@ -3,30 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://tsingson.github.io/tags/</loc>
+    <loc>https://tsingson.github.io/series/</loc>
     <lastmod>2019-04-24T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/posts/tech/goim-go-03/</loc>
+    <loc>https://tsingson.github.io/tech/goim-go-03/</loc>
     <lastmod>2019-04-24T22:02:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/go/</loc>
-    <lastmod>2019-04-24T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/goim/</loc>
-    <lastmod>2019-04-24T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/golang/</loc>
+    <loc>https://tsingson.github.io/series/goim/</loc>
     <lastmod>2019-04-24T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -38,55 +26,13 @@
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/posts/tech/goim-go-02/</loc>
+    <loc>https://tsingson.github.io/tech/goim-go-02/</loc>
     <lastmod>2019-04-23T22:02:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/posts/tech/goim-go-01/</loc>
+    <loc>https://tsingson.github.io/tech/goim-go-01/</loc>
     <lastmod>2019-04-21T22:02:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/blues/</loc>
-    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/design/</loc>
-    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/harmonica/</loc>
-    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/jeep/</loc>
-    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/photography/</loc>
-    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/programming/</loc>
-    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/tsingson/</loc>
-    <lastmod>2019-04-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -100,38 +46,28 @@
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/posts/design/</loc>
+    <loc>https://tsingson.github.io/design/</loc>
     <lastmod>2017-03-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/posts/offroad/</loc>
+    <loc>https://tsingson.github.io/offroad/</loc>
     <lastmod>2017-03-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/posts/design/photography/</loc>
+    <loc>https://tsingson.github.io/photography/</loc>
     <lastmod>2017-03-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/posts/tech/</loc>
+    <loc>https://tsingson.github.io/tech/</loc>
     <lastmod>2017-03-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/posts/music/</loc>
+    <loc>https://tsingson.github.io/music/</loc>
     <lastmod>2017-03-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/posts/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>
