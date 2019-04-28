@@ -135,7 +135,7 @@
 
 <h3 id="1-goim-原始构设计">1. goim 原始构设计</h3>
 
-<p>原图在这里<br />
+<p>原图在这里
 <img src="https://user-gold-cdn.xitu.io/2019/4/21/16a3ce2bb0f8cb43?w=761&amp;h=506&amp;f=png&amp;s=25978" alt="original architecture" /></p>
 
 <p>我重绘了这张图, 把各网元, 及外部网元关系标示清晰一些</p>
@@ -144,19 +144,19 @@
 
 <p><img src="https://user-gold-cdn.xitu.io/2019/4/21/16a3ce9aca706cb9?w=1342&amp;h=790&amp;f=png&amp;s=84094" alt="original architecture" /></p>
 
-<p>#### 注意要点:<br />
-&gt;<br />
-&gt;1. comet / job / logic 支持多实例部署, 这是 goim 分布式架构设计的精粹. 同时, push message 消息发布接口从 comet 拆分也有一定的考量, 毕竟多数IM 尤其是 bilibili 的业务场景上来说, 发送量少, 而阅读量多, 想想弹幕的业务场景就明白了.<br />
-&gt;<br />
-&gt;2. goim 采用 <a href="https://github.com/bilibili/discovery">bilibili/discovery</a> 实现注册/服务发现, 从而实现分布式路由与动态调度, 相关细节参看 <a href="https://github.com/bilibili/discovery">bilibili/discovery</a> 文档, 以及 <a href="https://github.com/Netflix/eureka">Netflix/eureka</a> 原始设计文档<br />
-&gt;<br />
-&gt;3. 配置 discovery 时, 注意 region / zone / env 的相互匹配对应关系<br />
-&gt;<br />
+<p>#### 注意要点:
+&gt;
+&gt;1. comet / job / logic 支持多实例部署, 这是 goim 分布式架构设计的精粹. 同时, push message 消息发布接口从 comet 拆分也有一定的考量, 毕竟多数IM 尤其是 bilibili 的业务场景上来说, 发送量少, 而阅读量多, 想想弹幕的业务场景就明白了.
+&gt;
+&gt;2. goim 采用 <a href="https://github.com/bilibili/discovery">bilibili/discovery</a> 实现注册/服务发现, 从而实现分布式路由与动态调度, 相关细节参看 <a href="https://github.com/bilibili/discovery">bilibili/discovery</a> 文档, 以及 <a href="https://github.com/Netflix/eureka">Netflix/eureka</a> 原始设计文档
+&gt;
+&gt;3. 配置 discovery 时, 注意 region / zone / env 的相互匹配对应关系
+&gt;
 &gt;4. 测试部署请注意 redis-server 尽量只要部署一个实例或一个集群(相当于单实例), kafka / zookeeper 相对简单, 部署多少都行, 配置对接上就行</p>
 
 <h3 id="2-架构细节-内部逻辑组件与接口关系">2. 架构细节(内部逻辑组件与接口关系)</h3>
 
-<p>goim 源码不多, 阅读简单也算是 golang 语言的特点, 在 goim 尤其如此. ( 推荐用 goland 阅读代码)<br />
+<p>goim 源码不多, 阅读简单也算是 golang 语言的特点, 在 goim 尤其如此. ( 推荐用 goland 阅读代码)
 下图中 goim 各网元的内部逻辑组件(逻辑单元), 以及各逻辑接口的相互关系, 可以对照源码自行阅读, 扩展</p>
 
 <blockquote>
@@ -170,12 +170,10 @@
 <p>在学习过程中, 网上问到比较多的定制问题有几个, 分别如下</p>
 
 <ol>
-<li>离线消息如何存储<br /></li>
-<li>用户如何认证, 或如何与自有业务系统对接<br /></li>
-<li>kafka 建议可更换, 比如 nats (我作了这个尝试)<br /></li>
-<li>bilibili/discovery 分离<br />
-<br />
-<br /></li>
+<li>离线消息如何存储</li>
+<li>用户如何认证, 或如何与自有业务系统对接</li>
+<li>kafka 建议可更换, 比如 nats (我作了这个尝试)</li>
+<li>bilibili/discovery 分离</li>
 </ol>
 
 <p>下面画出 goim 定制扩展, 或优化的一个可行方式</p>
@@ -183,14 +181,10 @@
 <p><img src="https://user-gold-cdn.xitu.io/2019/4/21/16a3d10a3902c923?w=1328&amp;h=790&amp;f=png&amp;s=92400" alt="architecture degail ( original )" /></p>
 
 <ol>
-<li>在 comet 上定制扩展,  client 端增加消息发送, 可双向流式发送/接收即时消息<br /></li>
-<li>在 logic 上定制, 增加用户管理接口, 会话管理接口, room 管理接口, 以及<br /></li>
-<li>在 logic 上增加即时消息存储或处理接口, 比如离线消息存储, 用户上线后获取离线消息(后台触发发送)<br /></li>
-<li>当然了, logic 上原有的 http client 发送接口保留<br />
-<br />
-<br />
-<br />
-<br /></li>
+<li>在 comet 上定制扩展,  client 端增加消息发送, 可双向流式发送/接收即时消息</li>
+<li>在 logic 上定制, 增加用户管理接口, 会话管理接口, room 管理接口, 以及</li>
+<li>在 logic 上增加即时消息存储或处理接口, 比如离线消息存储, 用户上线后获取离线消息(后台触发发送)</li>
+<li>当然了, logic 上原有的 http client 发送接口保留</li>
 </ol>
 
 <h4 id="0-请注意">0. 请注意</h4>

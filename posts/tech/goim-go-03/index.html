@@ -124,21 +124,20 @@
 <p><img src="https://user-gold-cdn.xitu.io/2019/4/25/16a531eb473f3ba8?w=1079&amp;h=619&amp;f=png&amp;s=60681" alt="" /></p>
 
 <ul>
-<li>部署一到多分 discovery 作为服务注册/发现网元 ( discovery 相互间会同步注册数据,细节见后)<br /></li>
-<li>comet 一到多个部署, 这里是一个 comet gRPC server 服务端<br />
+<li>部署一到多分 discovery 作为服务注册/发现网元 ( discovery 相互间会同步注册数据,细节见后)</li>
+<li>comet 一到多个部署, 这里是一个 comet gRPC server 服务端
 
 <ul>
-<li>comet 启动果, 每一个部署向 discovery 进行--&gt; <strong>服务注册</strong><br /></li>
-<li>注册成功后与 discovery 之间保持一个健康状态同步( renew ), 见标示 1<br /></li>
-<li>comet 如果下线, discovery 会标示下线状态<br /></li>
+<li>comet 启动果, 每一个部署向 discovery 进行--&gt; <strong>服务注册</strong></li>
+<li>注册成功后与 discovery 之间保持一个健康状态同步( renew ), 见标示 1</li>
+<li>comet 如果下线, discovery 会标示下线状态</li>
 </ul></li>
-<li>job 一到多个部署, 这里是一个 comet gRPC client 客户端<br />
+<li>job 一到多个部署, 这里是一个 comet gRPC client 客户端
 
 <ul>
-<li>job 启动后, 向 discovery 进行 polls 获取 goim-comet 所有服务实例列表--&gt; <strong>服务发现</strong><br /></li>
-<li>job 持续监听 discovery 中的 goim-conet 服务节点列表, 同步到本地<br /></li>
-<li>job 向 goim-comet 实例( 整个列表) 分发 goim 消息 ---&gt; <strong>job 的主体业务功能</strong><br />
-<br /></li>
+<li>job 启动后, 向 discovery 进行 polls 获取 goim-comet 所有服务实例列表--&gt; <strong>服务发现</strong></li>
+<li>job 持续监听 discovery 中的 goim-conet 服务节点列表, 同步到本地</li>
+<li>job 向 goim-comet 实例( 整个列表) 分发 goim 消息 ---&gt; <strong>job 的主体业务功能</strong></li>
 </ul></li>
 </ul>
 
@@ -148,7 +147,7 @@
 
 <p>discovery 之间, 会同步注册的服务实例信息</p>
 
-<p><strong>注意</strong><br />
+<p><strong>注意</strong>
 在 bilibili/discovery 中, discovery 本身被标记为</p>
 
 <pre><code>_appid = &quot;infra.discovery&quot;
@@ -174,10 +173,10 @@ type Config struct {
 
 <p><img src="https://user-gold-cdn.xitu.io/2019/4/25/16a531f0be908f57?w=1079&amp;h=703&amp;f=png&amp;s=125303" alt="" /></p>
 
-<p>discovery / eureka 中的基本概念, 如上图所示, 就是一个分区进行注册/调度的简单划分<br />
-* Region 地区, 例如, 中国区, 南美区, 北美区...<br />
-* Zone 可用区域, 例如中国区下的 gd 广东地区, sh 上海地区, 一般是指骨干 IDC 机房, 或者跨地区的逻辑区域, 这是同区内调度的主要划分点. 一般是同区内调度, 不会跨区调度<br />
-* Env 再划分小一点的运行环境划分, 比如 Env = dev 开发环境, Env = trial 试商用...<br />
+<p>discovery / eureka 中的基本概念, 如上图所示, 就是一个分区进行注册/调度的简单划分
+* Region 地区, 例如, 中国区, 南美区, 北美区...
+* Zone 可用区域, 例如中国区下的 gd 广东地区, sh 上海地区, 一般是指骨干 IDC 机房, 或者跨地区的逻辑区域, 这是同区内调度的主要划分点. 一般是同区内调度, 不会跨区调度
+* Env 再划分小一点的运行环境划分, 比如 Env = dev 开发环境, Env = trial 试商用...
 * appID 这是注册应用的名称, 服务注册与发现, 依赖的是 name ----&gt; address 名称到地址的注册(写入/更新) 与发现( 获取名称对应的服务地址或服务地址列表)</p>
 
 <hr />
@@ -234,10 +233,10 @@ type Config struct {
 
 <h3 id="2-2-小结与配置建议">2.2 小结与配置建议</h3>
 
-<p>由上小节可知, bilibili/discovery 或 netflix/eureka 的配置中, 以下4个关键参数, 需要一一对应<br />
-* region<br />
-* zone<br />
-* env 或 deployEnv<br />
+<p>由上小节可知, bilibili/discovery 或 netflix/eureka 的配置中, 以下4个关键参数, 需要一一对应
+* region
+* zone
+* env 或 deployEnv
 * appID</p>
 
 <p>在 goim 中, appID 已经在代码中标记为常量, 如下</p>
@@ -346,9 +345,9 @@ type Config struct {
 
 <p>### 3.2 在 job 中的服务发现</p>
 
-<p>#### 3.2.1 job 中的注册代码, 实际是无用代码<br />
- 在 job 代码中, 含有服务注册代码, 实际上是无用代码, 原因是, 只有服务端才需要进行服务注册, 而 job 实际上只有两个业务关联逻辑<br />
- 1. 对 kafka 进行消息订阅<br />
+<p>#### 3.2.1 job 中的注册代码, 实际是无用代码
+ 在 job 代码中, 含有服务注册代码, 实际上是无用代码, 原因是, 只有服务端才需要进行服务注册, 而 job 实际上只有两个业务关联逻辑
+ 1. 对 kafka 进行消息订阅
  2. 向 tomet 中的 comet gRPC server 进行消息 push 推送</p>
 
 <blockquote>
@@ -414,7 +413,7 @@ func (j *Job) watchComet(c *naming.Config) {
 
 <p>.</p>
 
-<p>欢迎交流与批评.....<br />
+<p>欢迎交流与批评.....
 .</p>
 
 <p>.</p>

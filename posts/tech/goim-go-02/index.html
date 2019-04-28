@@ -117,7 +117,7 @@
 
 <p>github 上的 issue 在这里<a href="https://github.com/Terry-Mao/goim/issues/262">https://github.com/Terry-Mao/goim/issues/262</a></p>
 
-<p>简要说明一下 golang 的 interface:<br />
+<p>简要说明一下 golang 的 interface:
 在 <a href="https://juejin.im/post/5a6873fd518825734501b3c5">吴德宝AllenWu</a> 文章<a href="https://juejin.im/post/5a6873fd518825734501b3c5">Golang interface接口深入理解</a> 中这样写到:</p>
 
 <blockquote>
@@ -150,8 +150,8 @@
 
 <p><img src="https://user-gold-cdn.xitu.io/2019/4/22/16a433e3b20e5a9f?w=1320&amp;h=768&amp;f=png&amp;s=86616" alt="" /></p>
 
-<p>上图中,<br />
-1. 在 logic 这个网元中, 有 logic 向 kafka 的消息发布<br />
+<p>上图中,
+1. 在 logic 这个网元中, 有 logic 向 kafka 的消息发布
 2. 在 job 网元中, job 从 kafka 订阅消息, 再赂 comet 网元分发</p>
 
 <p>那我们的目标很简单了, 换了!!! ----------&gt; <strong>等等</strong>.......能保留原有 kafka 实现不? 在必要时, 可以使用开关项, 切换 nats 或 kafka ??</p>
@@ -232,7 +232,7 @@ type Logic struct {
 
 <blockquote>
 <blockquote>
-<p>下面是我们需要扩展的地方, 在 <a href="https://github.com/Terry-Mao/goim/blob/master/internal/logic/dao/">https://github.com/Terry-Mao/goim/blob/master/internal/logic/dao/</a>中<br />
+<p>下面是我们需要扩展的地方, 在 <a href="https://github.com/Terry-Mao/goim/blob/master/internal/logic/dao/">https://github.com/Terry-Mao/goim/blob/master/internal/logic/dao/</a>中
 dao, 这名称很 java (DAO-------&gt; Data Access Objects 数据存取对象), 这里也说明了 bilibili 们在代码纺织上, 挺规范</p>
 </blockquote>
 
@@ -289,7 +289,7 @@ func newKafkaPub(c *conf.Kafka) kafka.SyncProducer {
 }
 </code></pre>
 
-<p>这里, 先小改一下 func New(c *conf.Config) *Dao  这个函数<br />
+<p>这里, 先小改一下 func New(c *conf.Config) *Dao  这个函数
 改成如下代码形式</p>
 
 <pre><code>// New new a dao and return.
@@ -316,7 +316,7 @@ func New(c *conf.Config) *Dao {
 
 <h3 id="2-2-发布接口第二步-检查一下哪个方法-method-需要被-interface-实现">2.2 发布接口第二步, 检查一下哪个方法( method )需要被 interface 实现</h3>
 
-<p>还是看源代码<br />
+<p>还是看源代码
 &gt; 代码在 <a href="https://github.com/Terry-Mao/goim/blob/master/internal/logic/dao/kafka.go">https://github.com/Terry-Mao/goim/blob/master/internal/logic/dao/kafka.go</a> 大约第13行开始</p>
 
 <pre><code>// PushMsg push a message to databus.
@@ -562,14 +562,13 @@ type Dao struct {
 <h4 id="2-4-2-方法定义与实现">2.4.2 方法定义与实现</h4>
 
 <ol>
-<li>方法名 , 比如 PublishMessage<br /></li>
-<li>input 数据, 就是这些 topic, ackInbox string, key string, msg []byte, 分别是<br />
-&gt; 1. topic 这是 kafka 或 nats 里的主题, 也就是 pub/sub 发布/订阅的频道<br />
-&gt; 2. ackInbox 这是 publish 发布的 confirm 确认频道<br />
-&gt; 3. key 消息体( payload ) 的键<br />
-&gt; 4. msg 这是消息体 payload<br /></li>
-<li>ouput 数据, 这里是 error , 标示 PublishMessage 方法( method ) 的输出<br />
-<br /></li>
+<li>方法名 , 比如 PublishMessage</li>
+<li>input 数据, 就是这些 topic, ackInbox string, key string, msg []byte, 分别是
+&gt; 1. topic 这是 kafka 或 nats 里的主题, 也就是 pub/sub 发布/订阅的频道
+&gt; 2. ackInbox 这是 publish 发布的 confirm 确认频道
+&gt; 3. key 消息体( payload ) 的键
+&gt; 4. msg 这是消息体 payload</li>
+<li>ouput 数据, 这里是 error , 标示 PublishMessage 方法( method ) 的输出</li>
 </ol>
 
 <p>这就是一个接口定义, 方法名/ 输入/ 输出, 至于方法的具体实现, 交由下面的实体去实现( 可以看 kafka / nats 中分别对应的 PublishMessage 的方法实现)</p>
@@ -621,7 +620,7 @@ type Dao struct {
 
 <p>interface 确是<strong>隐藏了具体实现</strong>, 能让我们很容易的把 goim 对 kafka 的依赖, 切换到 nats , 并且通过一个开关项, 来确定使用哪一个具体实现</p>
 
-<p>扩展一下, 这个 interface 也可以实现从 kafka 切换到 rabbitMQ / activeMQ / redis (pub/sub) ....<br />
+<p>扩展一下, 这个 interface 也可以实现从 kafka 切换到 rabbitMQ / activeMQ / redis (pub/sub) ....
 只要简单实现 PushMsg 这个 interface 就好啦</p>
 
 <h3 id="4-源代码及其他补充">4. 源代码及其他补充</h3>
@@ -648,13 +647,13 @@ type Dao struct {
 
 <p>在 goim 中, 网元间用 gRPC 通讯, 再看图</p>
 
-<p><img src="https://user-gold-cdn.xitu.io/2019/4/22/16a43da4dc840cdb?w=1328&amp;h=790&amp;f=png&amp;s=92400" alt="" /><br />
+<p><img src="https://user-gold-cdn.xitu.io/2019/4/22/16a43da4dc840cdb?w=1328&amp;h=790&amp;f=png&amp;s=92400" alt="" />
 看图上的 grpc 标示, 注意, 图上标示箭头不完全准确:</p>
 
-<p>grpc 同时支持<br />
-&gt; * 普通 Client / Server 调用(北向)接口<br />
-&gt; * Client 向 Server 的流式(北向)流式接口<br />
-&gt; * Server 向 Cinet 调用(南向)流式接口<br />
+<p>grpc 同时支持
+&gt; * 普通 Client / Server 调用(北向)接口
+&gt; * Client 向 Server 的流式(北向)流式接口
+&gt; * Server 向 Cinet 调用(南向)流式接口
 &gt; * 以及 Server / Client 双向流式接口</p>
 
 <p>网上文章很多, 不一一展开了. 我们重点关注一下, golang 中对 gRPC 的实现, 也就是 golang 如何把 protobuf 定义的接口, 定义为 golang 中的 interface , 以及如何具体实现 interface .</p>
@@ -749,10 +748,9 @@ type CometServer interface {
 <p><strong>代码中把 kafka 写成可用 nats 替换, 只是技术上的学习与尝试, 并不是建议或推荐使用 nats:</strong></p>
 
 <ul>
-<li>nats 并不保障消息送达<br /></li>
-<li>nats 并不提供持久化<br /></li>
-<li>nats 用在 goim 上的效率, 还需要压测<br />
-<br /></li>
+<li>nats 并不保障消息送达</li>
+<li>nats 并不提供持久化</li>
+<li>nats 用在 goim 上的效率, 还需要压测</li>
 </ul>
 
 <p>所以, case by case , 具体业务场景具体分析, 商用项目的选型, 是一个慎重而严谨的事儿</p>
@@ -765,7 +763,7 @@ type CometServer interface {
 
 <p>感谢 <a href="https://www.bilibili.com">https://www.bilibili.com</a> &amp; <a href="https://github.com/Terry-Mao">毛剑</a> 及众多开源社区的朋友们</p>
 
-<p>欢迎交流与批评.....<br />
+<p>欢迎交流与批评.....
 .</p>
 
 <p>.</p>
