@@ -32,13 +32,13 @@
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/series/goim/</loc>
+    <loc>https://tsingson.github.io/tags/goim/</loc>
     <lastmod>2019-04-24T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/goim/</loc>
+    <loc>https://tsingson.github.io/series/goim/</loc>
     <lastmod>2019-04-24T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -66,8 +66,14 @@
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/photography/goim-go-01/</loc>
+    <loc>https://tsingson.github.io/photography/shenzhen-photography-20181130/</loc>
     <lastmod>2018-12-01T22:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/photography/</loc>
+    <lastmod>2018-12-01T22:02:57+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -78,12 +84,6 @@
   
   <url>
     <loc>https://tsingson.github.io/categories/photography/</loc>
-    <lastmod>2018-12-01T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/photography/</loc>
     <lastmod>2018-12-01T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -101,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/photography/goim-go-01/</loc>
+    <loc>https://tsingson.github.io/photography/hongkong-photography-20181124/</loc>
     <lastmod>2018-11-28T22:02:57+08:00</lastmod>
   </url>
   
