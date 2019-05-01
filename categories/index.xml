@@ -6,10 +6,19 @@
     <description>Recent content in Categories on 三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 24 Apr 2019 22:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 May 2019 12:02:57 +0800</lastBuildDate>
     
 	<atom:link href="https://tsingson.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>photography</title>
+      <link>https://tsingson.github.io/categories/photography/</link>
+      <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/categories/photography/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Development</title>
@@ -17,15 +26,6 @@
       <pubDate>Wed, 24 Apr 2019 22:02:57 +0800</pubDate>
       
       <guid>https://tsingson.github.io/categories/development/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>photography</title>
-      <link>https://tsingson.github.io/categories/photography/</link>
-      <pubDate>Sat, 01 Dec 2018 22:02:57 +0800</pubDate>
-      
-      <guid>https://tsingson.github.io/categories/photography/</guid>
       <description></description>
     </item>
     

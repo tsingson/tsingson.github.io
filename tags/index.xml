@@ -6,10 +6,73 @@
     <description>Recent content in Tags on 三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 24 Apr 2019 22:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 May 2019 12:02:57 +0800</lastBuildDate>
     
 	<atom:link href="https://tsingson.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>aperture</title>
+      <link>https://tsingson.github.io/tags/aperture/</link>
+      <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/aperture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>capture-one</title>
+      <link>https://tsingson.github.io/tags/capture-one/</link>
+      <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/capture-one/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lightroom</title>
+      <link>https://tsingson.github.io/tags/lightroom/</link>
+      <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/lightroom/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>phase-one</title>
+      <link>https://tsingson.github.io/tags/phase-one/</link>
+      <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/phase-one/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>photography</title>
+      <link>https://tsingson.github.io/tags/photography/</link>
+      <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/photography/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>摄影</title>
+      <link>https://tsingson.github.io/tags/%E6%91%84%E5%BD%B1/</link>
+      <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/%E6%91%84%E5%BD%B1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>摄影后期</title>
+      <link>https://tsingson.github.io/tags/%E6%91%84%E5%BD%B1%E5%90%8E%E6%9C%9F/</link>
+      <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/%E6%91%84%E5%BD%B1%E5%90%8E%E6%9C%9F/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>goim</title>
@@ -26,15 +89,6 @@
       <pubDate>Wed, 24 Apr 2019 22:02:57 +0800</pubDate>
       
       <guid>https://tsingson.github.io/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>photography</title>
-      <link>https://tsingson.github.io/tags/photography/</link>
-      <pubDate>Sat, 01 Dec 2018 22:02:57 +0800</pubDate>
-      
-      <guid>https://tsingson.github.io/tags/photography/</guid>
       <description></description>
     </item>
     
