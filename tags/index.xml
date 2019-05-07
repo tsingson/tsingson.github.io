@@ -6,10 +6,28 @@
     <description>Recent content in Tags on 三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 May 2019 12:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 07 May 2019 12:02:57 +0800</lastBuildDate>
     
 	<atom:link href="https://tsingson.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>goim</title>
+      <link>https://tsingson.github.io/tags/goim/</link>
+      <pubDate>Tue, 07 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/goim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://tsingson.github.io/tags/golang/</link>
+      <pubDate>Tue, 07 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>aperture</title>
@@ -71,24 +89,6 @@
       <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
       
       <guid>https://tsingson.github.io/tags/%E6%91%84%E5%BD%B1%E5%90%8E%E6%9C%9F/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>goim</title>
-      <link>https://tsingson.github.io/tags/goim/</link>
-      <pubDate>Wed, 24 Apr 2019 22:02:57 +0800</pubDate>
-      
-      <guid>https://tsingson.github.io/tags/goim/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>https://tsingson.github.io/tags/golang/</link>
-      <pubDate>Wed, 24 Apr 2019 22:02:57 +0800</pubDate>
-      
-      <guid>https://tsingson.github.io/tags/golang/</guid>
       <description></description>
     </item>
     
