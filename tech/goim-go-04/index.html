@@ -45,7 +45,7 @@
     
     "genre": "tech",
     "keywords": "goim, golang",
-    "wordcount":  1120 ,
+    "wordcount":  1233 ,
     "url": "https:\/\/tsingson.github.io\/tech\/goim-go-04\/",
     "datePublished": "2019-05-07T12:02:57\x2b08:00",
     "dateModified": "2019-05-07T12:02:57\x2b08:00",
@@ -185,7 +185,13 @@
 }
 </code></pre>
 
-<h3 id="2-2-tcp-websocket-数据包定义">2.2.  tcp / websocket 数据包定义</h3>
+<h3 id="2-2-会话数据">2.2 会话数据</h3>
+
+<p>当 tcp client 或 websocket client 连接 comet server 时, comet 以 gRPC 向 logic 进行内部通讯, 生成会话数据, 存在 redis 中, 具体细节不展开, 看代码</p>
+
+<p>当 http client 向 logic 发送 im 消息时, logic 向 redis 查询会话数据, 对于已经存在的 room--&gt; server / mid ( memberID) --&gt; server 即发送消息到 MQ , 该部分代码比较清楚, 也不再加说明</p>
+
+<h3 id="2-3-tcp-websocket-数据包定义">2.3.  tcp / websocket 数据包定义</h3>
 
 <p>推送 im 信息,  对象名称为 proto,  在 protobuf 中定义</p>
 
