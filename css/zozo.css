@@ -389,6 +389,7 @@ hr {
 
 .list_with_title .listing .listing_post a:hover {
   color: #1f1f1f;
+  font-size: 1.4rem;
 }
 
 .pagination {
