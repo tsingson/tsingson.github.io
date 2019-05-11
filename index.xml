@@ -62,7 +62,9 @@
       <pubDate>Sun, 21 Apr 2019 22:02:57 +0800</pubDate>
       
       <guid>https://tsingson.github.io/tech/goim-go-01/</guid>
-      <description>&lt;p&gt;[简述]  &lt;a href=&#34;http://goim.io&#34;&gt;http://goim.io&lt;/a&gt; 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文介绍 goim 分布式架构及内部网元接口设计要点, 以及如何定制&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://tsingson.github.io/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[简述]  &lt;a href=&#34;http://goim.io&#34;&gt;http://goim.io&lt;/a&gt; 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文介绍 goim 分布式架构及内部网元接口设计要点, 以及如何定制&lt;/p&gt;</description>
     </item>
     
     <item>
