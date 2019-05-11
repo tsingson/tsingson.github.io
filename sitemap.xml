@@ -4,55 +4,108 @@
   
   <url>
     <loc>https://tsingson.github.io/categories/</loc>
-    <lastmod>2019-05-07T12:02:57+08:00</lastmod>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://tsingson.github.io/categories/development/</loc>
-    <lastmod>2019-05-07T12:02:57+08:00</lastmod>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/restful/</loc>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://tsingson.github.io/series/</loc>
-    <lastmod>2019-05-07T12:02:57+08:00</lastmod>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://tsingson.github.io/tags/</loc>
-    <lastmod>2019-05-07T12:02:57+08:00</lastmod>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://tsingson.github.io/tags/aaa/</loc>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/android/</loc>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/flatbuffers/</loc>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tech/ums-step-by-step/</loc>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://tsingson.github.io/tags/goim/</loc>
-    <lastmod>2019-05-07T12:02:57+08:00</lastmod>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://tsingson.github.io/series/goim/</loc>
-    <lastmod>2019-05-07T12:02:57+08:00</lastmod>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/golang/</loc>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/grpc/</loc>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/register/</loc>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/ums/</loc>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/tags/websocket/</loc>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/</loc>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://tsingson.github.io/tech/goim-go-04/</loc>
     <lastmod>2019-05-07T12:02:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/golang/</loc>
-    <lastmod>2019-05-07T12:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/</loc>
-    <lastmod>2019-05-07T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -80,12 +133,6 @@
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/categories/photography/</loc>
-    <lastmod>2019-05-01T12:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://tsingson.github.io/tags/photography/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
     <priority>0</priority>
@@ -93,6 +140,12 @@
   
   <url>
     <loc>https://tsingson.github.io/series/photography/</loc>
+    <lastmod>2019-05-01T12:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://tsingson.github.io/categories/photography/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>

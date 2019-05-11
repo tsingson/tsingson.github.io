@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="tsingson"/>
+
+  
+  <meta name="description" content="go-ums 从设计到实现( v0.1.0 )"/>
+  
+
+  
+  
+  <meta name="keywords" content="tsingson"/>
+  
+
+  
+  <link rel="canonical" href="https://tsingson.github.io/tech/ums-step-by-step/"/>
+
+  
+
+  <title>go-ums 从设计到实现( v0.1.0 )-持续更新 &middot; 三明智</title>
+
+  <link rel="shortcut icon" href="https://tsingson.github.io/images/favicon.ico"/>
+  <link rel="stylesheet" href="https://tsingson.github.io/css/animate.min.css"/>
+  <link rel="stylesheet" href="https://tsingson.github.io/css/remixicon.css"/>
+  <link rel="stylesheet" href="https://tsingson.github.io/css/zozo.css"/>
+  <link rel="stylesheet" href="https://tsingson.github.io/css/highlight.css"/>
+
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "go-ums 从设计到实现( v0.1.0 )-持续更新",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/tsingson.github.io\/tech\/ums-step-by-step\/"
+        },
+    
+    "genre": "tech",
+    "keywords": "goim, golang, ums, aaa, register, grpc, flatbuffers, android, websocket, RESTful",
+    "wordcount":  2970 ,
+    "url": "https:\/\/tsingson.github.io\/tech\/ums-step-by-step\/",
+    "datePublished": "2019-05-11T12:02:57\x2b08:00",
+    "dateModified": "2019-05-11T12:02:57\x2b08:00",
+    
+    
+    "author": {
+    "@type": "Person",
+    "name": "tsingson"
+    },
+    "description": "go-ums 从设计到实现( v0.1.0 )"
+    }
+</script>
+
+</head>
+
+<body>
+<div class="main animated">
+    <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/tech/">技术</a>
+      </li>
+      
+      <li>
+        <a href="/photography/">摄影</a>
+      </li>
+      
+      <li>
+        <a href="/design/">设计</a>
+      </li>
+      
+      <li>
+        <a href="/music/">音乐</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">Tags</a>
+      </li>
+      
+      <li>
+        <a href="/about/about-me/">关于</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+    <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="https://tsingson.github.io">
+
+          <img src="https://tsingson.github.io/images/logo.svg" width=150px/>   <span>三明智</span>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title">programming.design.music</p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/tsingson" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        <a href="https://twitter.com/tsingson" title="twitter" target="_blank"><i class="remixicon-twitter-fill"></i></a>
+        
+        
+        <a href="https://tsingson.github.io/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="content">
+        <div class="post_page">
+            <div class="post animated fadeInDown">
+                <div class="post_title post_detail_title">
+                    <h2><a href='/tech/ums-step-by-step/'>go-ums 从设计到实现( v0.1.0 )-持续更新</a></h2>
+                    <span class="date">2019-05-11</span>
+                </div>
+                <div class="post_content markdown">
+
+<h1 id="go-ums-从设计到实现-v0-1-0">go-ums 从设计到实现( v0.1.0 )</h1>
+
+<blockquote>
+<p>项目源码 <a href="https://github.com/tsingson/go-ums">https://github.com/tsingson/go-ums</a></p>
+</blockquote>
+
+<h2 id="0-go-ums-是什么">0. go-ums 是什么</h2>
+
+<p>go-ums 开发目标是一个开源项目, 核心由 golang 开发,  提供用户管理(user-management-subsystem) / AAA 认证/鉴权/授 / 多业务会话共享与管理等, 以支持分布式部署及云部署为主要目标</p>
+
+<p>这是一个从零开始的小项目, 持续渐进</p>
+
+<h2 id="1-业务场景">1. 业务场景</h2>
+
+<p>这就是原始需求的收集/整理/清理/梳理, 是开发贯串始终的目标与仲裁准则:</p>
+
+<ol>
+<li>是什么? 有什么价值?</li>
+<li>是谁在用? 如何用( 业务操作流程)? 哪些是关键节点(不能省掉的业务行为), 重点与难点是什么?</li>
+<li>在这些业务场景中, 边界在哪里( 哪些情况是正常, 哪些是异常, 如何判定, 什么时间什么情况下有哪些处理方式)</li>
+</ol>
+
+<p>从一个简单而典型的业务场景开始, 来, 动动脑, 再动动脑,</p>
+
+<h3 id="1-1-业务场景-需求描述">1.1 业务场景/需求描述</h3>
+
+<p>这个开源项目是从 goim 开始, 从而在网上公开讨论并启发的( 我几乎不在网络上谈论个人技术经历, 尤其是项目细节, 这里, 算是换个方式来公开吧) , 所以, 这里也从 goim 作为起点</p>
+
+<p>很多朋友, 在阅读 goim 源码时,  都会感觉到, 就算是 im 业务完整实施, 也需要与用户管理结合:</p>
+
+<ol>
+<li>用户注册后, 提供一个用户唯一标识, , 对应 goim 中的 mid</li>
+<li>用户认证, 让用户可以长连接到 goim , 在认证成功时
+
+<ol>
+<li>提供一个 token , 该 token 中包含用户可以进入的房间列表</li>
+<li>提供用户发送 im 信息的入口地址</li>
+</ol></li>
+<li>用户在 goim 中涉及会话的业务功能( 变更房间.....)</li>
+</ol>
+
+<p>所以, 我们可以从上面描述到的, (不能省掉的) 基本业务功能开始</p>
+
+<p>来, 来, 来 ...GO!</p>
+
+<h4 id="1-1-1-场景与流程简述">1.1.1 场景与流程简述</h4>
+
+<p>( 省略)</p>
+
+<p>稍后补充示意图</p>
+
+<h4 id="1-1-2-业务指标-性能要求">1.1.2 业务指标(性能要求)</h4>
+
+<p>(简化)<br />
+1. 要求业务响应, 排除网络延迟, 业务响应要求在 100ms 以内
+4. 支持10K tps 高并发
+5. 年度业务中断时间低于5次, 业务中断时间低于30分钟
+6. 业务数据保留期限 1年
+5. 业务操作记录要求支持审计</p>
+
+<h4 id="1-2-3-部署要求">1.2.3 部署要求</h4>
+
+<p>(简化)
+1. 服务器部署中国骨干网络IDC (电信网络为主, 广州/上海两地IDC ) 及美国骨干网络IDC ( 略)
+2. 以部署服务端优先支持 linux 与 docker
+3.  客户端支持 windows / mac / linux 的 terminal 命令行, 支持主流浏览器( 当前市场占80%的主流版本, 相当于 IE 10+)</p>
+
+<h4 id="1-2-4-开发-运维-运营要求">1.2.4 开发/运维/运营要求</h4>
+
+<p>(省略)</p>
+
+<h4 id="1-2-5-成本要求">1.2.5 成本要求</h4>
+
+<p>(省略)</p>
+
+<h3 id="1-2-feature-list-需求列表">1.2  feature list 需求列表</h3>
+
+<p>注, 以下按开发进度作了分组.</p>
+
+<p>分组的意思, 就是排优先级, 排优先级即是排重要/紧急程度(按 <strong>SWOT</strong> Analysis 方式), 以决定先后处理顺序.</p>
+
+<h4 id="1-2-1-prototype-开发需求-v0-1-0">1.2.1 prototype 开发需求 v0.1.0</h4>
+
+<p>用户相关操作</p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> 用户注册 register
+用户以 email + 密码 注册提交个人信息, 提交后验证 email 是否存在唯一冲突, 如果没有, 注册成功( 分配用户ID)
+注意, 这里隐藏着一个检查用户是否存在的操作</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> 用户登录与登出 login / logout
+用户以  email + passwrd 或 用户名 + password 或 userID + password 可以进行登录, 登录成功, 给用户发送通行令牌 accessToken
+注意, 这里隐藏着一个检查用户登录成功返回一个 access token 的操作</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> 用户认证 authentication
+针对具体业务, 用户访问具体业务时, 发送 access token 进行认证, 如果用户认证成功, 可以访问指定业务, 否则拒绝. 一般来说, 用户认证成功即表示创建一个合法的业务会话</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> 用户通行令牌验证 verify
+用户访问指定业务时, 验证 token 是否在有效期内, 以及相关授权是否有变更, 如不符合业务授权限制, 则拒绝提供服务</label></li>
+</ul>
+
+<h3 id="1-2-2-trial-试运行-v0-1-1"># 1.2.2  trial 试运行 v0.1.1</h3>
+
+<p>用户相关操作
+ - [ ] 用户激活 active
+    用户注册后, 向用户邮箱发送 email 验证的激活邮件, 用户从邮件中获取激活码后, 进行激活操作
+ - [ ] 用户登录与登出 login / logout
+    用户以  email + passwrd 或 用户名 + password 或 userID + password 可以进行登录, 登录成功, 给用户发送通行令牌 accessToken
+  - [ ] 用户锁定 suspend
+    禁止用户业务消费行为, 一般来说, 用户在具体业务上, 会有指定的服务周期, 超出服务周期, 用户被锁定
+  - [ ] 用户恢复 resume
+    恢复用户授权的业务行为
+  - [ ] 用户删除 deleted
+    用户删除自己或管理后台删除用户, 注意, 在商用中, 用户“删除”一般意味着用户状态修改为 deleted 并停止所有访问与所有业务, 但保留所有关联数据( 这些关联数据, 只有在一定期限后, 会手动或自动清除 purge )</p>
+
+<h2 id="2-概要设计">2. 概要设计</h2>
+
+<p>从 1.1 小节, 很容易作一个简单设计</p>
+
+<h3 id="2-1-数据模型">2.1 数据模型</h3>
+
+<p>用户对象名称  account
+&gt; 1. 用户ID, 与 goim 配合, 就用 int64 吧, 一个全局唯一的正整数
+&gt; 2. email , (简化), 都是字符串,  email 格式也不验证, 其中 email 字符串长不得少于5个字符( &gt;=5 ) ,
+&gt; 3.  password,  (简化)  都是字符串,  密码不得少于6个字符( &gt;= 6), 字符为 a..zA..Z0..9$%-
+&gt; 4. access tokdn 通告令牌, 也用字符串代替吧, 字符串长度 &gt;=32 字符
+&gt; 5. 用户角色, 分别为 非会员, 会员
+&gt; 6. 用户状态, 分别为注册未激活, 已激活, 禁用, 已删除
+&gt; 7. 用户创建时间, 简单点, 用 int64 或  UTC timestamp
+&gt; 8. 用户信息变更时间, 简单点, 用 int64 或  UTC timestamp
+&gt;</p>
+
+<p>操作结果(状态)定义
+&gt; 1. transaction ID 事务唯一标识
+&gt; 2. 状态码, 整数, 操作成功返回 200 / 操作失败返回 500 / 请求接受并在处理中返回202
+&gt; 3. 操作结果文本信息, 少于255字符, 操作成功,  文本信息, 要求标记业务操作名称, 如 register ), 操作失败, 返回失败原因( 文本信息 )</p>
+
+<p>注:   transaction ID 事务唯一标识, 支持异步操作, 以支持分布式或集群, 以及操作失败时, 进行操作重试( 这样可以让服务端处理上次操作失败的数据, 例如进行清理, 或继续使用, 以及在日志中进行检查/审计)</p>
+
+<p>原型实现的约束与限制:</p>
+
+<blockquote>
+<ol>
+<li>为了快速实现原型, 用户密码直接存储, 不加密</li>
+<li>用户ID , 直接用用户创建的 utc 时间截( 纳秒 )</li>
+<li><del>简化操作结果(状态定义),  这里先按 golang 实现习惯方式, 操作结果修改为 go 的 error 返回( 即 error = nil 或 != nil )  注: 这个地方, 只是针对 go 的简化</del></li>
+</ol>
+</blockquote>
+
+<h3 id="2-2-用户操作">2.2 用户操作</h3>
+
+<p>(简化)</p>
+
+<blockquote>
+<ol>
+<li>用户注册  register ------&gt; 调用 exists 检查是否重复注册, 如果不是, 创建用户ID 并保存用户信信息, 返回用户数据( 不返回密码), 返回操作结果状态码</li>
+<li>检查用户是否重复存在 exists, 返回操作结果</li>
+<li>用户登录 login ------&gt; 以 email + pwd 登录, 登录成功, 创建并返回 access token, 返回操作结果状态码</li>
+<li>用户登出 logout -----&gt; 清除 access token , 返回操作结果状态码</li>
+<li>用户认证 auth -------&gt; 输入用户ID 或 token  , 调用 verify 检查 会话中的token 是否合法, 如果 token 合法则返回成功, 返回操作结果状态码</li>
+<li>用户令牌验证 verify --------&gt; 检查 token 是否存在, 并且是否相等, 返回操作结果状态码</li>
+</ol>
+</blockquote>
+
+<h3 id="2-3-详细设计-仅以-register-用户注册为例">2.3 详细设计 (仅以 register 用户注册为例)</h3>
+
+<h4 id="2-3-1-register-用户注册-示例">2.3.1 register 用户注册(示例)</h4>
+
+<h5 id="输入">----&gt; 输入:</h5>
+
+<ol>
+<li>transaction ID 事务唯一标识</li>
+<li>email  合法邮箱地址</li>
+<li>password 密码</li>
+</ol>
+
+<h5 id="内部逻辑实现">----&gt; 内部逻辑实现</h5>
+
+<ol>
+<li>检查 email 是否重复( 即被成功注册过), 判断没有重复, 则进行 2, 判断有重复, 进行下说明 3</li>
+<li>生成用户 ID , 并保存到文件或数据库, 保存成功, 返回成功结果输出, 保存失败, 进行下说明 3</li>
+<li>处理错误输出</li>
+<li>以上处理, 每一步均以 事务 ID 与时间为主键存日志</li>
+</ol>
+
+<h5 id="输出">----&gt; 输出</h5>
+
+<h6 id="输出-成功-返回用户信息-屏蔽密码字段">输出 (成功, 返回用户信息, 屏蔽密码字段)</h6>
+
+<ol>
+<li>account ID 用户ID</li>
+<li>email</li>
+<li>用户角色</li>
+<li>用户状态</li>
+<li>创建时间</li>
+
+<li><p>变更时间</p>
+
+<h5 id="输出-失败-返回事务标识-错误状态码-错误原因文本">输出 (失败, 返回事务标识, 错误状态码, 错误原因文本)</h5></li>
+
+<li><p>transaction ID 事务唯一标识</p></li>
+
+<li><p>返回操作结果状态码</p></li>
+
+<li><p>操作结果文本描述</p></li>
+</ol>
+
+<h4 id="2-3-2-接口设计">2.3.2 接口设计</h4>
+
+<p>设计实现以下接口
+1. RESTful 接口 ( 描述省略, 见代码)
+2. gRPC ( protobuf ) 接口 ( 略 )
+3. gRPC ( flatbuffers ) 接口( 对接 android java SDK , 详细说明略)
+4. websocket 接口 ( 略 )
+5. TCP 接口 ( 略 )</p>
+
+<h4 id="2-3-3-测试用例如下">2.3.3 测试用例如下</h4>
+
+<ol>
+<li>检查 email 无重复, 操作成功</li>
+<li>检查 email 有重复, 操作失败</li>
+<li>异常, 主要关注两个, 保存失败或异常,  通讯异常中断 (详细说明, 省略)</li>
+</ol>
+
+<h2 id="3-设计实现-golang-为例">3.设计实现 ( golang 为例)</h2>
+
+<h3 id="3-1-模型的实现">3.1 模型的实现</h3>
+
+<p>用户模型与操作的 golang 实现</p>
+
+<p>见 [<a href="https://github.com/tsingson/go-ums/blob/master/model/account.go">https://github.com/tsingson/go-ums/blob/master/model/account.go</a>]</p>
+
+<p>(说明省略)</p>
+
+<h3 id="3-2-接口设计的实现">3.2 接口设计的实现</h3>
+
+<p>见 [<a href="https://github.com/tsingson/go-ums/blob/master/model/account.go">https://github.com/tsingson/go-ums/blob/master/model/account.go</a>]</p>
+
+<p>(说明省略)</p>
+
+<h3 id="3-3-业务逻辑实现">3.3 业务逻辑实现</h3>
+
+<p>见 <a href="https://github.com/tsingson/go-ums/blob/master/pkg/services/account.go">https://github.com/tsingson/go-ums/blob/master/pkg/services/account.go</a></p>
+
+<p>(说明省略)</p>
+
+<h3 id="3-4-单元测试">3.4 单元测试</h3>
+
+<p>测试用例如下
+1. 检查 email 无重复, 操作成功
+2. 检查 email 有重复, 操作失败
+3. 其他异常( 略)</p>
+
+<p>参见  <a href="./build-test.md">go-ums v0.1.0 测试/编译/运行</a></p>
+
+<h3 id="3-5-集成测试">3.5 集成测试</h3>
+
+<p>省略..........</p>
+
+<h2 id="4-性能测试-部署测试-trial-验证">4. 性能测试/部署测试/  trial 验证</h2>
+
+<p>省略 ...</p>
+
+<h2 id="5-附注-参考">5. 附注/参考</h2>
+
+<p>持续...</p>
+
+<p>_</p>
+
+<h3 id="关于我">关于我</h3>
+
+<p>网名 tsingson (三明智, 江湖人称3爷)</p>
+
+<p>原 ustarcom IPTV/OTT 事业部播控产品线技术架构湿/解决方案工程湿角色(8年), 自由职业者,</p>
+
+<p>喜欢音乐(口琴,是第三/四/五届广东国际口琴嘉年华的主策划人之一), 摄影与越野,</p>
+
+<p>喜欢 golang 语言 (商用项目中主要用 postgres + golang )</p>
+
+<p>_</p>
+
+<p>_
+ <a href="https://github.com/tsingson">tsingson</a> 写于中国深圳 <a href="https://tsingson.github.io/music/about-studio/">小罗号口琴音乐中心</a>,   2019/05/11</p>
+</div>
+                <div class="post_footer">
+                    
+                    <div class="meta">
+                        <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="https://tsingson.github.io/tags/goim/">goim</a>
+                  
+                <a href="https://tsingson.github.io/tags/golang/">golang</a>
+                  
+                <a href="https://tsingson.github.io/tags/ums/">ums</a>
+                  
+                <a href="https://tsingson.github.io/tags/aaa/">aaa</a>
+                  
+                <a href="https://tsingson.github.io/tags/register/">register</a>
+                  
+                <a href="https://tsingson.github.io/tags/grpc/">grpc</a>
+                  
+                <a href="https://tsingson.github.io/tags/flatbuffers/">flatbuffers</a>
+                  
+                <a href="https://tsingson.github.io/tags/android/">android</a>
+                  
+                <a href="https://tsingson.github.io/tags/websocket/">websocket</a>
+                  
+                <a href="https://tsingson.github.io/tags/restful/">RESTful</a>
+                  
+              </span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <span>技术.设计.音乐</span>
+  </div>
+</footer>
+
+
+
+<script src="https://tsingson.github.io/js/jquery-3.3.1.min.js"></script>
+<script src="https://tsingson.github.io/js/zozo.js"></script>
+<script src="https://tsingson.github.io/js/highlight.pack.js"></script>
+<link  href="https://tsingson.github.io/css/fancybox.min.css" rel="stylesheet">
+<script src="https://tsingson.github.io/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

@@ -6,10 +6,19 @@
     <description>Recent content in Development on 三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 07 May 2019 12:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 11 May 2019 12:02:57 +0800</lastBuildDate>
     
 	<atom:link href="https://tsingson.github.io/categories/development/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>go-ums 从设计到实现( v0.1.0 )-持续更新</title>
+      <link>https://tsingson.github.io/tech/ums-step-by-step/</link>
+      <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tech/ums-step-by-step/</guid>
+      <description>go-ums 从设计到实现( v0.1.0 ) 项目源码 https://github.com/tsingson/go-ums 0. go-ums 是什么 go-ums 开发目标是一个开源项目, 核心由 golang 开发, 提供用户管理(user-management-subsystem) / AAA 认证/鉴权/授 / 多业务会话共享与管理等, 以支持分布</description>
+    </item>
     
     <item>
       <title>goim 中的 data flow 数据流转及优化思考</title>

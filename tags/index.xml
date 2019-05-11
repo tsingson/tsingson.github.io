@@ -6,15 +6,51 @@
     <description>Recent content in Tags on 三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 07 May 2019 12:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 11 May 2019 12:02:57 +0800</lastBuildDate>
     
 	<atom:link href="https://tsingson.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>RESTful</title>
+      <link>https://tsingson.github.io/tags/restful/</link>
+      <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/restful/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>aaa</title>
+      <link>https://tsingson.github.io/tags/aaa/</link>
+      <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/aaa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>android</title>
+      <link>https://tsingson.github.io/tags/android/</link>
+      <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>flatbuffers</title>
+      <link>https://tsingson.github.io/tags/flatbuffers/</link>
+      <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/flatbuffers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>goim</title>
       <link>https://tsingson.github.io/tags/goim/</link>
-      <pubDate>Tue, 07 May 2019 12:02:57 +0800</pubDate>
+      <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
       <guid>https://tsingson.github.io/tags/goim/</guid>
       <description></description>
@@ -23,9 +59,45 @@
     <item>
       <title>golang</title>
       <link>https://tsingson.github.io/tags/golang/</link>
-      <pubDate>Tue, 07 May 2019 12:02:57 +0800</pubDate>
+      <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
       <guid>https://tsingson.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>grpc</title>
+      <link>https://tsingson.github.io/tags/grpc/</link>
+      <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/grpc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>register</title>
+      <link>https://tsingson.github.io/tags/register/</link>
+      <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/register/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ums</title>
+      <link>https://tsingson.github.io/tags/ums/</link>
+      <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/ums/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>websocket</title>
+      <link>https://tsingson.github.io/tags/websocket/</link>
+      <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>https://tsingson.github.io/tags/websocket/</guid>
       <description></description>
     </item>
     
