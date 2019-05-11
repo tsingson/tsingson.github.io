@@ -17,7 +17,9 @@
       <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
       <guid>https://tsingson.github.io/tech/ums-step-by-step/</guid>
-      <description>&lt;p&gt;[简述]  一个从零开始的小项目, 持续推进. go-ums 开发目标是一个开源项目, 核心由 golang 开发,  提供用户管理(user-management-subsystem) / AAA 认证/鉴权/授 / 多业务会话共享与管理等, 以支持分布式部署及云部署为主要目标&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://tsingson.github.io/tech/assets/self.jpg&#34; alt=&#34;self&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[简述]  一个从零开始的小项目, 持续推进. go-ums 开发目标是一个开源项目, 核心由 golang 开发,  提供用户管理(user-management-subsystem) / AAA 认证/鉴权/授 / 多业务会话共享与管理等, 以支持分布式部署及云部署为主要目标&lt;/p&gt;</description>
     </item>
     
   </channel>
