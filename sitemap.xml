@@ -3,303 +3,303 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://tsingson.github.io/categories/</loc>
+    <loc>/categories/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/categories/development/</loc>
+    <loc>/categories/development/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/restful/</loc>
+    <loc>/tags/restful/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/series/</loc>
+    <loc>/series/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/aaa/</loc>
+    <loc>/tags/aaa/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/android/</loc>
+    <loc>/tags/android/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/flatbuffers/</loc>
+    <loc>/tags/flatbuffers/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tech/ums-step-by-step/</loc>
+    <loc>/tech/ums-step-by-step/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/series/goim/</loc>
-    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/goim/</loc>
+    <loc>/tags/goim/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/golang/</loc>
+    <loc>/series/goim/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/grpc/</loc>
+    <loc>/tags/golang/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/register/</loc>
+    <loc>/tags/grpc/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/ums/</loc>
+    <loc>/tags/register/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/websocket/</loc>
+    <loc>/tags/ums/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/</loc>
+    <loc>/tags/websocket/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tech/goim-go-04/</loc>
+    <loc>/</loc>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tech/goim-go-04/</loc>
     <lastmod>2019-05-07T12:02:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/aperture/</loc>
+    <loc>/tags/aperture/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/capture-one/</loc>
+    <loc>/tags/capture-one/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/lightroom/</loc>
+    <loc>/tags/lightroom/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/phase-one/</loc>
+    <loc>/tags/phase-one/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/series/photography/</loc>
+    <loc>/tags/photography/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/categories/photography/</loc>
+    <loc>/series/photography/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/photography/</loc>
+    <loc>/categories/photography/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/%E6%91%84%E5%BD%B1/</loc>
+    <loc>/tags/%E6%91%84%E5%BD%B1/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/%E6%91%84%E5%BD%B1%E5%90%8E%E6%9C%9F/</loc>
+    <loc>/tags/%E6%91%84%E5%BD%B1%E5%90%8E%E6%9C%9F/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/photography/photography-tools-book-20190501/</loc>
+    <loc>/photography/photography-tools-book-20190501/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tech/goim-go-03/</loc>
+    <loc>/tech/goim-go-03/</loc>
     <lastmod>2019-04-24T22:02:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tech/goim-go-02/</loc>
+    <loc>/tech/goim-go-02/</loc>
     <lastmod>2019-04-23T22:02:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tech/goim-go-01/</loc>
+    <loc>/tech/goim-go-01/</loc>
     <lastmod>2019-04-21T22:02:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/photography/shenzhen-photography-20181130/</loc>
+    <loc>/photography/shenzhen-photography-20181130/</loc>
     <lastmod>2018-12-01T22:02:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/%E7%BA%AA%E5%AE%9E%E6%91%84%E5%BD%B1/</loc>
-    <lastmod>2018-12-01T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://tsingson.github.io/tags/%E8%A1%97%E5%A4%B4%E6%91%84%E5%BD%B1/</loc>
+    <loc>/tags/%E7%BA%AA%E5%AE%9E%E6%91%84%E5%BD%B1/</loc>
     <lastmod>2018-12-01T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/photography/hongkong-photography-20181124/</loc>
+    <loc>/tags/%E8%A1%97%E5%A4%B4%E6%91%84%E5%BD%B1/</loc>
+    <lastmod>2018-12-01T22:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/photography/hongkong-photography-20181124/</loc>
     <lastmod>2018-11-28T22:02:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/series/go-web-dev/</loc>
+    <loc>/series/go-web-dev/</loc>
     <lastmod>2018-07-28T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/design/</loc>
+    <loc>/tags/design/</loc>
     <lastmod>2018-07-28T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/gdihf/</loc>
+    <loc>/tags/gdihf/</loc>
     <lastmod>2018-07-28T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/poster/</loc>
+    <loc>/tags/poster/</loc>
     <lastmod>2018-07-28T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/design/gdihf-01/</loc>
+    <loc>/design/gdihf-01/</loc>
     <lastmod>2018-07-28T22:02:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/about/</loc>
+    <loc>/about/</loc>
     <lastmod>2017-03-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/design/</loc>
+    <loc>/design/</loc>
     <lastmod>2017-03-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/offroad/</loc>
+    <loc>/offroad/</loc>
     <lastmod>2017-03-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/photography/</loc>
+    <loc>/photography/</loc>
     <lastmod>2017-03-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tech/</loc>
+    <loc>/tech/</loc>
     <lastmod>2017-03-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/blues/</loc>
+    <loc>/tags/blues/</loc>
     <lastmod>2016-05-20T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/harmonica/</loc>
+    <loc>/tags/harmonica/</loc>
     <lastmod>2016-05-20T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/jeep/</loc>
+    <loc>/tags/jeep/</loc>
     <lastmod>2016-05-20T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/programming/</loc>
+    <loc>/tags/programming/</loc>
     <lastmod>2016-05-20T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/tags/tsingson/</loc>
+    <loc>/tags/tsingson/</loc>
     <lastmod>2016-05-20T22:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/music/about-studio/</loc>
+    <loc>/music/about-studio/</loc>
     <lastmod>2016-05-20T22:02:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/music/</loc>
+    <loc>/music/</loc>
     <lastmod>2016-05-20T22:02:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tsingson.github.io/about/about-me/</loc>
+    <loc>/about/about-me/</loc>
     <lastmod>2016-04-20T22:02:57+08:00</lastmod>
   </url>
   

@@ -1,256 +1,256 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on 三明智</title>
-    <link>https://tsingson.github.io/tags/</link>
-    <description>Recent content in Tags on 三明智</description>
+    <title>Tags on 技术.设计.音乐--带来价值与欢乐的三明智</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 11 May 2019 12:02:57 +0800</lastBuildDate>
     
-	<atom:link href="https://tsingson.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>RESTful</title>
-      <link>https://tsingson.github.io/tags/restful/</link>
+      <link>/tags/restful/</link>
       <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/restful/</guid>
+      <guid>/tags/restful/</guid>
       <description></description>
     </item>
     
     <item>
       <title>aaa</title>
-      <link>https://tsingson.github.io/tags/aaa/</link>
+      <link>/tags/aaa/</link>
       <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/aaa/</guid>
+      <guid>/tags/aaa/</guid>
       <description></description>
     </item>
     
     <item>
       <title>android</title>
-      <link>https://tsingson.github.io/tags/android/</link>
+      <link>/tags/android/</link>
       <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/android/</guid>
+      <guid>/tags/android/</guid>
       <description></description>
     </item>
     
     <item>
       <title>flatbuffers</title>
-      <link>https://tsingson.github.io/tags/flatbuffers/</link>
+      <link>/tags/flatbuffers/</link>
       <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/flatbuffers/</guid>
+      <guid>/tags/flatbuffers/</guid>
       <description></description>
     </item>
     
     <item>
       <title>goim</title>
-      <link>https://tsingson.github.io/tags/goim/</link>
+      <link>/tags/goim/</link>
       <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/goim/</guid>
+      <guid>/tags/goim/</guid>
       <description></description>
     </item>
     
     <item>
       <title>golang</title>
-      <link>https://tsingson.github.io/tags/golang/</link>
+      <link>/tags/golang/</link>
       <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/golang/</guid>
+      <guid>/tags/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>grpc</title>
-      <link>https://tsingson.github.io/tags/grpc/</link>
+      <link>/tags/grpc/</link>
       <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/grpc/</guid>
+      <guid>/tags/grpc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>register</title>
-      <link>https://tsingson.github.io/tags/register/</link>
+      <link>/tags/register/</link>
       <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/register/</guid>
+      <guid>/tags/register/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ums</title>
-      <link>https://tsingson.github.io/tags/ums/</link>
+      <link>/tags/ums/</link>
       <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/ums/</guid>
+      <guid>/tags/ums/</guid>
       <description></description>
     </item>
     
     <item>
       <title>websocket</title>
-      <link>https://tsingson.github.io/tags/websocket/</link>
+      <link>/tags/websocket/</link>
       <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/websocket/</guid>
+      <guid>/tags/websocket/</guid>
       <description></description>
     </item>
     
     <item>
       <title>aperture</title>
-      <link>https://tsingson.github.io/tags/aperture/</link>
+      <link>/tags/aperture/</link>
       <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/aperture/</guid>
+      <guid>/tags/aperture/</guid>
       <description></description>
     </item>
     
     <item>
       <title>capture-one</title>
-      <link>https://tsingson.github.io/tags/capture-one/</link>
+      <link>/tags/capture-one/</link>
       <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/capture-one/</guid>
+      <guid>/tags/capture-one/</guid>
       <description></description>
     </item>
     
     <item>
       <title>lightroom</title>
-      <link>https://tsingson.github.io/tags/lightroom/</link>
+      <link>/tags/lightroom/</link>
       <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/lightroom/</guid>
+      <guid>/tags/lightroom/</guid>
       <description></description>
     </item>
     
     <item>
       <title>phase-one</title>
-      <link>https://tsingson.github.io/tags/phase-one/</link>
+      <link>/tags/phase-one/</link>
       <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/phase-one/</guid>
+      <guid>/tags/phase-one/</guid>
       <description></description>
     </item>
     
     <item>
       <title>photography</title>
-      <link>https://tsingson.github.io/tags/photography/</link>
+      <link>/tags/photography/</link>
       <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/photography/</guid>
+      <guid>/tags/photography/</guid>
       <description></description>
     </item>
     
     <item>
       <title>摄影</title>
-      <link>https://tsingson.github.io/tags/%E6%91%84%E5%BD%B1/</link>
+      <link>/tags/%E6%91%84%E5%BD%B1/</link>
       <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/%E6%91%84%E5%BD%B1/</guid>
+      <guid>/tags/%E6%91%84%E5%BD%B1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>摄影后期</title>
-      <link>https://tsingson.github.io/tags/%E6%91%84%E5%BD%B1%E5%90%8E%E6%9C%9F/</link>
+      <link>/tags/%E6%91%84%E5%BD%B1%E5%90%8E%E6%9C%9F/</link>
       <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/%E6%91%84%E5%BD%B1%E5%90%8E%E6%9C%9F/</guid>
+      <guid>/tags/%E6%91%84%E5%BD%B1%E5%90%8E%E6%9C%9F/</guid>
       <description></description>
     </item>
     
     <item>
       <title>纪实摄影</title>
-      <link>https://tsingson.github.io/tags/%E7%BA%AA%E5%AE%9E%E6%91%84%E5%BD%B1/</link>
+      <link>/tags/%E7%BA%AA%E5%AE%9E%E6%91%84%E5%BD%B1/</link>
       <pubDate>Sat, 01 Dec 2018 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/%E7%BA%AA%E5%AE%9E%E6%91%84%E5%BD%B1/</guid>
+      <guid>/tags/%E7%BA%AA%E5%AE%9E%E6%91%84%E5%BD%B1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>街头摄影</title>
-      <link>https://tsingson.github.io/tags/%E8%A1%97%E5%A4%B4%E6%91%84%E5%BD%B1/</link>
+      <link>/tags/%E8%A1%97%E5%A4%B4%E6%91%84%E5%BD%B1/</link>
       <pubDate>Sat, 01 Dec 2018 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/%E8%A1%97%E5%A4%B4%E6%91%84%E5%BD%B1/</guid>
+      <guid>/tags/%E8%A1%97%E5%A4%B4%E6%91%84%E5%BD%B1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>design</title>
-      <link>https://tsingson.github.io/tags/design/</link>
+      <link>/tags/design/</link>
       <pubDate>Sat, 28 Jul 2018 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/design/</guid>
+      <guid>/tags/design/</guid>
       <description></description>
     </item>
     
     <item>
       <title>gdihf</title>
-      <link>https://tsingson.github.io/tags/gdihf/</link>
+      <link>/tags/gdihf/</link>
       <pubDate>Sat, 28 Jul 2018 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/gdihf/</guid>
+      <guid>/tags/gdihf/</guid>
       <description></description>
     </item>
     
     <item>
       <title>poster</title>
-      <link>https://tsingson.github.io/tags/poster/</link>
+      <link>/tags/poster/</link>
       <pubDate>Sat, 28 Jul 2018 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/poster/</guid>
+      <guid>/tags/poster/</guid>
       <description></description>
     </item>
     
     <item>
       <title>blues</title>
-      <link>https://tsingson.github.io/tags/blues/</link>
+      <link>/tags/blues/</link>
       <pubDate>Fri, 20 May 2016 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/blues/</guid>
+      <guid>/tags/blues/</guid>
       <description></description>
     </item>
     
     <item>
       <title>harmonica</title>
-      <link>https://tsingson.github.io/tags/harmonica/</link>
+      <link>/tags/harmonica/</link>
       <pubDate>Fri, 20 May 2016 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/harmonica/</guid>
+      <guid>/tags/harmonica/</guid>
       <description></description>
     </item>
     
     <item>
       <title>jeep</title>
-      <link>https://tsingson.github.io/tags/jeep/</link>
+      <link>/tags/jeep/</link>
       <pubDate>Fri, 20 May 2016 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/jeep/</guid>
+      <guid>/tags/jeep/</guid>
       <description></description>
     </item>
     
     <item>
       <title>programming</title>
-      <link>https://tsingson.github.io/tags/programming/</link>
+      <link>/tags/programming/</link>
       <pubDate>Fri, 20 May 2016 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/programming/</guid>
+      <guid>/tags/programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tsingson</title>
-      <link>https://tsingson.github.io/tags/tsingson/</link>
+      <link>/tags/tsingson/</link>
       <pubDate>Fri, 20 May 2016 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tags/tsingson/</guid>
+      <guid>/tags/tsingson/</guid>
       <description></description>
     </item>
     

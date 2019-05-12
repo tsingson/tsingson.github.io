@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>设计 on 三明智</title>
-    <link>https://tsingson.github.io/tech/</link>
-    <description>Recent content in 设计 on 三明智</description>
+    <title>设计 on 技术.设计.音乐--带来价值与欢乐的三明智</title>
+    <link>/tech/</link>
+    <description>Recent content in 设计 on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 23 Mar 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://tsingson.github.io/tech/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tech/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>go-ums 从设计到实现( v0.1.0 )-持续更新</title>
-      <link>https://tsingson.github.io/tech/ums-step-by-step/</link>
+      <link>/tech/ums-step-by-step/</link>
       <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tech/ums-step-by-step/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://tsingson.github.io/tech/assets/self.jpg&#34; alt=&#34;self&#34; /&gt;&lt;/p&gt;
+      <guid>/tech/ums-step-by-step/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/self.jpg&#34; alt=&#34;self&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;[简述]  一个从零开始的小项目, 持续推进. go-ums 开发目标是一个开源项目, 核心由 golang 开发,  提供用户管理(user-management-subsystem) / AAA 认证/鉴权/授 / 多业务会话共享与管理等, 以支持分布式部署及云部署为主要目标&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>goim 中的 data flow 数据流转及优化思考</title>
-      <link>https://tsingson.github.io/tech/goim-go-04/</link>
+      <link>/tech/goim-go-04/</link>
       <pubDate>Tue, 07 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tech/goim-go-04/</guid>
+      <guid>/tech/goim-go-04/</guid>
       <description>&lt;p&gt;[简述]  &lt;a href=&#34;http://goim.io&#34;&gt;http://goim.io&lt;/a&gt; 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文介绍 goim 中的数据定义与 data flow 数据流转&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>bilibili/discovery 基本概念及在 goim中的使用</title>
-      <link>https://tsingson.github.io/tech/goim-go-03/</link>
+      <link>/tech/goim-go-03/</link>
       <pubDate>Wed, 24 Apr 2019 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tech/goim-go-03/</guid>
+      <guid>/tech/goim-go-03/</guid>
       <description>&lt;p&gt;[简述] &lt;a href=&#34;https://github.com/bilibili/discovery&#34;&gt;bilibili/discovery&lt;/a&gt; 是用于 &lt;a href=&#34;http://goim.io&#34;&gt;http://goim.io&lt;/a&gt; 的服务注册/发现的依赖网元, 由golang 实现了  &lt;a href=&#34;https://github.com/Netflix/eureka&#34;&gt;netflix/eureka&lt;/a&gt;  , 支持 goim 的分布式部署与动态调度路由, 本文介绍基本概念与配置要点&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>从goim定制, 浅谈 golang 的 interface 解耦合与gRPC</title>
-      <link>https://tsingson.github.io/tech/goim-go-02/</link>
+      <link>/tech/goim-go-02/</link>
       <pubDate>Tue, 23 Apr 2019 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tech/goim-go-02/</guid>
+      <guid>/tech/goim-go-02/</guid>
       <description>&lt;p&gt;[简述]  &lt;a href=&#34;http://goim.io&#34;&gt;http://goim.io&lt;/a&gt; 实例讲解 goim 从 kafka 切换到 nats 的定制过程, 兼谈 谈 golang 的 interface 解耦合, 及 gRPC 在多语言网元之间实现解耦合接口的优点&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>goim 架构与定制</title>
-      <link>https://tsingson.github.io/tech/goim-go-01/</link>
+      <link>/tech/goim-go-01/</link>
       <pubDate>Sun, 21 Apr 2019 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/tech/goim-go-01/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://tsingson.github.io/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
+      <guid>/tech/goim-go-01/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;[简述]  &lt;a href=&#34;http://goim.io&#34;&gt;http://goim.io&lt;/a&gt; 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文介绍 goim 分布式架构及内部网元接口设计要点, 以及如何定制&lt;/p&gt;</description>
     </item>

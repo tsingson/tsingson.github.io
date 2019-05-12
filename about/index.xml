@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>技术 on 三明智</title>
-    <link>https://tsingson.github.io/about/</link>
-    <description>Recent content in 技术 on 三明智</description>
+    <title>技术 on 技术.设计.音乐--带来价值与欢乐的三明智</title>
+    <link>/about/</link>
+    <description>Recent content in 技术 on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 23 Mar 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://tsingson.github.io/about/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/about/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>关于我</title>
-      <link>https://tsingson.github.io/about/about-me/</link>
+      <link>/about/about-me/</link>
       <pubDate>Wed, 20 Apr 2016 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/about/about-me/</guid>
+      <guid>/about/about-me/</guid>
       <description>&lt;p&gt;[简述] 我是谁, 从哪来, 想去哪&lt;/p&gt;</description>
     </item>
     

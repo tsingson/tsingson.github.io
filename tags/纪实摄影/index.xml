@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>纪实摄影 on 三明智</title>
-    <link>https://tsingson.github.io/tags/%E7%BA%AA%E5%AE%9E%E6%91%84%E5%BD%B1/</link>
-    <description>Recent content in 纪实摄影 on 三明智</description>
+    <title>纪实摄影 on 技术.设计.音乐--带来价值与欢乐的三明智</title>
+    <link>/tags/%E7%BA%AA%E5%AE%9E%E6%91%84%E5%BD%B1/</link>
+    <description>Recent content in 纪实摄影 on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 01 Dec 2018 22:02:57 +0800</lastBuildDate>
     
-	<atom:link href="https://tsingson.github.io/tags/%E7%BA%AA%E5%AE%9E%E6%91%84%E5%BD%B1/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/%E7%BA%AA%E5%AE%9E%E6%91%84%E5%BD%B1/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>fujifilm-x100弱光对拍照片</title>
-      <link>https://tsingson.github.io/photography/shenzhen-photography-20181130/</link>
+      <link>/photography/shenzhen-photography-20181130/</link>
       <pubDate>Sat, 01 Dec 2018 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/photography/shenzhen-photography-20181130/</guid>
+      <guid>/photography/shenzhen-photography-20181130/</guid>
       <description>&lt;p&gt;[简述] 2018年11月30日, 广东国际口琴嘉年华(第5届深圳演出)对拍照片&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>香港街头摄影</title>
-      <link>https://tsingson.github.io/photography/hongkong-photography-20181124/</link>
+      <link>/photography/hongkong-photography-20181124/</link>
       <pubDate>Wed, 28 Nov 2018 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/photography/hongkong-photography-20181124/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://tsingson.github.io/photography/assets/street.jpg&#34; alt=&#34;street&#34; /&gt;&lt;/p&gt;
+      <guid>/photography/hongkong-photography-20181124/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;/photography/assets/street.jpg&#34; alt=&#34;street&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;[简述] 2018年11月24日, 赴香港参与摄影展, 香港街头&lt;/p&gt;</description>
     </item>

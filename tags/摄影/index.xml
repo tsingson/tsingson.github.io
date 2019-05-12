@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>摄影 on 三明智</title>
-    <link>https://tsingson.github.io/tags/%E6%91%84%E5%BD%B1/</link>
-    <description>Recent content in 摄影 on 三明智</description>
+    <title>摄影 on 技术.设计.音乐--带来价值与欢乐的三明智</title>
+    <link>/tags/%E6%91%84%E5%BD%B1/</link>
+    <description>Recent content in 摄影 on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 01 May 2019 12:02:57 +0800</lastBuildDate>
     
-	<atom:link href="https://tsingson.github.io/tags/%E6%91%84%E5%BD%B1/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/%E6%91%84%E5%BD%B1/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>摄影工具软件-图库/后期</title>
-      <link>https://tsingson.github.io/photography/photography-tools-book-20190501/</link>
+      <link>/photography/photography-tools-book-20190501/</link>
       <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/photography/photography-tools-book-20190501/</guid>
+      <guid>/photography/photography-tools-book-20190501/</guid>
       <description>&lt;p&gt;[简述]随手拍照照片与艺术摄影作品的区别, 是艺术摄影作品在拍摄前期与拍摄后期下了很多“功夫”, 包括拍摄前的拍摄主题思考与预构图, 拍摄后的调整与画面处理&lt;/p&gt;</description>
     </item>
     

@@ -1,69 +1,69 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>photography on 三明智</title>
-    <link>https://tsingson.github.io/tags/photography/</link>
-    <description>Recent content in photography on 三明智</description>
+    <title>photography on 技术.设计.音乐--带来价值与欢乐的三明智</title>
+    <link>/tags/photography/</link>
+    <description>Recent content in photography on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 01 May 2019 12:02:57 +0800</lastBuildDate>
     
-	<atom:link href="https://tsingson.github.io/tags/photography/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/photography/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>摄影工具软件-图库/后期</title>
-      <link>https://tsingson.github.io/photography/photography-tools-book-20190501/</link>
+      <link>/photography/photography-tools-book-20190501/</link>
       <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/photography/photography-tools-book-20190501/</guid>
+      <guid>/photography/photography-tools-book-20190501/</guid>
       <description>&lt;p&gt;[简述]随手拍照照片与艺术摄影作品的区别, 是艺术摄影作品在拍摄前期与拍摄后期下了很多“功夫”, 包括拍摄前的拍摄主题思考与预构图, 拍摄后的调整与画面处理&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>fujifilm-x100弱光对拍照片</title>
-      <link>https://tsingson.github.io/photography/shenzhen-photography-20181130/</link>
+      <link>/photography/shenzhen-photography-20181130/</link>
       <pubDate>Sat, 01 Dec 2018 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/photography/shenzhen-photography-20181130/</guid>
+      <guid>/photography/shenzhen-photography-20181130/</guid>
       <description>&lt;p&gt;[简述] 2018年11月30日, 广东国际口琴嘉年华(第5届深圳演出)对拍照片&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>香港街头摄影</title>
-      <link>https://tsingson.github.io/photography/hongkong-photography-20181124/</link>
+      <link>/photography/hongkong-photography-20181124/</link>
       <pubDate>Wed, 28 Nov 2018 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/photography/hongkong-photography-20181124/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://tsingson.github.io/photography/assets/street.jpg&#34; alt=&#34;street&#34; /&gt;&lt;/p&gt;
+      <guid>/photography/hongkong-photography-20181124/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;/photography/assets/street.jpg&#34; alt=&#34;street&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;[简述] 2018年11月24日, 赴香港参与摄影展, 香港街头&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>关于小罗号口琴音乐中心</title>
-      <link>https://tsingson.github.io/music/about-studio/</link>
+      <link>/music/about-studio/</link>
       <pubDate>Fri, 20 May 2016 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/music/about-studio/</guid>
+      <guid>/music/about-studio/</guid>
       <description>&lt;p&gt;[简述] 关于小罗号口琴音乐中心&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>音乐</title>
-      <link>https://tsingson.github.io/music/</link>
+      <link>/music/</link>
       <pubDate>Fri, 20 May 2016 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/music/</guid>
+      <guid>/music/</guid>
       <description>享受聆听及演奏音乐的那些事儿</description>
     </item>
     
     <item>
       <title>关于我</title>
-      <link>https://tsingson.github.io/about/about-me/</link>
+      <link>/about/about-me/</link>
       <pubDate>Wed, 20 Apr 2016 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/about/about-me/</guid>
+      <guid>/about/about-me/</guid>
       <description>&lt;p&gt;[简述] 我是谁, 从哪来, 想去哪&lt;/p&gt;</description>
     </item>
     

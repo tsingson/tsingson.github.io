@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Series on 三明智</title>
-    <link>https://tsingson.github.io/series/</link>
-    <description>Recent content in Series on 三明智</description>
+    <title>Series on 技术.设计.音乐--带来价值与欢乐的三明智</title>
+    <link>/series/</link>
+    <description>Recent content in Series on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 11 May 2019 12:02:57 +0800</lastBuildDate>
     
-	<atom:link href="https://tsingson.github.io/series/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>goim</title>
-      <link>https://tsingson.github.io/series/goim/</link>
+      <link>/series/goim/</link>
       <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/series/goim/</guid>
+      <guid>/series/goim/</guid>
       <description></description>
     </item>
     
     <item>
       <title>photography</title>
-      <link>https://tsingson.github.io/series/photography/</link>
+      <link>/series/photography/</link>
       <pubDate>Wed, 01 May 2019 12:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/series/photography/</guid>
+      <guid>/series/photography/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Go Web Dev</title>
-      <link>https://tsingson.github.io/series/go-web-dev/</link>
+      <link>/series/go-web-dev/</link>
       <pubDate>Sat, 28 Jul 2018 22:02:57 +0800</pubDate>
       
-      <guid>https://tsingson.github.io/series/go-web-dev/</guid>
+      <guid>/series/go-web-dev/</guid>
       <description></description>
     </item>
     
