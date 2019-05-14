@@ -1,2 +1,0 @@
-# tsingson.github.io
-pages

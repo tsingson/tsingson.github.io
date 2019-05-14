@@ -109,6 +109,11 @@
   </url>
   
   <url>
+    <loc>/tech/hot-golang/</loc>
+    <lastmod>2019-05-07T12:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/aperture/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
     <priority>0</priority>
