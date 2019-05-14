@@ -6,10 +6,23 @@
     <description>Recent content in golang on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 11 May 2019 12:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 14 May 2019 12:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>为什么 Go 语言能在中国这么火？</title>
+      <link>/tech/hot-golang/</link>
+      <pubDate>Tue, 14 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>/tech/hot-golang/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;在 知乎 的一个问题&lt;a href=&#34;https://www.zhihu.com/question/46755408/answer/586812009&#34;&gt;为什么 Go 语言能在中国这么火？ https://www.zhihu.com/question/46755408/answer/586812009&lt;/a&gt; 的回复, 整理后发在这里了&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
     
     <item>
       <title>go-ums 从设计到实现( v0.1.0 )-持续更新</title>
@@ -29,19 +42,6 @@
       
       <guid>/tech/goim-go-04/</guid>
       <description>&lt;p&gt;[简述]  &lt;a href=&#34;http://goim.io&#34;&gt;http://goim.io&lt;/a&gt; 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文介绍 goim 中的数据定义与 data flow 数据流转&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>为什么 Go 语言能在中国这么火？</title>
-      <link>/tech/hot-golang/</link>
-      <pubDate>Tue, 07 May 2019 12:02:57 +0800</pubDate>
-      
-      <guid>/tech/hot-golang/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;在 知乎 的一个问题&lt;a href=&#34;https://www.zhihu.com/question/46755408/answer/586812009&#34;&gt;为什么 Go 语言能在中国这么火？ https://www.zhihu.com/question/46755408/answer/586812009&lt;/a&gt; 的回复, 整理后发在这里了&lt;/p&gt;
-&lt;/blockquote&gt;</description>
     </item>
     
     <item>
