@@ -73,5 +73,14 @@
 &lt;p&gt;[简述]  &lt;a href=&#34;http://goim.io&#34;&gt;http://goim.io&lt;/a&gt; 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文介绍 goim 分布式架构及内部网元接口设计要点, 以及如何定制&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>/tech/go-performance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tech/go-performance/</guid>
+      <description> 1. go 性能优化必读文章  性能优化之罪 ---- by valyala fasthttp 主创 go 的协程池 goroutine-pool 作者: 潘建锋  </description>
+    </item>
+    
   </channel>
 </rss>

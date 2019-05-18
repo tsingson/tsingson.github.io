@@ -131,5 +131,14 @@
       <description>&lt;p&gt;[简述] 我是谁, 从哪来, 想去哪&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>/tech/go-performance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tech/go-performance/</guid>
+      <description> 1. go 性能优化必读文章  性能优化之罪 ---- by valyala fasthttp 主创 go 的协程池 goroutine-pool 作者: 潘建锋  </description>
+    </item>
+    
   </channel>
 </rss>
