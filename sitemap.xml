@@ -4,55 +4,60 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2019-05-24T12:02:57+08:00</lastmod>
+    <lastmod>2019-05-30T23:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/development/</loc>
-    <lastmod>2019-05-24T12:02:57+08:00</lastmod>
+    <lastmod>2019-05-30T23:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/series/</loc>
-    <lastmod>2019-05-24T12:02:57+08:00</lastmod>
+    <lastmod>2019-05-30T23:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2019-05-24T12:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/series/goim/</loc>
-    <lastmod>2019-05-24T12:02:57+08:00</lastmod>
+    <lastmod>2019-05-30T23:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/goim/</loc>
-    <lastmod>2019-05-24T12:02:57+08:00</lastmod>
+    <lastmod>2019-05-30T23:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/series/goim/</loc>
+    <lastmod>2019-05-30T23:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/golang/</loc>
+    <lastmod>2019-05-30T23:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tech/goim-go-05/</loc>
+    <lastmod>2019-05-30T23:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2019-05-30T23:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tech/goim-go-05/</loc>
     <lastmod>2019-05-24T12:02:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/golang/</loc>
-    <lastmod>2019-05-24T12:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2019-05-24T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -143,12 +148,6 @@
   </url>
   
   <url>
-    <loc>/series/photography/</loc>
-    <lastmod>2019-05-01T12:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/categories/photography/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
     <priority>0</priority>
@@ -156,6 +155,12 @@
   
   <url>
     <loc>/tags/photography/</loc>
+    <lastmod>2019-05-01T12:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/series/photography/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>

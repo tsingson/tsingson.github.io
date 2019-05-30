@@ -6,10 +6,21 @@
     <description>Recent content on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 24 May 2019 12:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 30 May 2019 23:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>“goim 交流分享会后的小结与QA&#34;</title>
+      <link>/tech/goim-go-05/</link>
+      <pubDate>Thu, 30 May 2019 23:02:57 +0800</pubDate>
+      
+      <guid>/tech/goim-go-05/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[简述]  &lt;a href=&#34;http://goim.io&#34;&gt;http://goim.io&lt;/a&gt; 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文汇总在 &lt;a href=&#34;https://github.com/developer-learning/reading-go&#34;&gt;go夜读&lt;/a&gt; 组织的 goim 交流分享会后的小结&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>goim 客户端之消息发送/接收</title>
