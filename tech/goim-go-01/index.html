@@ -228,7 +228,7 @@
 <li>在 comet 上定制扩展,  client 端增加消息发送, 可双向流式发送/接收即时消息</li>
 </ol>
 
-<h4 id="0-请注意">0. 请注意</h4>
+<h4 id="3-0-请注意">3.0. 请注意</h4>
 
 <blockquote>
 <p>下面的源码标记出处在 <a href="https://github.com/Terry-Mao/goim">https://github.com/Terry-Mao/goim</a></p>
@@ -238,7 +238,7 @@
 <p>我 fork 的代码库中, 消息队列抽象成为golang 的 interface , 并且 discovery 正在抽离处理中</p>
 </blockquote>
 
-<h4 id="1-即时消息的存储钩子">1. 即时消息的存储钩子</h4>
+<h4 id="3-1-即时消息的存储钩子">3.1. 即时消息的存储钩子</h4>
 
 <p>源码在文件 /internal/logic/dao/kafka.go 中</p>
 
@@ -274,7 +274,7 @@ func (d *Dao) PushMsg(c context.Context, op int32, server string, keys []string,
 }
 </code></pre>
 
-<h4 id="2-用户管理与会话管理">2. 用户管理与会话管理</h4>
+<h4 id="3-2-用户管理与会话管理">3.2. 用户管理与会话管理</h4>
 
 <p>源码在 /internal/logic/conn.go</p>
 
@@ -330,7 +330,7 @@ func (l *Logic) Connect(c context.Context, server, cookie string, token []byte) 
 }
 </code></pre>
 
-<h3 id="4-我的定制扩展">4. 我的定制扩展</h3>
+<h3 id="3-4-我的定制扩展">3.4. 我的定制扩展</h3>
 
 <p>由于学习目的, 及深入阅读源码的需求, 简化了 kafka / zk 的复杂部署参数配置与 jvm 依赖, 我 fork 了 goim 并修改为 <a href="https://github.com/nats-io/gnatsd">nats</a> + <del><a href="https://github.com/liftbridge-io/liftbridge">liftbridge</a></del>, 由   <a href="https://github.com/nats-io/gnatsd">nats</a> 实现 简化掉 kafka 队列功能 + zookeeper , <del>由  <a href="https://github.com/liftbridge-io/liftbridge">liftbridge</a>  实现 nats 消息的持久化</del></p>
 
