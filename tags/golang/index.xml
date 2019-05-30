@@ -6,10 +6,34 @@
     <description>Recent content in golang on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 14 May 2019 12:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 30 May 2019 22:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>mac 并不适合编程?</title>
+      <link>/tech/mac-programming/</link>
+      <pubDate>Thu, 30 May 2019 22:02:57 +0800</pubDate>
+      
+      <guid>/tech/mac-programming/</guid>
+      <description>&lt;p&gt;有点意思的话题, 先说个人看法:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;mac 并不适合编程&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;mac 并不适合编程&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;mac 并不适合编程&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>goim 客户端之消息发送/接收</title>
+      <link>/tech/goim-go-05/</link>
+      <pubDate>Fri, 24 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid>/tech/goim-go-05/</guid>
+      <description>goim 文章系列: * goim 架构与定制 * 从goim定制, 浅谈 golang 的 interface 解耦合与gRPC * bilibili/discovery 基本概念及在 goim中的使用 * goim 的 data flow 数据流 有个 slack 频道, 不少朋友在交流 goim , 欢迎加入slack #goim 0. 文章撰写动机 goim 官网 http://goim.io goim 源码 https://github.com/Terry-Mao/goim 写</description>
+    </item>
     
     <item>
       <title>为什么 Go 语言能在中国这么火？</title>
@@ -45,7 +69,7 @@
     </item>
     
     <item>
-      <title>bilibili/discovery 基本概念及在 goim中的使用</title>
+      <title>goim中的 bilibili/discovery (eureka)基本概念及应用</title>
       <link>/tech/goim-go-03/</link>
       <pubDate>Wed, 24 Apr 2019 22:02:57 +0800</pubDate>
       

@@ -161,9 +161,9 @@
 
 <p>在QQ群&quot;golang中国&quot; 中, 有关于 de-couple 解耦合的话题中, 闪侠这样说到:</p>
 
-<p><img src="https://user-gold-cdn.xitu.io/2019/4/22/16a433ad4d48cb54?w=762&amp;h=408&amp;f=png&amp;s=50814" alt="" /></p>
+<p><img src="/tech/assets/16a433ad4d48cb54.png" alt="16a433ad4d48cb54" /></p>
 
-<p><img src="https://user-gold-cdn.xitu.io/2019/4/22/16a433a9b899ecc4?w=956&amp;h=448&amp;f=png&amp;s=61009" alt="" /></p>
+<p><img src="/tech/assets/16a433a9b899ecc4.png" alt="16a433a9b899ecc4" /></p>
 
 <p>这里, 就来看看 interface 如何实现 goim 从 <a href="https://kafka.apache.org">kafka</a> 转到 <a href="https://nats.io">NATS</a></p>
 
@@ -171,7 +171,7 @@
 
 <p>看图, 不说话, 哈哈</p>
 
-<p><img src="https://user-gold-cdn.xitu.io/2019/4/22/16a433e3b20e5a9f?w=1320&amp;h=768&amp;f=png&amp;s=86616" alt="" /></p>
+<p><img src="/tech/assets/goim-architecture-005.png" alt="goim-architecture-005" /></p>
 
 <p>上图中,
 1. 在 logic 这个网元中, 有 logic 向 kafka 的消息发布
@@ -670,8 +670,9 @@ type Dao struct {
 
 <p>在 goim 中, 网元间用 gRPC 通讯, 再看图</p>
 
-<p><img src="https://user-gold-cdn.xitu.io/2019/4/22/16a43da4dc840cdb?w=1328&amp;h=790&amp;f=png&amp;s=92400" alt="" />
-看图上的 grpc 标示, 注意, 图上标示箭头不完全准确:</p>
+<p><img src="/tech/assets/goim-architecture-003.png" alt="goim-architecture-003" /></p>
+
+<p>看图上的 grpc 标示, 注意, 图上标示箭头不完全准确:</p>
 
 <p>grpc 同时支持
 &gt; * 普通 Client / Server 调用(北向)接口

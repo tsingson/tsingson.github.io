@@ -45,7 +45,7 @@
     
     "genre": "tech",
     "keywords": "goim, golang",
-    "wordcount":  2101 ,
+    "wordcount":  2282 ,
     "url": "\/tech\/goim-go-01\/",
     "datePublished": "2019-04-21T22:02:57\x2b08:00",
     "dateModified": "2019-04-21T22:02:57\x2b08:00",
@@ -167,14 +167,15 @@
 
 <h3 id="1-goim-原始构设计">1. goim 原始构设计</h3>
 
-<p>原图在这里
-<img src="https://user-gold-cdn.xitu.io/2019/4/21/16a3ce2bb0f8cb43?w=761&amp;h=506&amp;f=png&amp;s=25978" alt="original architecture" /></p>
+<p>原图在这里</p>
+
+<p><img src="/tech/assets/arch.png" alt="arch" /></p>
 
 <p>我重绘了这张图, 把各网元, 及外部网元关系标示清晰一些</p>
 
 <p><strong>说明</strong>: 下图右侧 http client 是 goim push message 接口, 我标注了 backend 只是个人习惯, 事实上这只是个即时消息发送接口, 无所谓前后台</p>
 
-<p><img src="https://user-gold-cdn.xitu.io/2019/4/21/16a3ce9aca706cb9?w=1342&amp;h=790&amp;f=png&amp;s=84094" alt="original architecture" /></p>
+<p><img src="/tech/assets/goim-architecture-001.png" alt="goim-architecture-001" /></p>
 
 <p>#### 注意要点:</p>
 
@@ -196,9 +197,9 @@
 <p>请注意各网元的连接线, 箭头标示了数据/信令的流向</p>
 </blockquote>
 
-<p><img src="https://user-gold-cdn.xitu.io/2019/4/21/16a3ce9f075d93dd?w=2141&amp;h=1096&amp;f=png&amp;s=159332" alt="architecture degail ( original )" /></p>
+<p><img src="/tech/assets/goim-architecture-002.png" alt="goim-architecture-002" /></p>
 
-<h3 id="3-如何定制扩展">3. 如何定制扩展</h3>
+<h3 id="3-如何定制-集成与扩展">3. 如何定制, 集成与扩展</h3>
 
 <p>在学习过程中, 网上问到比较多的定制问题有几个, 分别如下</p>
 
@@ -211,13 +212,20 @@
 
 <p>下面画出 goim 定制扩展, 或优化的一个可行方式</p>
 
-<p><img src="https://user-gold-cdn.xitu.io/2019/4/21/16a3d10a3902c923?w=1328&amp;h=790&amp;f=png&amp;s=92400" alt="architecture degail ( original )" /></p>
+<p><img src="/tech/assets/goim-architecture-004.png" alt="goim-architecture-004" /></p>
 
 <ol>
+<li>新增 AAA/LB 与 user management sub-system (UMS) , 支持用户注册/激活/权限等相关管理
+, 尤其是 AAA 需要支持用户登录认证成功后, 向用户返回以下数据
+
+<ol>
+<li>goim 需要的 json 格式 token, 指明当前用户可以进入哪个 room , 可以接收哪个 room 的下发消息</li>
+<li>返回 goim 的 comet 地址( 进入 room 接收 im 消息) , 以及 logic 地址 ( 发送 im 消息)</li>
+</ol></li>
+<li>扩展 session server 会话管理, 增加用户上下线状态, 以支持离线消息</li>
+<li>在 logic 上或 comet 上扩展, 增加消息存储及相关管理, 保留服务端群发消息( 广播或组播), 支持聊天机器人, 增加即时消息存储或处理接口, 比如离线消息存储, 用户上线后获取离线消息(后台触发发送)</li>
+<li>增加 room 管理, 开 im room 聊天室, 切换聊天室, 聊天室内的人员管理/群主(管理员等)</li>
 <li>在 comet 上定制扩展,  client 端增加消息发送, 可双向流式发送/接收即时消息</li>
-<li>在 logic 上定制, 增加用户管理接口, 会话管理接口, room 管理接口, 以及</li>
-<li>在 logic 上增加即时消息存储或处理接口, 比如离线消息存储, 用户上线后获取离线消息(后台触发发送)</li>
-<li>当然了, logic 上原有的 http client 发送接口保留</li>
 </ol>
 
 <h4 id="0-请注意">0. 请注意</h4>
