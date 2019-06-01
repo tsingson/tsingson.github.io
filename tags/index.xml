@@ -6,10 +6,28 @@
     <description>Recent content in Tags on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 30 May 2019 23:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 01 Jun 2019 02:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>golang</title>
+      <link>/tags/golang/</link>
+      <pubDate>Sat, 01 Jun 2019 02:02:57 +0800</pubDate>
+      
+      <guid>/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programming</title>
+      <link>/tags/programming/</link>
+      <pubDate>Sat, 01 Jun 2019 02:02:57 +0800</pubDate>
+      
+      <guid>/tags/programming/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>goim</title>
@@ -17,15 +35,6 @@
       <pubDate>Thu, 30 May 2019 23:02:57 +0800</pubDate>
       
       <guid>/tags/goim/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>/tags/golang/</link>
-      <pubDate>Thu, 30 May 2019 23:02:57 +0800</pubDate>
-      
-      <guid>/tags/golang/</guid>
       <description></description>
     </item>
     
@@ -233,15 +242,6 @@
       <pubDate>Fri, 20 May 2016 22:02:57 +0800</pubDate>
       
       <guid>/tags/jeep/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>programming</title>
-      <link>/tags/programming/</link>
-      <pubDate>Fri, 20 May 2016 22:02:57 +0800</pubDate>
-      
-      <guid>/tags/programming/</guid>
       <description></description>
     </item>
     

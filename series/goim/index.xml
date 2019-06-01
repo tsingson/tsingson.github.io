@@ -6,10 +6,19 @@
     <description>Recent content in goim on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 30 May 2019 23:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 01 Jun 2019 02:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/series/goim/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>go 性能优化文章</title>
+      <link>/tech/go-performance/</link>
+      <pubDate>Sat, 01 Jun 2019 02:02:57 +0800</pubDate>
+      
+      <guid>/tech/go-performance/</guid>
+      <description>&lt;p&gt;go 性能的一些文章, 与 go 高性能开源库(特定场景)&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>goim交流分享会后的小结与QA</title>

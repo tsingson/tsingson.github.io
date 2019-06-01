@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>go 性能优化文章</title>
+      <link>/tech/go-performance/</link>
+      <pubDate>Sat, 01 Jun 2019 02:02:57 +0800</pubDate>
+      
+      <guid>/tech/go-performance/</guid>
+      <description>&lt;p&gt;go 性能的一些文章, 与 go 高性能开源库(特定场景)&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>goim交流分享会后的小结与QA</title>
       <link>/tech/goim-go-06/</link>
       <pubDate>Thu, 30 May 2019 23:02:57 +0800</pubDate>

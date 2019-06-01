@@ -10,22 +10,20 @@
         content="tsingson"/>
 
   
-  <meta name="description" content="三明智 tsingson 的技术.设计.音乐札记"/>
+  <meta name="description" content="golang编程相关好文章"/>
   
 
   
   
-  <meta name="keywords" content="Hugo, theme, zozo"/>
+  <meta name="keywords" content="tsingson, gdihf, music, harmonica, blues"/>
   
 
   
-  <link rel="canonical" href="/tags/golang/"/>
+  <link rel="canonical" href="/tech/go-performance/"/>
 
   
-  <link rel="alternate" type="application/rss&#43;xml" href="/tags/golang/index.xml">
-  
 
-  <title>golang &middot; 技术.设计.音乐--带来价值与欢乐的三明智</title>
+  <title>go 性能优化文章 &middot; 技术.设计.音乐--带来价值与欢乐的三明智</title>
 
   <link rel="shortcut icon" href="/images/favicon.ico"/>
   <link rel="stylesheet" href="/css/animate.min.css"/>
@@ -35,7 +33,31 @@
 
   
   
-  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "go 性能优化文章",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/tech\/go-performance\/"
+        },
+    
+    "genre": "tech",
+    "keywords": "programming, golang",
+    "wordcount":  167 ,
+    "url": "\/tech\/go-performance\/",
+    "datePublished": "2019-06-01T02:02:57\x2b08:00",
+    "dateModified": "2019-06-01T02:02:57\x2b08:00",
+    
+    
+    "author": {
+    "@type": "Person",
+    "name": "tsingson"
+    },
+    "description": "golang编程相关好文章"
+    }
+</script>
 
 </head>
 
@@ -109,71 +131,55 @@
 </div>
 
     <div class="content">
-        <div class="list_with_title">
-            
-            <div class="listing_title">2019</div>
-            <div class="listing">
-                
-                <div class="listing_item">
-                    <div class="listing_post">
-                        <a href="/tech/go-performance/">go 性能优化文章</a>
-                        <div class="post_time"><span class="date">2019-06-01</span></div>
-                    </div>
+        <div class="post_page">
+            <div class="post animated fadeInDown">
+                <div class="post_title post_detail_title">
+                    <h2><a href='/tech/go-performance/'>go 性能优化文章</a></h2>
+                    <span class="date">2019-06-01</span>
                 </div>
+                <div class="post_content markdown"><p>go 性能的一些文章, 与 go 高性能开源库(特定场景)</p>
+
+<h2 id="1-go-性能优化必读文章">1. go 性能优化必读文章</h2>
+
+<ul>
+<li><a href="https://docs.google.com/presentation/d/e/2PACX-1vTxoBN41dYFB8aV8c0SDET3B2htsAavXPAwR-CMyfT2LfARR2KjOt8EPIU1zn8ceSuxrL8BmkOqqL_c/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.p">性能优化之罪</a> ---- by  <a href="https://github.com/valyala">valyala fasthttp 主创</a></li>
+<li><a href="http://blog.taohuawu.club/article/goroutine-pool">go 的协程池 goroutine-pool</a>  作者: <a href="http://blog.taohuawu.club">潘建锋</a></li>
+</ul>
+
+<h2 id="2-学习类文章">2. 学习类文章</h2>
+
+<h3 id="2-1-达达-http-1234n-com-的文章-值得一读再读">2.1  <a href="http://1234n.com">达达</a> 的文章, 值得一读再读</h3>
+
+<ol>
+<li><a href="https://zhuanlan.zhihu.com/p/20010926">Go语言黑魔法 </a> -- <a href="http://1234n.com">达达</a></li>
+<li><a href="https://github.com/bg5sbk/go-labs">达达的魔法代码</a></li>
+<li><a href="https://github.com/funny/link">https://github.com/funny/link</a> - [代码解读-达达]- <a href="http://1234n.com">达达</a></li>
+<li>(<a href="https://zhuanlan.zhihu.com/p/23359678">https://zhuanlan.zhihu.com/p/23359678</a>) - 要试用一下, 必须试用一下</li>
+<li><a href="https://zhuanlan.zhihu.com/p/22245523">达达的分布式思考</a> 强烈推荐阅读</li>
+<li><a href="https://zhuanlan.zhihu.com/p/20410055">二进制解析工具-达达</a> - <a href="https://zhuanlan.zhihu.com/p/20892141">后续说明</a> -<a href="https://zhuanlan.zhihu.com/p/21367696">补充阅读1</a> -<a href="https://idada.gitbooks.io/go-tips/content/">补充阅读2</a></li>
+<li><a href="https://blog.codingnow.com/2014/02/connection_reuse.html">https://blog.codingnow.com/2014/02/connection_reuse.html</a> -- code <a href="https://github.com/funny/snet">https://github.com/funny/snet</a></li>
+<li><a href="https://github.com/funny/fastway">https://github.com/funny/fastway</a></li>
+</ol></div>
+                <div class="post_footer">
+                    
+                    <div class="meta">
+                        <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
                 
-                <div class="listing_item">
-                    <div class="listing_post">
-                        <a href="/tech/goim-go-06/">goim交流分享会后的小结与QA</a>
-                        <div class="post_time"><span class="date">2019-05-30</span></div>
+                <a href="/tags/programming/">programming</a>
+                  
+                <a href="/tags/golang/">golang</a>
+                  
+              </span>
+                        </div>
                     </div>
+                    
                 </div>
-                
-                <div class="listing_item">
-                    <div class="listing_post">
-                        <a href="/tech/hot-golang/">为什么 Go 语言能在中国这么火？</a>
-                        <div class="post_time"><span class="date">2019-05-14</span></div>
-                    </div>
-                </div>
-                
-                <div class="listing_item">
-                    <div class="listing_post">
-                        <a href="/tech/ums-step-by-step/">go-ums 从设计到实现( v0.1.0 )-持续更新</a>
-                        <div class="post_time"><span class="date">2019-05-11</span></div>
-                    </div>
-                </div>
-                
-                <div class="listing_item">
-                    <div class="listing_post">
-                        <a href="/tech/goim-go-04/">goim 中的 data flow 数据流转及优化思考</a>
-                        <div class="post_time"><span class="date">2019-05-07</span></div>
-                    </div>
-                </div>
-                
-                <div class="listing_item">
-                    <div class="listing_post">
-                        <a href="/tech/goim-go-03/">goim中的 bilibili/discovery (eureka)基本概念及应用</a>
-                        <div class="post_time"><span class="date">2019-04-24</span></div>
-                    </div>
-                </div>
-                
-                <div class="listing_item">
-                    <div class="listing_post">
-                        <a href="/tech/goim-go-02/">从goim定制, 浅谈 golang 的 interface 解耦合与gRPC</a>
-                        <div class="post_time"><span class="date">2019-04-23</span></div>
-                    </div>
-                </div>
-                
-                <div class="listing_item">
-                    <div class="listing_post">
-                        <a href="/tech/goim-go-01/">goim 架构与定制</a>
-                        <div class="post_time"><span class="date">2019-04-21</span></div>
-                    </div>
-                </div>
-                
             </div>
             
+            
         </div>
-        <div class="pagination"></div>
     </div>
     <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
 </div>
