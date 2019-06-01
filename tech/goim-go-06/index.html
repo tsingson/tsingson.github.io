@@ -45,7 +45,7 @@
     
     "genre": "tech",
     "keywords": "goim, golang",
-    "wordcount":  1075 ,
+    "wordcount":  1073 ,
     "url": "\/tech\/goim-go-06\/",
     "datePublished": "2019-05-30T23:02:57\x2b08:00",
     "dateModified": "2019-05-30T23:02:57\x2b08:00",
@@ -169,9 +169,12 @@
 
 <h3 id="1-1-与-goim-交互前的登录验证及分流">1.1 与 goim 交互前的登录验证及分流</h3>
 
-<p>goim 客户端, 或叫 goim 终端, 在与 goim 交互前, 应该与 AAA 或类似网元进行交互:
-1. 通过用户/密码或相关信息进行登录, 获取当前用户 ID 及相关认证信息,  参见下一小节的 token
-2. AAA 返回给 goim 终端必要的路由数据, 比如当前 goim 应该去访问哪一个 comet ( 接收 im 消息) , 以及哪个 logic ( 发送 im 消息) ,  或者给 goim 终端一个 discovery 地址, 让 goim 终端去 discovery 得到 comet / logic 地址 -------------&gt; 这一步算是 load balance 负载均衡吧</p>
+<p>goim 客户端, 或叫 goim 终端, 在与 goim 交互前, 应该与 AAA 或类似网元进行交互:</p>
+
+<ol>
+<li>通过用户/密码或相关信息进行登录, 获取当前用户 ID 及相关认证信息,  参见下一小节的 token</li>
+<li>AAA 返回给 goim 终端必要的路由数据, 比如当前 goim 应该去访问哪一个 comet ( 接收 im 消息) , 以及哪个 logic ( 发送 im 消息) ,  或者给 goim 终端一个 discovery 地址, 让 goim 终端去 discovery 得到 comet / logic 地址 -------------&gt; 这一步算是 load balance 负载均衡吧</li>
+</ol>
 
 <h3 id="1-2-认证集成">1.2 认证集成</h3>
 
