@@ -160,12 +160,6 @@
   </url>
   
   <url>
-    <loc>/categories/photography/</loc>
-    <lastmod>2019-05-01T12:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/tags/photography/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
     <priority>0</priority>
@@ -173,6 +167,12 @@
   
   <url>
     <loc>/series/photography/</loc>
+    <lastmod>2019-05-01T12:02:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/photography/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
     <priority>0</priority>
   </url>
