@@ -45,7 +45,7 @@
     
     "genre": "tech",
     "keywords": "goim, golang",
-    "wordcount":  556 ,
+    "wordcount":  1075 ,
     "url": "\/tech\/goim-go-06\/",
     "datePublished": "2019-05-30T23:02:57\x2b08:00",
     "dateModified": "2019-05-30T23:02:57\x2b08:00",
@@ -147,7 +147,7 @@
 <p>视频地址在 youtube <a href="https://www.youtube.com/watch?v=bFniRH3ifx8">https://www.youtube.com/watch?v=bFniRH3ifx8</a></p>
 </blockquote>
 
-<h3 id="1-goim的系统集成与拓展">1. goim的系统集成与拓展</h3>
+<h2 id="1-goim的系统集成与拓展">1. goim的系统集成与拓展</h2>
 
 <p>下面画出 goim 定制扩展, 或优化的一个可行方式</p>
 
@@ -167,13 +167,71 @@
 <li>在 comet 上定制扩展,  client 端增加消息发送, 可双向流式发送/接收即时消息</li>
 </ol>
 
+<h3 id="1-1-与-goim-交互前的登录验证及分流">1.1 与 goim 交互前的登录验证及分流</h3>
+
+<p>goim 客户端, 或叫 goim 终端, 在与 goim 交互前, 应该与 AAA 或类似网元进行交互:
+1. 通过用户/密码或相关信息进行登录, 获取当前用户 ID 及相关认证信息,  参见下一小节的 token
+2. AAA 返回给 goim 终端必要的路由数据, 比如当前 goim 应该去访问哪一个 comet ( 接收 im 消息) , 以及哪个 logic ( 发送 im 消息) ,  或者给 goim 终端一个 discovery 地址, 让 goim 终端去 discovery 得到 comet / logic 地址 -------------&gt; 这一步算是 load balance 负载均衡吧</p>
+
+<h3 id="1-2-认证集成">1.2 认证集成</h3>
+
+<h4 id="1-2-1-认证token">1.2.1 认证token</h4>
+
+<p>以下代码取自 /examples/goim-web/public/client.js</p>
+
+<pre><code>function auth() {
+     var token = '{&quot;mid&quot;:123, &quot;room_id&quot;:&quot;live://1000&quot;, &quot;platform&quot;:&quot;web&quot;, &quot;accepts&quot;:[1000,1001,1002]}'
+     
+     # 参见 /api/comet/grpc/prototol.go 
+     # 参见 func (p *Proto) WriteTo(b *xbytes.Writer)
+     
+     var headerBuf = new ArrayBuffer(rawHeaderLen);
+     var headerView = new DataView(headerBuf, 0);
+     var bodyBuf = textEncoder.encode(token);
+     
+     headerView.setInt32(packetOffset, rawHeaderLen + bodyBuf.byteLength);
+     headerView.setInt16(headerOffset, rawHeaderLen);
+     headerView.setInt16(verOffset, 1);
+     headerView.setInt32(opOffset, 7);
+     headerView.setInt32(seqOffset, 1);
+     
+     ws.send(mergeArrayBuffer(headerBuf, bodyBuf));
+
+     ....
+   }
+</code></pre>
+
+<hr />
+
+<p>可见 goim 进行 websocket 连接时, 上报了 token, 如下</p>
+
+<pre><code>{
+  &quot;mid&quot;: 123,                 ## memberID, 即是当前 goim 会员ID
+  &quot;room_id&quot;: &quot;live://1000&quot;,   ## goim 会员进入的房间号, 聊天室号, 群号
+  &quot;platform&quot;: &quot;web&quot;,          ## goim 终端类型
+  &quot;accepts&quot;: [                ## goim 终端用户可接受哪些 room 的 im 消息
+    1000,                     ## goim 用户切换 room, 也就在这里处理啦
+    1001,
+    1002
+  ]
+}
+</code></pre>
+
+<h4 id="1-2-2-认证的集成">1.2.2 认证的集成</h4>
+
+<p>认证的集成有两处:
+1. 用户在 goim 连接 comet 前, 应获得用户信息, 以便构造 goim 的认证 token , 就是上章节提到的 mid / room_id / accepts 这些数据
+2. 在 logic 中处理认证, 在 /internal/logic/conn.go 中的 func (l *Logic) Connect(c context.Context, server, cookie string, token []byte) 函数体内, 处理连接认证的验证, 比如检查 mid 是否存在, 相应的  room_id / accepts 是否有权限进入等, 如果验证通过, 则生成会话数据, 存入 redis 中;  否则返回认证失败 ( 在 comet 中认证失败的处理是关闭 goim 与 comet 的长连接 )</p>
+
+<p>_</p>
+
 <p>_</p>
 
 <p>_</p>
 
 <p>持续补充中............</p>
 
-<h3 id="关于我">关于我</h3>
+<h2 id="关于我">关于我</h2>
 
 <p>网名 tsingson (三明智, 江湖人称3爷)</p>
 

@@ -141,7 +141,7 @@
 
 <p>[简述]  <a href="http://goim.io">http://goim.io</a> 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文介绍 goim 分布式架构及内部网元接口设计要点, 以及如何定制</p>
 
-<h3 id="0-关于-goim-及文章撰写动机">0. 关于 goim 及文章撰写动机</h3>
+<h2 id="0-关于-goim-及文章撰写动机">0. 关于 goim 及文章撰写动机</h2>
 
 <p>goim 是 非常成功的 IM (Instance Message) 即时消息平台, 依赖项为 kafka ( 消息队列) + zookeeper ( 扩展/均衡 ) + bilibili/discovery( 在 <a href="https://github.com/Netflix/eureka">netflix/eureka</a>上扩展的服务注册与发现, <a href="https://golang.org">golang</a> 实现)</p>
 
@@ -165,7 +165,7 @@
 
 <p>欢迎指点/交流....</p>
 
-<h3 id="1-goim-原始构设计">1. goim 原始构设计</h3>
+<h2 id="1-goim-原始构设计">1. goim 原始构设计</h2>
 
 <p>原图在这里</p>
 
@@ -177,7 +177,7 @@
 
 <p><img src="/tech/assets/goim-architecture-001.png" alt="goim-architecture-001" /></p>
 
-<p>#### 注意要点:</p>
+<p>### 注意要点:</p>
 
 <blockquote>
 <ol>
@@ -188,7 +188,7 @@
 </ol>
 </blockquote>
 
-<h3 id="2-架构细节-内部逻辑组件与接口关系">2. 架构细节(内部逻辑组件与接口关系)</h3>
+<h2 id="2-架构细节-内部逻辑组件与接口关系">2. 架构细节(内部逻辑组件与接口关系)</h2>
 
 <p>goim 源码不多, 阅读简单也算是 golang 语言的特点, 在 goim 尤其如此. ( 推荐用 goland 阅读代码)
 下图中 goim 各网元的内部逻辑组件(逻辑单元), 以及各逻辑接口的相互关系, 可以对照源码自行阅读, 扩展</p>
@@ -199,7 +199,7 @@
 
 <p><img src="/tech/assets/goim-architecture-002.png" alt="goim-architecture-002" /></p>
 
-<h3 id="3-如何定制-集成与扩展">3. 如何定制, 集成与扩展</h3>
+<h2 id="3-如何定制-集成与扩展">3. 如何定制, 集成与扩展</h2>
 
 <p>在学习过程中, 网上问到比较多的定制问题有几个, 分别如下</p>
 
@@ -228,7 +228,7 @@
 <li>在 comet 上定制扩展,  client 端增加消息发送, 可双向流式发送/接收即时消息</li>
 </ol>
 
-<h4 id="3-0-请注意">3.0. 请注意</h4>
+<h3 id="3-0-请注意">3.0. 请注意</h3>
 
 <blockquote>
 <p>下面的源码标记出处在 <a href="https://github.com/Terry-Mao/goim">https://github.com/Terry-Mao/goim</a></p>
@@ -238,7 +238,7 @@
 <p>我 fork 的代码库中, 消息队列抽象成为golang 的 interface , 并且 discovery 正在抽离处理中</p>
 </blockquote>
 
-<h4 id="3-1-即时消息的存储钩子">3.1. 即时消息的存储钩子</h4>
+<h3 id="3-1-即时消息的存储钩子">3.1. 即时消息的存储钩子</h3>
 
 <p>源码在文件 /internal/logic/dao/kafka.go 中</p>
 
@@ -274,7 +274,7 @@ func (d *Dao) PushMsg(c context.Context, op int32, server string, keys []string,
 }
 </code></pre>
 
-<h4 id="3-2-用户管理与会话管理">3.2. 用户管理与会话管理</h4>
+<h3 id="3-2-用户管理与会话管理">3.2. 用户管理与会话管理</h3>
 
 <p>源码在 /internal/logic/conn.go</p>
 
@@ -338,7 +338,7 @@ func (l *Logic) Connect(c context.Context, server, cookie string, token []byte) 
 
 <hr />
 
-<h3 id="关于我">关于我</h3>
+<h2 id="关于我">关于我</h2>
 
 <p>网名 tsingson (三明智, 江湖人称3爷)</p>
 
