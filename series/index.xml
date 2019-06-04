@@ -6,10 +6,19 @@
     <description>Recent content in Series on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 01 Jun 2019 02:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 Jun 2019 22:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>go</title>
+      <link>/series/go/</link>
+      <pubDate>Tue, 04 Jun 2019 22:02:57 +0800</pubDate>
+      
+      <guid>/series/go/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>goim</title>

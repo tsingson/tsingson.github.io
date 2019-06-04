@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="tsingson"/>
+
+  
+  <meta name="description" content="golang编程相关好文章"/>
+  
+
+  
+  
+  <meta name="keywords" content="tsingson, gdihf, music, harmonica, blues"/>
+  
+
+  
+  <link rel="canonical" href="/tech/api-sdk-guide/"/>
+
+  
+
+  <title>说说API与SDK的异同 &middot; 技术.设计.音乐--带来价值与欢乐的三明智</title>
+
+  <link rel="shortcut icon" href="/images/favicon.ico"/>
+  <link rel="stylesheet" href="/css/animate.min.css"/>
+  <link rel="stylesheet" href="/css/remixicon.css"/>
+  <link rel="stylesheet" href="/css/zozo.css"/>
+  <link rel="stylesheet" href="/css/highlight.css"/>
+
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "说说API与SDK的异同",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/tech\/api-sdk-guide\/"
+        },
+    
+    "genre": "tech",
+    "keywords": "programming, golang",
+    "wordcount":  2665 ,
+    "url": "\/tech\/api-sdk-guide\/",
+    "datePublished": "2019-06-04T22:02:57\x2b08:00",
+    "dateModified": "2019-06-04T22:02:57\x2b08:00",
+    
+    
+    "author": {
+    "@type": "Person",
+    "name": "tsingson"
+    },
+    "description": "golang编程相关好文章"
+    }
+</script>
+
+</head>
+
+<body>
+<div class="main animated">
+    <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/tech/">技术</a>
+      </li>
+      
+      <li>
+        <a href="/photography/">摄影</a>
+      </li>
+      
+      <li>
+        <a href="/design/">设计</a>
+      </li>
+      
+      <li>
+        <a href="/music/">音乐</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">Tags</a>
+      </li>
+      
+      <li>
+        <a href="/about/about-me/">关于</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+    <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="/">
+
+          <img src="/images/logo.svg" width=150px/>   <span>技术.设计.音乐--带来价值与欢乐的三明智</span>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title">programming.design.music</p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/tsingson" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        <a href="https://twitter.com/tsingson" title="twitter" target="_blank"><i class="remixicon-twitter-fill"></i></a>
+        
+        
+        <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="content">
+        <div class="post_page">
+            <div class="post animated fadeInDown">
+                <div class="post_title post_detail_title">
+                    <h2><a href='/tech/api-sdk-guide/'>说说API与SDK的异同</a></h2>
+                    <span class="date">2019-06-04</span>
+                </div>
+                <div class="post_content markdown"><p><img src="/tech/assets/self-003.jpg" alt="self-003" /></p>
+
+<p>看到文章 <a href="https://juejin.im/post/5cf63df0f265da1bc94edab0">关于API和SDK的理解及两者区别</a> --作者 <a href="https://juejin.im/user/5c04a542518825512507126c">18037128621</a> , 文章很好.</p>
+
+<p>文章选题很逗引我为此说些什么, 深圳这几天大雨, 闲着也是闲着,</p>
+
+<p>就写一写理一理, 算是向作者 <a href="https://juejin.im/user/5c04a542518825512507126c">18037128621</a>  交流并致敬......</p>
+
+<h2 id="0-定义">0. 定义</h2>
+
+<p>原文作者作者 <a href="https://juejin.im/user/5c04a542518825512507126c">18037128621</a> , 写得很好了, 引用如下</p>
+
+<blockquote>
+<p>SDK：
+概念：软件开发工具包（SDK，全称：Software Development Kit）
+一般都是一些软件工程师为特定的业务或功能软件包 <del>软件框架、硬件平台、操作系统</del>等建立应用软件时的开发工具的集合。</p>
+
+<p>API：
+概念：API（Application Programming Interface,应用程序编程接口）
+一般是指一些预先定义的函数，目的是提供应用程序与开发人员基于某软件或硬件得以访问一组例程的能力，而又无需访问源码，或理解内部工作机制的细节。</p>
+</blockquote>
+
+<p>看图, 一图胜千言</p>
+
+<p><img src="/tech/assets/stb-api-sdk.png" alt="stb-api-sdk" /></p>
+
+<p>上图中, 标蓝1 的地方, 是 API , 标粉2的地方是 SDK , 黄3是中间件SDK与CDN 边缘推流服务器的视频流控</p>
+
+<p>这是一个很多年年以前, 说明电视机顶盒内部如何进行业务集成的示意图:</p>
+
+<ol>
+<li>左边, 一个 xml portal 提供电视节目单 EPG API 服务, 一个 AAA 提供用户认证/授权/鉴权服务API</li>
+<li>中间, 是一个机顶盒( STB ), 中间有一个业务中间件, 提供了用户相关功能与视频流播放功能, 供给上面的视频APK 使用. 这里就提供了一个中间件的开发 SDK ,<strong>为什么提供SDK呢---很简单,商业利益,隐藏了用户接口API中的加密机制, 隐藏了视频快速播放的私密实现</strong>, 简化第三方研发的集成复杂度, 以稳定的SDK,  给第三方机顶盒厂商接入到我们的平台,实现互联网电视点播/直播/回看...等业务</li>
+<li>右边, CDN 提供直播/点播的推流服务, 是一个私有推流协议</li>
+</ol>
+
+<h2 id="1-api-详细说明">1. API 详细说明</h2>
+
+<p><strong>API</strong> 一般来说, 是两个网元之间, 一个被调用方( 习惯上称为服务端), 另一个是调用方(习惯上称为客户端) , 两者之间进行业务通讯的业务/信令/数据的约定/规范</p>
+
+<p>换个方式说, <strong>API 基本上是两个独立部署的网元之间调用关系的描述</strong></p>
+
+<p>一般来说, API 与开发语言无关 ( 而 SDK 与开发语言关联性比较大), 只要 API 的服务端与客户端能遵从 API 约定, 实现双向通讯并完成指定业务或功能.</p>
+
+<p><strong>通俗来说, 服务端研发开发服务端, 提供API 给客户端研发, 由客户端研发来实现客户端, 与 API 文档约定的服务端共同完成业务</strong>.</p>
+
+<blockquote>
+<p>有兴趣深入的朋友, 可以关注一下 IDD Interface Driven Design接口驱动 / IOC Inversion of Control控制反转</p>
+</blockquote>
+
+<p>_</p>
+
+<p>_</p>
+
+<p>API 的外在体现, 一般由两部分构成</p>
+
+<ol>
+<li><p><strong>API文档或叫ICD 文档</strong>, 也就是 interface control document 接口控制文档/接口规范文档, 该文档一般定义了客户端对服务端如何寻址, 采用什么通讯协议, 对指定业务如何组织通讯数据并进行交互.</p>
+
+<blockquote>
+<p>API文档是供我们<strong>写自己的客户端应用的契约/规范文档</strong></p>
+</blockquote></li>
+
+<li><p><strong>实现 API 服务的服务主体</strong>, 也就是, 必须有一个或多个实现 API 被调用侧的同类服务端, 提供了 API 描述的接口服务.</p>
+
+<blockquote>
+<p>API服务端是供我们<strong>自己的客户端调用 API 的服务端应用</strong></p>
+</blockquote></li>
+</ol>
+
+<p>_</p>
+
+<p>_</p>
+
+<hr />
+
+<blockquote>
+<p>例1</p>
+
+<p><a href="https://open.b.qq.com/wiki/oauth">企业QQ开放平台的 OAuth 2.0授权接口</a> , 企业QQ 在 RFC 6749 OAuth 2.0 规范下实现了基于 QQ 的企业授权API</p>
+
+<ol>
+<li><a href="https://open.b.qq.com/wiki/api:start">QQ开放平台的OAuth API文档在这里</a></li>
+<li>当然, QQ企业平台提供了对应的 OAuth API 服务部署, 以供调用</li>
+</ol>
+
+<p>注意, QQ 的 OAuth API 实现, 与 RFC 6749有一些细微的实现上的差别</p>
+</blockquote>
+
+<p><img src="https://user-gold-cdn.xitu.io/2019/6/5/16b233a36cec8c96?w=2324&amp;h=1168&amp;f=png&amp;s=310180" alt="" /></p>
+
+<hr />
+
+<blockquote>
+<p>例2</p>
+
+<p><a href="https://docs.microsoft.com/zh-cn/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=https%3A%2F%2Fdocs.microsoft.com%2Fzh-cn%2Fazure%2Fcognitive-services%2Fbing-spell-check%2Ftoc.json&amp;bc=https%3A%2F%2Fdocs.microsoft.com%2Fzh-cn%2Fazure%2Fbread%2Ftoc.json">必应 Web 搜索 API</a> 这是 M$ 提供的 bing 搜索API</p>
+</blockquote>
+
+<h2 id="2-api-的典型例子">2. API 的典型例子</h2>
+
+<p>RPC（Remote Procedure Call）—<strong>远程</strong>过程调用中的 IDL 接口定义语言(Interface Definition Language) , 是<strong>最典型的 API 案例</strong></p>
+
+<p>在 RPC 中的 IDL 最完整,最规范的定义了 API 中服务端/客户端( 或互为服务端/客户端的双向流式通讯交互) 中的数据与交互方式</p>
+
+<p>API文档/或叫ICD文档, 一般包括3个部分:</p>
+
+<ol>
+<li>通讯协议, 是采用 TCP / HTTP / HTTP2 / websocket over HTTP / RTMP over UDP ......等等, 客户端与服务端通讯的传输协议</li>
+<li>服务端与客户端之间交互实现的功能或业务说明</li>
+<li>服务端与客户端之间, 进行某项功能或业务实现时, 相互的调用关系, 以及交互数据格式定义(及数据序列化/反序列化实现方式)</li>
+</ol>
+
+<p>_</p>
+
+<p>_</p>
+
+<hr />
+
+<blockquote>
+<p>例如
+gRPC 中的 protobuffers 定义文件, 能让 java / python / golang / rust / nodeJS / php ... 两两之间实现 API 的服务与调用 ( API 与开发语言无关性 )</p>
+
+<ol>
+<li>gRPC 的通讯协议是 HTTP2</li>
+<li>gRPC 的功能或业务, 在 .proto 中以 service 来定义, 说明谁调用谁, 实现什么功能或业务( 注: gRPC 是双向流式交互的 API )</li>
+<li>gRPC 默认的数据格式定义采用 protobuffers (即是API中通讯交互数据定义也是序列化/反序列化的具体实现方式), 在 .proto 中分别定义 request / response , 用 proto3 中的 message 来具体定义</li>
+</ol>
+</blockquote>
+
+<p>_</p>
+
+<p>_</p>
+
+<hr />
+
+<p>API 就是以 API文档为<strong>契约</strong>, 供我们<strong>写自己的客户端应用</strong>, 并<strong>远程</strong>调用服务端实现业务功能的<strong>接口</strong></p>
+
+<hr />
+
+<p>_</p>
+
+<p>_</p>
+
+<h2 id="3-sdk-的详细说明">3. SDK 的详细说明</h2>
+
+<p>看了上面的 API 描述, 那么, SDK 就简单了:</p>
+
+<p>SDK 就是一个独立应用的开发包, 供给开发人员在此开发包基础上, 开发一个<strong>独立应用</strong>.</p>
+
+<p>换外方式说, SDK 的核心是一个被同一应用&quot;调用&quot;的<strong>软件包</strong>, 例如, 一个DLL <strong>动态连接库</strong></p>
+
+<p>_</p>
+
+<p>_</p>
+
+<p>SDK 一般分为:</p>
+
+<ul>
+<li>服务端SDK, 帮助开发一个服务端应用</li>
+<li>客户端SDK, 帮助开发一个客户端应用</li>
+<li>硬件&quot;驱动&quot;SDK, 帮助开发一个基于某个特定硬件之上的应用或服务</li>
+</ul>
+
+<p>换个方式说, <strong>SDK 基本上是一个独立部署的网元内部, 相互调用的两部分代码/函数/库之间的业务或功能函数, 以及相互之间的函数调用关系</strong></p>
+
+<p>_</p>
+
+<p>_</p>
+
+<p>多数情况下, SDK 与开发语言比较紧密的结合在一起, 比如某某的 C++ SDK 即是表示这是供 C++ 调用的一个开发动态或静态库.</p>
+
+<p>SDK 的外在体现, 一般由三部分构成</p>
+
+<ol>
+<li><strong>SDK 代码库或动态/静态连接库</strong>, 也就是说, SDK 包括有已经实现部分业务功能或基础业务功能的代码库</li>
+<li><strong>SDK 开发文档</strong>, 也就是 Software Development document 软件开发文档, 该文档一般定义了 SDK 软件包中包含的业务或功能是如何被调用, 如何进行两部分代码之间的互为调用, 从而在 SDK 代码基础上实现二次开发或上层开发.</li>
+<li><strong>辅助开发工具</strong>, 一般是基于这个 SDK 代码库基础上的, 调试/跟踪工具, 模拟测试工具, 代码生成工具或检查工具......等辅助提高开发便利性的小工具或辅助代码段</li>
+</ol>
+
+<blockquote>
+<p>特别注意:</p>
+
+<p>SDK 中的代码库( 静态/动态链接库, 或是不推荐修改的开源代码), 可能与某服务端, 某客户端, 某硬件设备 如蓝牙部件/调制解调器/音视频编解码芯片.....模块进行通讯, 以共同完成某些功能或业务</p>
+</blockquote>
+
+<p>_</p>
+
+<p>_</p>
+
+<p>待续.......</p>
+
+<p>_</p>
+
+<p>_</p>
+
+<h2 id="题图说明">题图说明</h2>
+
+<p>题图是我女儿5岁左右拍摄的我, 我头上顶着孩子的手工作品,</p>
+
+<p>背景墙上是女儿3岁以前的涂鸦, 家里所有的墙面被重复又重复画过很多次...</p>
+
+<p>至今天,女儿从出生到现在,陪伴着孩子每一天快乐绘画涂鸦,摄影,旅行,越野...</p>
+
+<p>我保存了 8年多来女儿大部分的涂鸦/摄影.....这是我近10年最快乐的时光!</p>
+
+<h2 id="关于我">关于我</h2>
+
+<p>网名 tsingson (三明智, 江湖人称3爷)</p>
+
+<p>原 ustarcom IPTV/OTT 事业部播控产品线技术架构湿/解决方案工程湿角色(8年), 自由职业者,</p>
+
+<p>喜欢音乐(口琴,是第三/四/五届广东国际口琴嘉年华的主策划人之一), 摄影与越野,</p>
+
+<p>喜欢 golang 语言 (商用项目中主要用 postgres + golang )</p>
+
+<p>_</p>
+
+<p>_</p>
+
+<p><a href="https://tsingson.github.io">tsingson</a> 写于中国深圳 <a href="https://zhuanlan.zhihu.com/tsingsonqin">小罗号口琴音乐中心</a>, 2019/06/05</p></div>
+                <div class="post_footer">
+                    
+                    <div class="meta">
+                        <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="/tags/programming/">programming</a>
+                  
+                <a href="/tags/golang/">golang</a>
+                  
+              </span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <br>
+    <br>
+    <span>技术.设计.音乐</span>
+  </div>
+</footer>
+
+
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/zozo.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<link  href="/css/fancybox.min.css" rel="stylesheet">
+<script src="/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>
