@@ -6,10 +6,25 @@
     <description>Recent content on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 01 Jun 2019 02:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 Jun 2019 22:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>说说API与SDK的异同</title>
+      <link>/tech/api-sdk-guide/</link>
+      <pubDate>Tue, 04 Jun 2019 22:02:57 +0800</pubDate>
+      
+      <guid>/tech/api-sdk-guide/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/self-003.jpg&#34; alt=&#34;self-003&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;看到文章 &lt;a href=&#34;https://juejin.im/post/5cf63df0f265da1bc94edab0&#34;&gt;关于API和SDK的理解及两者区别&lt;/a&gt; --作者 &lt;a href=&#34;https://juejin.im/user/5c04a542518825512507126c&#34;&gt;18037128621&lt;/a&gt; , 文章很好.&lt;/p&gt;
+
+&lt;p&gt;文章选题很逗引我为此说些什么, 深圳这几天大雨, 闲着也是闲着,&lt;/p&gt;
+
+&lt;p&gt;就写一写理一理, 算是向作者 &lt;a href=&#34;https://juejin.im/user/5c04a542518825512507126c&#34;&gt;18037128621&lt;/a&gt;  交流并致敬......&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>go 性能优化文章</title>
