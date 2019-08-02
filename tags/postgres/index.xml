@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>postgres on 技术.设计.音乐--带来价值与欢乐的三明智</title>
+    <link>/tags/postgres/</link>
+    <description>Recent content in postgres on 技术.设计.音乐--带来价值与欢乐的三明智</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 01 Aug 2019 12:02:57 +0800</lastBuildDate>
+    
+	<atom:link href="/tags/postgres/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>postgresql 11 相关</title>
+      <link>/tech/postgres11/</link>
+      <pubDate>Thu, 01 Aug 2019 12:02:57 +0800</pubDate>
+      
+      <guid>/tech/postgres11/</guid>
+      <description>&lt;p&gt;Postgresql 11 相关&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,7 +6,7 @@
     <description>Recent content in Tags on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 04 Jun 2019 22:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2019 02:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>golang</title>
       <link>/tags/golang/</link>
-      <pubDate>Tue, 04 Jun 2019 22:02:57 +0800</pubDate>
+      <pubDate>Fri, 02 Aug 2019 02:02:57 +0800</pubDate>
       
       <guid>/tags/golang/</guid>
       <description></description>
@@ -23,9 +23,18 @@
     <item>
       <title>programming</title>
       <link>/tags/programming/</link>
-      <pubDate>Tue, 04 Jun 2019 22:02:57 +0800</pubDate>
+      <pubDate>Fri, 02 Aug 2019 02:02:57 +0800</pubDate>
       
       <guid>/tags/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>postgres</title>
+      <link>/tags/postgres/</link>
+      <pubDate>Thu, 01 Aug 2019 12:02:57 +0800</pubDate>
+      
+      <guid>/tags/postgres/</guid>
       <description></description>
     </item>
     

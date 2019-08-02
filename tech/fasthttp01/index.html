@@ -10,7 +10,7 @@
         content="tsingson"/>
 
   
-  <meta name="description" content="golang编程相关好文章"/>
+  <meta name="description" content="fasthttp系列文章"/>
   
 
   
@@ -19,11 +19,11 @@
   
 
   
-  <link rel="canonical" href="/tech/go-performance/"/>
+  <link rel="canonical" href="/tech/fasthttp01/"/>
 
   
 
-  <title>go 性能优化文章 &middot; 技术.设计.音乐--带来价值与欢乐的三明智</title>
+  <title>fasthttp系列文章(01) &middot; 技术.设计.音乐--带来价值与欢乐的三明智</title>
 
   <link rel="shortcut icon" href="/images/favicon.ico"/>
   <link rel="stylesheet" href="/css/animate.min.css"/>
@@ -37,25 +37,25 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "go 性能优化文章",
+        "headline": "fasthttp系列文章(01)",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "\/tech\/go-performance\/"
+            "@id": "\/tech\/fasthttp01\/"
         },
     
     "genre": "tech",
     "keywords": "programming, golang",
-    "wordcount":  382 ,
-    "url": "\/tech\/go-performance\/",
-    "datePublished": "2019-06-01T02:02:57\x2b08:00",
-    "dateModified": "2019-06-01T02:02:57\x2b08:00",
+    "wordcount":  1014 ,
+    "url": "\/tech\/fasthttp01\/",
+    "datePublished": "2019-08-02T02:02:57\x2b08:00",
+    "dateModified": "2019-08-02T02:02:57\x2b08:00",
     
     
     "author": {
     "@type": "Person",
     "name": "tsingson"
     },
-    "description": "golang编程相关好文章"
+    "description": "fasthttp系列文章"
     }
 </script>
 
@@ -134,61 +134,80 @@
         <div class="post_page">
             <div class="post animated fadeInDown">
                 <div class="post_title post_detail_title">
-                    <h2><a href='/tech/go-performance/'>go 性能优化文章</a></h2>
-                    <span class="date">2019-06-01</span>
+                    <h2><a href='/tech/fasthttp01/'>fasthttp系列文章(01)</a></h2>
+                    <span class="date">2019-08-02</span>
                 </div>
-                <div class="post_content markdown"><p>go 性能的一些文章, 与 go 高性能开源库(特定场景)</p>
+                <div class="post_content markdown"><p><img src="/tech/assets/photo-desk.jpg" alt="photo-desk" /></p>
 
-<h2 id="1-go-性能优化必读文章">1. go 性能优化必读文章</h2>
+<blockquote>
+<p>fasthttp 文章系列:
+*  fasthttp web client 客户端(本文)
+*  fasthttp web server 服务端(及路由)
+*  fasthttp web server 中间件( 简单认证/ uber-go的zap日志/session会话...)
+*  fasthttp RESTful (处理JSON数据)
+*  fasthttp 处理 JWT (及 JWT安全性)
+*  fasthttp 对接非标准 web client (作为AAA, 数据加解密)
+*  fasthttp 部署</p>
+</blockquote>
+
+<p>[简述]  <a href="https://github.com/valyala/fasthttp">github.com/valyala/fasthttp</a> 是 golang 中一个标志性的高性能 HTTP库, 主要用于 webserver 开发, 以及 web client / proxy 等. fasthttp 的高性能开发思路, 启发了很多开发者.</p>
+
+<p>fasthttp 自己的介绍如下:</p>
+
+<blockquote>
+<p>Fast HTTP package for Go. Tuned for high performance. Zero memory allocations in hot paths. Up to 10x faster than net/http</p>
+
+<p>Fast HTTP implementation for Go.</p>
+
+<p>Currently fasthttp is successfully used by <a href="https://vertamedia.com/">VertaMedia</a>
+in a production serving up to 200K rps from more than 1.5M concurrent keep-alive
+connections per physical server.</p>
+</blockquote>
+
+<p>事实上, 这有点小夸张, 但在一定场景下经过优化部署, 确是有很高的性能.</p>
+
+<p>近3年来, fasthttp 被我用在几个重大项目(对我而言, 项目有多重大, 与收钱的多少成正比) 中, 这里, 就写一个小系列, 介绍 fasthttp 的实际使用与经验得失.</p>
+
+<blockquote>
+<hr />
+
+<p>想直接看代码的朋友, 请访问 <a href="https://github.com/tsingson/fasthttp-example">我写的 fasthttp-example</a></p>
+
+<hr />
+</blockquote>
+
+<h2 id="0-关于-fasthttp-的优点介绍">0. 关于 fasthttp 的优点介绍</h2>
+
+<p>以下文字来自 <a href="https://my.oschina.net/fuxiaohei">傅小黑</a> 原创文章: <a href="https://my.oschina.net/fuxiaohei/blog/753977">Go 开发 HTTP 的另一个选择 fasthttp</a> 写于2016/09/30 :</p>
+
+<blockquote>
+<p>fasthttp 是 Go 的一款不同于标准库 net/http 的 HTTP 实现。fasthttp 的性能可以达到标准库的 10 倍，说明他魔性的实现方式。主要的点在于四个方面：</p>
 
 <ul>
-<li><a href="https://docs.google.com/presentation/d/e/2PACX-1vTxoBN41dYFB8aV8c0SDET3B2htsAavXPAwR-CMyfT2LfARR2KjOt8EPIU1zn8ceSuxrL8BmkOqqL_c/pub?start=false&amp;loop=false&amp;delayms=3000&amp;slide=id.p">性能优化之罪</a> ---- by  <a href="https://github.com/valyala">valyala fasthttp 主创</a></li>
-<li><a href="http://blog.taohuawu.club/article/goroutine-pool">go 的协程池 goroutine-pool</a>  作者: <a href="http://blog.taohuawu.club">潘建锋</a></li>
+<li>net/http 的实现是一个连接新建一个 goroutine；fasthttp 是利用一个 worker 复用 goroutine，减轻 runtime 调度 goroutine 的压力</li>
+<li>net/http 解析的请求数据很多放在 map[string]string(http.Header) 或 map[string][]string(http.Request.Form)，有不必要的 []byte 到 string 的转换，是可以规避的</li>
+<li>net/http 解析 HTTP 请求每次生成新的 *http.Request 和 http.ResponseWriter; fasthttp 解析 HTTP 数据到 *fasthttp.RequestCtx，然后使用 sync.Pool 复用结构实例，减少对象的数量</li>
+<li>fasthttp 会延迟解析 HTTP 请求中的数据，尤其是 Body 部分。这样节省了很多不直接操作 Body 的情况的消耗</li>
 </ul>
 
-<h2 id="2-学习类文章">2. 学习类文章</h2>
+<p>但是因为 fasthttp 的实现与标准库差距较大，所以 API 的设计完全不同。使用时既需要理解 HTTP 的处理过程，又需要注意和标准库的差别。</p>
+</blockquote>
 
-<h3 id="2-1-达达-http-1234n-com-的文章-值得一读再读">2.1  <a href="http://1234n.com">达达</a> 的文章, 值得一读再读</h3>
+<p>这段文字非常精练的总结了 fasthttp 的特点, 我摘录了这部分放在这里, 感谢 <a href="https://my.oschina.net/fuxiaohei">傅小黑</a>  --- 另外, <a href="https://my.oschina.net/fuxiaohei">傅小黑</a> 的技术文章非常棒, 欢迎大家去围观他....</p>
 
-<ol>
-<li><a href="https://zhuanlan.zhihu.com/p/20010926">Go语言黑魔法 </a> -- <a href="http://1234n.com">达达</a></li>
-<li><a href="https://github.com/bg5sbk/go-labs">达达的魔法代码</a></li>
-<li><a href="https://github.com/funny/link">https://github.com/funny/link</a> - [代码解读-达达]- <a href="http://1234n.com">达达</a></li>
-<li>(<a href="https://zhuanlan.zhihu.com/p/23359678">https://zhuanlan.zhihu.com/p/23359678</a>) - 要试用一下, 必须试用一下</li>
-<li><a href="https://zhuanlan.zhihu.com/p/22245523">达达的分布式思考</a> 强烈推荐阅读</li>
-<li><a href="https://zhuanlan.zhihu.com/p/20410055">二进制解析工具-达达</a> - <a href="https://zhuanlan.zhihu.com/p/20892141">后续说明</a> -<a href="https://zhuanlan.zhihu.com/p/21367696">补充阅读1</a> -<a href="https://idada.gitbooks.io/go-tips/content/">补充阅读2</a></li>
-<li><a href="https://blog.codingnow.com/2014/02/connection_reuse.html">https://blog.codingnow.com/2014/02/connection_reuse.html</a> -- code <a href="https://github.com/funny/snet">https://github.com/funny/snet</a></li>
-<li><a href="https://github.com/funny/fastway">https://github.com/funny/fastway</a></li>
-<li><a href="https://about.sourcegraph.com/go/gophercon-2019-how-i-write-http-web-services-after-eight-years">https://about.sourcegraph.com/go/gophercon-2019-how-i-write-http-web-services-after-eight-years</a></li>
-</ol>
+<h2 id="1-从-http-1-x-协议说起">1. 从 HTTP 1.x 协议说起</h2>
 
-<h3 id="2-2-grpc-protobuffers-flatbuffers">2.2 gRPC / protobuffers / flatbuffers</h3>
+<h2 id="2-fasthttp-非-标准-的争议-及为什么选择fasthttp">2. fasthttp 非&quot;标准&quot;的争议, 及为什么选择fasthttp</h2>
 
-<ol>
-<li><a href="https://www.do1618.com/archives/1461/grpc-之-loadbalancer/">gRPC 的负载均衡</a></li>
-<li><a href="https://jingwei.link/2018/10/02/grpc-wireshark-analysis.html">抓包gRPC的细节及分析</a>  --  <a href="https://jingwei.link">敬维</a></li>
-<li><a href="https://github.com/SafetyCulture/s12-proto">grpc mock工具</a> ---- <a href="https://rogchap.com/2019/06/25/mocking-grpc-in-go/">使用介绍</a></li>
-</ol>
+<h2 id="3-fasthttp-中的两种类型web-client">3. fasthttp 中的两种类型web client</h2>
 
-<h3 id="2-3-一些-network-相关">2.3 一些 network 相关</h3>
+<h2 id="4-fasthttp-客户端实践">4. fasthttp 客户端实践</h2>
 
-<ol>
-<li><a href="https://github.com/karalabe/xgo/issues/65">xgo 编译</a></li>
-<li><a href="https://colobu.com/2019/07/30/network-issue-because-of-nf-conntrack/](https://colobu.com/2019/07/30/network-issue-because-of-nf-conntrack/">https://colobu.com/2019/07/30/network-issue-because-of-nf-conntrack/](https://colobu.com/2019/07/30/network-issue-because-of-nf-conntrack/</a>)</li>
-</ol>
-
-<h3 id="2-4-测试相关">2.4 测试相关</h3>
-
-<ol>
-<li>[GoMock vs. Testify: Mocking frameworks for Go]()
-_</li>
-</ol>
+<h2 id="5-小结">5. 小结</h2>
 
 <p>_</p>
 
-<p>持续补充中............</p>
-
-<h2 id="关于我">关于我</h2>
+<h3 id="关于我">关于我</h3>
 
 <p>网名 tsingson (三明智, 江湖人称3爷)</p>
 
@@ -200,9 +219,8 @@ _</li>
 
 <p>_</p>
 
-<p>_</p>
-
-<p><a href="https://github.com/tsingson">tsingson</a> 写于中国深圳, 小罗号口琴音乐中心, 2019/06/01</p></div>
+<p>_
+ <a href="https://github.com/tsingson">tsingson</a> 写于中国深圳 <a href="https://tsingson.github.io/music/about-studio/">小罗号口琴音乐中心</a>,   2019/08/02</p></div>
                 <div class="post_footer">
                     
                     <div class="meta">

@@ -6,24 +6,40 @@
     <description>Recent content on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 04 Jun 2019 22:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2019 02:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>说说API与SDK的异同</title>
-      <link>/tech/api-sdk-guide/</link>
-      <pubDate>Tue, 04 Jun 2019 22:02:57 +0800</pubDate>
+      <title>fasthttp系列文章(01)</title>
+      <link>/tech/fasthttp01/</link>
+      <pubDate>Fri, 02 Aug 2019 02:02:57 +0800</pubDate>
       
-      <guid>/tech/api-sdk-guide/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/self-003.jpg&#34; alt=&#34;self-003&#34; /&gt;&lt;/p&gt;
+      <guid>/tech/fasthttp01/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;看到文章 &lt;a href=&#34;https://juejin.im/post/5cf63df0f265da1bc94edab0&#34;&gt;关于API和SDK的理解及两者区别&lt;/a&gt; --作者 &lt;a href=&#34;https://juejin.im/user/5c04a542518825512507126c&#34;&gt;18037128621&lt;/a&gt; , 文章很好.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;fasthttp 文章系列:
+*  fasthttp web client 客户端(本文)
+*  fasthttp web server 服务端(及路由)
+*  fasthttp web server 中间件( 简单认证/ uber-go的zap日志/session会话...)
+*  fasthttp RESTful (处理JSON数据)
+*  fasthttp 处理 JWT (及 JWT安全性)
+*  fasthttp 对接非标准 web client (作为AAA, 数据加解密)
+*  fasthttp 部署&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;文章选题很逗引我为此说些什么, 深圳这几天大雨, 闲着也是闲着,&lt;/p&gt;
-
-&lt;p&gt;就写一写理一理, 算是向作者 &lt;a href=&#34;https://juejin.im/user/5c04a542518825512507126c&#34;&gt;18037128621&lt;/a&gt;  交流并致敬......&lt;/p&gt;</description>
+&lt;p&gt;[简述]  &lt;a href=&#34;https://github.com/valyala/fasthttp&#34;&gt;github.com/valyala/fasthttp&lt;/a&gt; 是 golang 中一个标志性的高性能 HTTP库, 主要用于 webserver 开发, 以及 web client / proxy 等. fasthttp 的高性能开发思路, 启发了很多开发者.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>postgresql 11 相关</title>
+      <link>/tech/postgres11/</link>
+      <pubDate>Thu, 01 Aug 2019 12:02:57 +0800</pubDate>
+      
+      <guid>/tech/postgres11/</guid>
+      <description>&lt;p&gt;Postgresql 11 相关&lt;/p&gt;</description>
     </item>
     
     <item>

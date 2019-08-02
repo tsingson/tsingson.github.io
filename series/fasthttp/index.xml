@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fasthttp on 技术.设计.音乐--带来价值与欢乐的三明智</title>
+    <link>/series/fasthttp/</link>
+    <description>Recent content in fasthttp on 技术.设计.音乐--带来价值与欢乐的三明智</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 02 Aug 2019 02:02:57 +0800</lastBuildDate>
+    
+	<atom:link href="/series/fasthttp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>fasthttp系列文章(01)</title>
+      <link>/tech/fasthttp01/</link>
+      <pubDate>Fri, 02 Aug 2019 02:02:57 +0800</pubDate>
+      
+      <guid>/tech/fasthttp01/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;fasthttp 文章系列:
+*  fasthttp web client 客户端(本文)
+*  fasthttp web server 服务端(及路由)
+*  fasthttp web server 中间件( 简单认证/ uber-go的zap日志/session会话...)
+*  fasthttp RESTful (处理JSON数据)
+*  fasthttp 处理 JWT (及 JWT安全性)
+*  fasthttp 对接非标准 web client (作为AAA, 数据加解密)
+*  fasthttp 部署&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;[简述]  &lt;a href=&#34;https://github.com/valyala/fasthttp&#34;&gt;github.com/valyala/fasthttp&lt;/a&gt; 是 golang 中一个标志性的高性能 HTTP库, 主要用于 webserver 开发, 以及 web client / proxy 等. fasthttp 的高性能开发思路, 启发了很多开发者.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

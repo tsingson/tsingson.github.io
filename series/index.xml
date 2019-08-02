@@ -6,17 +6,26 @@
     <description>Recent content in Series on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 04 Jun 2019 22:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 02 Aug 2019 02:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>go</title>
-      <link>/series/go/</link>
-      <pubDate>Tue, 04 Jun 2019 22:02:57 +0800</pubDate>
+      <title>fasthttp</title>
+      <link>/series/fasthttp/</link>
+      <pubDate>Fri, 02 Aug 2019 02:02:57 +0800</pubDate>
       
-      <guid>/series/go/</guid>
+      <guid>/series/fasthttp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>“postgres&#34;</title>
+      <link>/series/postgres/</link>
+      <pubDate>Thu, 01 Aug 2019 12:02:57 +0800</pubDate>
+      
+      <guid>/series/postgres/</guid>
       <description></description>
     </item>
     
