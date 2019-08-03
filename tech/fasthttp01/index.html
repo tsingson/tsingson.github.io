@@ -45,7 +45,7 @@
     
     "genre": "tech",
     "keywords": "programming, golang",
-    "wordcount":  2004 ,
+    "wordcount":  5253 ,
     "url": "\/tech\/fasthttp01\/",
     "datePublished": "2019-08-02T02:02:57\x2b08:00",
     "dateModified": "2019-08-02T02:02:57\x2b08:00",
@@ -141,12 +141,13 @@
 
 <blockquote>
 <p>fasthttp 文章系列:
-*  fasthttp web client 客户端(本文)
-*  fasthttp web server 服务端(及路由)
-*  fasthttp web server 中间件( 简单认证/ uber-go的zap日志/session会话...)
-*  fasthttp RESTful (处理JSON数据)
+*  fasthttp 概述与 Hello World(本文)
+*  fasthttp 客户端与服务端的封装, 日志与路由
+*  fasthttp 所谓 RESTful (兼介绍fastjson)
+*  fasthttp 中间件( 简单认证/ session会话...)
 *  fasthttp 处理 JWT (及 JWT安全性)
 *  fasthttp 对接非标准 web client (作为AAA, 数据加解密)
+*  fasthttp 缓存/proxy代理/反向代理
 *  fasthttp 部署</p>
 </blockquote>
 
@@ -295,28 +296,711 @@ Connection: keep-alive
 }
 </code></pre>
 
-<h3 id="1-3-小结">1.3 小结</h3>
+<h3 id="1-3-http-1-x-协议小结与开发关联点">1.3 http 1.x 协议小结与开发关联点</h3>
 
-<p>几个基础点:</p>
+<p>这里几句很重要, 所以,</p>
+
+<h4 id="http-1-x-几个基础点">HTTP 1.x 几个基础点:</h4>
 
 <ol>
+<li>HTTP 1.x 通过 tcp 进行通讯</li>
 <li>请求与响应的格式, 数据数据的格式是一样的
 &gt; 特别注意请求数据中的第一行,第二行
 &gt; 特别注意 HTTP header 与 HTTP payload 的那空行分隔</li>
 <li>注意 URL/URI 中也包含有数据, 换个话说,在 <a href="http://192.168.1.1:3001/schedule?user_id=eq.2098735545843717147">http://192.168.1.1:3001/schedule?user_id=eq.2098735545843717147</a> 中, 其他部分 <strong>/schedule?user_id=eq.2098735545843717147</strong> 看做请求数据的一部分</li>
 </ol>
 
+<p>从 HTTP 1.x 协议, 可以总结 web 开发的要点</p>
+
+<ol>
+<li>处理 tcp 通讯,  包括:
+&gt; *  通过 dns 转化域名得到 IP 地址, 包括 ip4 / ip6  地址
+&gt; *  对 tcp 进行通讯重写或优化, 长连接或短连接, 都在这里了
+&gt; *  或对 tcp 进行转发 ( 这是 proxy ) 或劫持, 在 tcp 通讯最底层进行一些特殊操作</li>
+<li>对 URL /URI 进行处理, 这是路由寻址
+&gt; * 按 URI 及相关数据特征进行拦截处理, 这是反向代理与缓存
+&gt; * 进行一些 URI 转换, 例如 302 的重定向
+&gt; * 在 URI 中携带小部分数据的组装与处理</li>
+
+<li><p>HTTP 数据处理</p>
+
+<blockquote>
+<ul>
+<li>对 HTTP header / HTTP payload 进行处理, 这是变化最多的部分, 按业务/功能的不同, 即简单也复杂</li>
+</ul>
+</blockquote></li>
+</ol>
+
+<h4 id="fasthttp-的性能优化思路">fasthttp 的性能优化思路</h4>
+
+<ol>
+<li>重写了在 tcp 之上进行 HTTP 握手/连接/通讯的 goroutine pool 实现</li>
+<li>对 http 数据基本按传输时的二进制进行延迟处理, 交由开发者按需决定</li>
+<li>对二进制的数据进行了缓存池处理, 需要开发者手工处理以达到零内存分配</li>
+</ol>
+
+<blockquote>
+<hr />
+
 <p>好, HTTP 1.x 就简述到这了, 后面<strong>会大量引用到这一章节说的内容</strong>.</p>
 
-<h2 id="2-fasthttp-非-标准-的争议-及为什么选择fasthttp">2. fasthttp 非&quot;标准&quot;的争议, 及为什么选择fasthttp</h2>
+<hr />
+</blockquote>
 
-<h2 id="3-fasthttp-中的两种类型web-client">3. fasthttp 中的两种类型web client</h2>
+<h2 id="2-fasthttp-非-标准-的争议-及为什么选择fasthttp">2. <del>fasthttp 非&quot;标准&quot;的争议, 及为什么选择fasthttp</del></h2>
 
-<h2 id="4-fasthttp-客户端实践">4. fasthttp 客户端实践</h2>
+<p>这一章节暂时不写了, 需要一点时间进行调整</p>
 
-<h2 id="5-小结">5. 小结</h2>
+<h2 id="3-开发环境及创建-project">3. 开发环境及创建 project</h2>
+
+<p>个人主力用 MacOS 开发, 以下就以 MacOS 为例</p>
+
+<h3 id="3-1-go-安装-环境变量及goproxy-配置">3.1. go 安装, 环境变量及goproxy 配置</h3>
+
+<p><strong>下载 golang 编译器并安装</strong></p>
+
+<p>下载地址为 <a href="https://dl.google.com/go/go1.12.7.darwin-amd64.pkg">https://dl.google.com/go/go1.12.7.darwin-amd64.pkg</a></p>
+
+<p>任意下载到一个路径下后, 双击安装</p>
+
+<p>或者, 打开一个 Terminal 命令行终端</p>
+
+<pre><code>cd ~
+mkdir -p ~/go/src/github.com/tsingson/fasthttp-example/hello-world
+cd ~/go/src/github.com/fasthttp-example
+
+wget https://dl.google.com/go/go1.12.7.darwin-amd64.pkg
+
+open ./go1.12.7.darwin-amd64.pkg
+
+
+</code></pre>
+
+<p>出现 go 的安装界面后, 一路确认就安装完成了</p>
+
+<p><strong>配置环境变量</strong></p>
+
+<p>由于我的 MacOS 已经使用 zshell , 所以, 默认全局环境变量在 ~/.zshrc</p>
+
+<p>打开 ~/.zshrc  加入以下文本</p>
+
+<pre><code>
+export GOBIN=/Users/qinshen/go/bin  #/Users/qinshen 这是我的个人帐号根路径
+export GOSUMDB=off
+export GOPATH=&quot;/Users/qinshen/go&quot;
+export GOCACHE=&quot;/Users/qinshen/go/pkg/cache&quot;
+export GO111MODULE=on
+export CGO_ENABLED=1
+# export GOPROXY=http://127.0.0.1:3000  # 这一行是本机在 docker 中运行 athens 这个 goproxy
+# export GOPROXY=https://athens.azurefd.net  #远程 ahtens goproxy
+# export GOPROXY=direct  # 如果能直接访问 golang.org, 那就用这个配置
+export GOPROXY=https://goproxy.cn    #中国大陆, 用这个吧
+
+# export GOPROXY=https://proxy.golang.org  # go1.13 推荐的 goproxy, 试手用
+export PATH=$PATH:$GOROOT:$GOBIN
+
+export PS1='%d   '
+
+</code></pre>
+
+<p><strong>验证go安装</strong></p>
+
+<pre><code>cd ~/go/src/github.com/fasthttp-example
+touch ./hello-world/main.go
+
+</code></pre>
+
+<p>用一个文本编辑器如 sublime text 3 ,  对 ~/go/src/github.com/fasthttp-example/hello-world/main.go 写入以下 go 代码</p>
+
+<pre><code>package main
+
+import (
+	&quot;fmt&quot;
+)
+
+func main() {
+	fmt.Println(&quot;Hello World, 中国...&quot;)
+}
+
+</code></pre>
+
+<p><strong>运行验证</strong></p>
+
+<pre><code>/Users/qinshen/go/src/github.com/tsingson/fasthttp-example   go run ./hello-world 
+Hello World, 中国...
+/Users/qinshen/go/src/github.com/tsingson/fasthttp-example   
+
+</code></pre>
+
+<p>done. 完成.</p>
+
+<h3 id="3-2-创建基于-go-module-的project">3.2 创建基于 go module 的project</h3>
+
+<p>在项目路径在  go/src/github/tsingson/fasthttp-example 下, 直接运行    或 go mod init</p>
+
+<p>如果项目路径在任意路径下, 例如在 ~/go/fasthttp-example 下, 则运行  go mod init github.com/tsingson/fasthttp-example</p>
+
+<p>以下是运行结果, 及项目结构</p>
+
+<pre><code>/Users/qinshen/go/src/github.com/tsingson/fasthttp-example   go mod init github.com/tsingson/fasthttp-example
+go: creating new go.mod: module github.com/tsingson/fasthttp-example
+/Users/qinshen/go/src/github.com/tsingson/fasthttp-example   tree .     
+.
+├── README.md
+├── cmd
+│   ├── test-client
+│   │   └── main.go
+│   └── test-server
+│       └── main.go
+├── go.mod
+├── hello-world
+│   └── main.go
+├── webclient
+│   └── client.go
+└── webserver
+    ├── config.go
+    ├── const.go
+    ├── handler.go
+    ├── middleware.go
+    ├── router.go
+    ├── server.go
+    └── testHandler.go
+
+6 directories, 13 files
+/Users/qinshen/go/src/github.com/tsingson/fasthttp-example   
+</code></pre>
+
+<h3 id="3-3-hello-world-单机版">3.3 Hello World 单机版</h3>
+
+<p>好了, 把 hello-world/main.go 改成以下代码</p>
+
+<pre><code>package main
+
+import (
+	&quot;fmt&quot;
+	&quot;os&quot;
+)
+
+func main() {
+	var who = &quot;中国&quot;
+	if len(os.Args[1]) &gt; 0 {
+		who = os.Args[1]
+	}
+	fmt.Println(&quot;Hello World, &quot;, who)
+}
+
+</code></pre>
+
+<p>运行一下</p>
+
+<pre><code>/Users/qinshen/go/src/github.com/tsingson/fasthttp-example   go run ./hello-world/main.go tsingson
+Hello World,  tsingson
+/Users/qinshen/go/src/github.com/tsingson/fasthttp-example   go run ./hello-world/main.go 三明智  
+Hello World,  三明智
+/Users/qinshen/go/src/github.com/tsingson/fasthttp-example   
+</code></pre>
+
+<p>很好, 我们得到了一个单机版, 命令行方式的 hello world.</p>
+
+<p>下面, 我们把 hello world 改成 fasthttp web 版本...............</p>
+
+<h2 id="4-选用-usber-go-zap-日志并简单封装">4. 选用 usber-go/zap 日志并简单封装</h2>
+
+<p><strong>导入 uber 的 zap 日志库</strong></p>
+
+<pre><code>/Users/qinshen/go/src/github.com/tsingson/fasthttp-example   go get go.uber.org/zap
+</code></pre>
+
+<p><strong>创建封装的日志库</strong></p>
+
+<pre><code>/Users/qinshen/go/src/github.com/tsingson/fasthttp-example   touch ./logger/zap.go
+</code></pre>
+
+<p>写入以下代码</p>
+
+<pre><code>package logger
+
+import (
+	&quot;os&quot;
+
+	&quot;go.uber.org/zap&quot;
+	&quot;go.uber.org/zap/zapcore&quot;
+)
+
+// NewConsoleDebug  new zap logger for console
+func NewConsoleDebug() zapcore.Core {
+	// First, define our level-handling logic.
+	highPriority := zap.LevelEnablerFunc(func(lvl zapcore.Level) bool {
+		return lvl &gt;= zapcore.ErrorLevel
+	})
+	lowPriority := zap.LevelEnablerFunc(func(lvl zapcore.Level) bool {
+		return lvl &lt; zapcore.ErrorLevel
+	})
+
+	// High-priority output should also go to standard error, and low-priority
+	// output should also go to standard out.
+	consoleDebugging := zapcore.Lock(os.Stdout)
+	consoleErrors := zapcore.Lock(os.Stderr)
+
+	// Optimize the console output for human operators.
+	consoleEncoder := zapcore.NewConsoleEncoder(zap.NewDevelopmentEncoderConfig())
+	// Join the outputs, encoders, and level-handling functions into
+	// zapcore.Cores, then tee the four cores together.
+
+	var stderr = zapcore.NewCore(consoleEncoder, consoleErrors, highPriority)
+	var stdout = zapcore.NewCore(consoleEncoder, consoleDebugging, lowPriority)
+
+	return zapcore.NewTee(stderr, stdout)
+}
+
+// ConsoleWithStack  console log for debug
+func ConsoleWithStack() *zap.Logger {
+	core := NewConsoleDebug()
+	// From a zapcore.Core, it's easy to construct a Logger.
+	return zap.New(core).WithOptions(zap.AddCaller())
+}
+
+// Console  console log for debug
+func Console() *zap.Logger {
+	core := NewConsoleDebug()
+	// From a zapcore.Core, it's easy to construct a Logger.
+	return zap.New(core)
+}
+
+</code></pre>
+
+<h2 id="5-写一个fasthttp-版本的-hello-world">5. 写一个fasthttp 版本的 Hello World</h2>
+
+<h3 id="5-1-项目结构">5.1 项目结构</h3>
+
+<pre><code>/Users/qinshen/go/src/github.com/tsingson/fasthttp-example   tree .
+.
+├── README.md
+├── cmd
+│   ├── test-client
+│   │   └── main.go
+│   └── test-server
+│       └── main.go
+├── go.mod
+├── go.sum
+├── hello-web
+│   ├── hello-client
+│   │   └── main.go
+│   └── hello-server
+│       └── main.go
+├── hello-world
+│   └── main.go
+├── logger
+│   └── zap.go
+├── webclient
+│   └── client.go
+└── webserver
+    ├── config.go
+    ├── const.go
+    ├── handler.go
+    ├── middleware.go
+    ├── router.go
+    ├── server.go
+    └── testHandler.go
+
+10 directories, 17 files
+/Users/qinshen/go/src/github.com/tsingson/fasthttp-example  
+</code></pre>
+
+<h3 id="5-2-fasthttp-hello-world-服务端">5.2 fasthttp Hello World 服务端</h3>
+
+<p>直接上代码</p>
+
+<pre><code>package main
+
+import (
+	&quot;bytes&quot;
+	&quot;strconv&quot;
+
+	&quot;github.com/savsgio/gotils&quot;
+	&quot;github.com/valyala/fasthttp&quot;
+	&quot;go.uber.org/zap&quot;
+
+	&quot;github.com/tsingson/fasthttp-example/logger&quot;
+)
+
+func main() {
+
+	var log *zap.Logger = logger.Console()
+	var address = &quot;127.0.0.1:3001&quot;
+
+	// -------------------------------------------------------
+	//  fasthttp 的 handler 处理函数
+	// -------------------------------------------------------
+	var requestHandler = func(ctx *fasthttp.RequestCtx) {
+
+		// -------------------------------------------------------
+		// 处理 web client 的请求数据
+		// -------------------------------------------------------
+		// 取出 web client 请求进行 TCP 连接的连接 ID
+		var connID = strconv.FormatUint(ctx.ConnID(), 10)
+		// 取出 web client 请求 HTTP header 中的事务ID
+		 var tid = string( ctx.Request.Header.PeekBytes([]byte(&quot;TransactionID&quot;)))
+		 if len(tid) == 0 {
+		 	tid = &quot;12345678&quot;
+		 }
+
+		log.Debug(&quot;HTTP 访问 TCP 连接 ID  &quot; + connID)
+
+		// 取出 web 访问的 URL/URI
+		var uriPath = ctx.Path()
+		{
+			// 取出 URI
+			log.Debug(&quot;---------------- HTTP URI -------------&quot;)
+			log.Debug(&quot; HTTP 请求 URL 原始数据 &gt; &quot;, zap.String(&quot;request&quot;, ctx.String()))
+		}
+
+		// 取出 web client 请求的 URL/URI 中的参数部分
+		{
+			log.Debug(&quot;---------------- HTTP URI 参数 -------------&quot;)
+			var uri = ctx.URI().QueryString()
+			log.Debug(&quot;在 URI 中的原始数据 &gt; &quot; + string(uri))
+			log.Debug(&quot;---------------- HTTP URI 每一个键值对 -------------&quot;)
+			ctx.URI().QueryArgs().VisitAll(func(key, value []byte) {
+				log.Debug(tid, zap.String(&quot;key&quot;, gotils.B2S(key)), zap.String(&quot;value&quot;, gotils.B2S(value)))
+			})
+		}
+		// -------------------------------------------------------
+		// 注意对比一下, 下面的代码段, 与 web client  中几乎一样
+		// -------------------------------------------------------
+		{
+			// 取出 web client 请求中的 HTTP header
+			{
+				log.Debug(&quot;---------------- HTTP header 每一个键值对-------------&quot;)
+				ctx.Request.Header.VisitAll(func(key, value []byte) {
+					// l.Info(&quot;requestHeader&quot;, zap.String(&quot;key&quot;, gotils.B2S(key)), zap.String(&quot;value&quot;, gotils.B2S(value)))
+					log.Debug(tid, zap.String(&quot;key&quot;, gotils.B2S(key)), zap.String(&quot;value&quot;, gotils.B2S(value)))
+				})
+
+			}
+			// 取出 web client 请求中的 HTTP payload
+			{
+				log.Debug(&quot;---------------- HTTP payload -------------&quot;)
+				log.Debug(tid, zap.String(&quot;http payload&quot;, gotils.B2S(ctx.Request.Body())))
+			}
+		}
+		switch {
+		// 如果访问的 URI 路由是 /uri 开头 , 则进行下面这个响应
+		case len(uriPath) &gt; 1:
+			{
+				log.Debug(&quot;---------------- HTTP 响应 -------------&quot;)
+
+				// -------------------------------------------------------
+				// 处理逻辑开始
+				// -------------------------------------------------------
+
+				// payload 是 []byte , 是 web response 返回的 HTTP payload
+				var payload = bytes.NewBuffer([]byte(&quot;Hello, &quot;))
+
+				// 这是从 web client 取数据
+				var who = ctx.QueryArgs().PeekBytes([]byte(&quot;who&quot;))
+
+				if len(who) &gt; 0 {
+					payload.Write(who)
+				} else {
+					payload.Write([]byte(&quot; 中国 &quot;))
+				}
+
+				// -------------------------------------------------------
+				// 处理 HTTP 响应数据
+				// -------------------------------------------------------
+				// HTTP header 构造
+				ctx.Response.Header.SetStatusCode(200)
+				ctx.Response.Header.SetConnectionClose() // 关闭本次连接, 这就是短连接 HTTP
+				ctx.Response.Header.SetBytesKV([]byte(&quot;Content-Type&quot;), []byte(&quot;text/plain; charset=utf8&quot;))
+				ctx.Response.Header.SetBytesKV([]byte(&quot;TransactionID&quot;), []byte(tid))
+				// HTTP payload 设置
+				// 这里 HTTP payload 是 []byte
+				ctx.Response.SetBody(payload.Bytes())
+			}
+
+			// 访问路踊不是 /uri 的其他响应
+		default:
+			{
+				log.Debug(&quot;---------------- HTTP 响应 -------------&quot;)
+
+				// -------------------------------------------------------
+				// 处理逻辑开始
+				// -------------------------------------------------------
+
+				// payload 是 []byte , 是 web response 返回的 HTTP payload
+				var payload = bytes.NewBuffer([]byte(&quot;Hello, &quot;))
+
+				// 这是从 web client 取数据
+				var who = ctx.QueryArgs().PeekBytes([]byte(&quot;who&quot;))
+
+				if len(who) &gt; 0 {
+					payload.Write(who)
+				} else {
+					payload.Write([]byte(&quot; 中国 &quot;))
+				}
+
+				// -------------------------------------------------------
+				// 处理 HTTP 响应数据
+				// -------------------------------------------------------
+				// HTTP header 构造
+				ctx.Response.Header.SetStatusCode(200)
+				ctx.Response.Header.SetConnectionClose() // 关闭本次连接, 这就是短连接 HTTP
+				ctx.Response.Header.SetBytesKV([]byte(&quot;Content-Type&quot;), []byte(&quot;text/plain; charset=utf8&quot;))
+				ctx.Response.Header.SetBytesKV([]byte(&quot;TransactionID&quot;), []byte(tid))
+				// HTTP payload 设置
+				// 这里 HTTP payload 是 []byte
+				ctx.Response.SetBody(payload.Bytes())
+			}
+		}
+
+		return
+
+	}
+	// -------------------------------------------------------
+	// 创建 fasthttp 服务器
+	// -------------------------------------------------------
+	// Create custom server.
+	s := &amp;fasthttp.Server{
+		Handler: requestHandler,       // 注意这里
+		Name:    &quot;hello-world server&quot;, // 服务器名称
+	}
+	// -------------------------------------------------------
+	// 运行服务端程序
+	// -------------------------------------------------------
+	log.Debug(&quot;------------------ fasthttp 服务器尝试启动------ &quot;)
+
+	if err := s.ListenAndServe(address); err != nil {
+		log.Fatal(&quot;error in ListenAndServe&quot;, zap.Error(err))
+	}
+}
+
+</code></pre>
+
+<h3 id="5-3-fasthttp-hello-world-客户端-get">5.3 fasthttp Hello World 客户端( GET )</h3>
+
+<p>看代码</p>
+
+<pre><code>package main
+
+import (
+	&quot;net/url&quot;
+	&quot;os&quot;
+	&quot;time&quot;
+
+	&quot;github.com/savsgio/gotils&quot;
+	&quot;github.com/valyala/fasthttp&quot;
+	&quot;go.uber.org/zap&quot;
+
+	&quot;github.com/tsingson/fasthttp-example/logger&quot;
+)
+
+func main() {
+
+	var log *zap.Logger = logger.Console()
+	var baseURL = &quot;http://127.0.0.1:3001&quot;
+
+	// 随便指定一个字串做为 web 请求的事务ID , 用来打印多条日志时, 区分是否来自同一个 web 请求事务
+	var tid = &quot;12345678&quot;
+
+	// -------------------------------------------------------
+	//      构造 web client 请求的 URL
+	// -------------------------------------------------------
+
+	var fullURL string
+	{
+		relativeUrl := &quot;/uri/&quot;
+		u, err := url.Parse(relativeUrl)
+		if err != nil {
+			log.Fatal(&quot;error&quot;, zap.Error(err))
+		}
+
+		queryString := u.Query()
+
+		// 这里构造 URI 中的数据, 每一个键值对
+		{
+			queryString.Set(&quot;id&quot;, &quot;1&quot;)
+			queryString.Set(&quot;who&quot;, &quot;tsingson&quot;)
+			queryString.Set(&quot;where&quot;, &quot;中国深圳&quot;)
+		}
+
+		u.RawQuery = queryString.Encode()
+
+		base, err := url.Parse(baseURL)
+		if err != nil {
+			log.Fatal(&quot;error&quot;, zap.Error(err))
+			os.Exit(-1)
+		}
+
+		fullURL = base.ResolveReference(u).String()
+
+		log.Debug(&quot;---------------- HTTP 请求 URL -------------&quot;)
+
+		log.Debug(tid, zap.String(&quot;http request URL &gt; &quot;, fullURL))
+
+	}
+	// -------------------------------------------------------
+	//      fasthttp web client 的初始化, 与清理
+	// -------------------------------------------------------
+	//  fasthttp 从缓存池中申请 request / response 对象
+	var req = fasthttp.AcquireRequest()
+	var resp = fasthttp.AcquireResponse()
+	// 释放申请的对象到池中
+	defer func() {
+		fasthttp.ReleaseResponse(resp)
+		fasthttp.ReleaseRequest(req)
+	}()
+	// -------------------------------------------------------
+	//      构造 web client 请求数据
+	// -------------------------------------------------------
+	// 指定 HTTP 请求的 URL
+	req.SetRequestURI(fullURL)
+
+	// 指定 HTTP 请求的方法
+	req.Header.SetMethod(&quot;GET&quot;)
+	// 设置 HTTP 请求的 HTTP header
+
+	req.Header.SetBytesKV([]byte(&quot;Content-Type&quot;), []byte(&quot;text/plain; charset=utf8&quot;))
+	req.Header.SetBytesKV([]byte(&quot;User-Agent&quot;), []byte(&quot;fasthttp-example web client&quot;))
+	req.Header.SetBytesKV([]byte(&quot;Accept&quot;), []byte(&quot;text/plain; charset=utf8&quot;))
+	req.Header.SetBytesKV([]byte(&quot;TransactionID&quot;), []byte(tid))
+
+	// 设置 web client 请求的超时时间
+	var timeOut = 3 * time.Second
+
+	// 计时开始
+	t1 := time.Now()
+
+	// DO request
+	var err = fasthttp.DoTimeout(req, resp, timeOut)
+
+	if err != nil {
+		log.Error(&quot;post request error&quot;, zap.Error(err))
+		os.Exit(-1)
+	}
+	// -------------------------------------------------------
+	//      处理返回结果
+	// -------------------------------------------------------
+	elapsed := time.Since(t1)
+	log.Debug(&quot;---------------- HTTP 响应消耗时间-------------&quot;)
+
+	log.Debug(tid, zap.Duration(&quot;elapsed&quot;, elapsed))
+	log.Debug(&quot;---------------- HTTP 响应状态码 -------------&quot;)
+
+	log.Debug(tid, zap.Int(&quot;http status code&quot;, resp.StatusCode()))
+	log.Debug(&quot;---------------- HTTP 响应 header 与 payload -------------&quot;)
+
+	// -------------------------------------------------------
+	// 注意对比一下, 下面的代码段, 与 web server  中几乎一样
+	// -------------------------------------------------------
+	{
+		// 取出 web client 请求中的 HTTP header
+		{
+			log.Debug(&quot;---------------- HTTP header 每一个键值对-------------&quot;)
+			resp.Header.VisitAll(func(key, value []byte) {
+				// l.Info(&quot;requestHeader&quot;, zap.String(&quot;key&quot;, gotils.B2S(key)), zap.String(&quot;value&quot;, gotils.B2S(value)))
+				log.Debug(tid, zap.String(&quot;key&quot;, gotils.B2S(key)), zap.String(&quot;value&quot;, gotils.B2S(value)))
+			})
+
+		}
+		// 取出 web client 请求中的 HTTP payload
+		{
+			log.Debug(&quot;---------------- HTTP payload -------------&quot;)
+			log.Debug(tid, zap.String(&quot;http payload&quot;, gotils.B2S(resp.Body())))
+		}
+	}
+
+}
+
+</code></pre>
+
+<h3 id="5-4-编译与运行">5.4 编译与运行</h3>
+
+<p><strong>编译</strong></p>
+
+<pre><code>/Users/qinshen/go/src/github.com/tsingson/fasthttp-example   go install ./hello-web/...
+/Users/qinshen/go/src/github.com/tsingson/fasthttp-example 
+</code></pre>
+
+<p><strong>运行</strong></p>
+
+<p>客户端</p>
+
+<pre><code> /Users/qinshen/go/bin   ./hello-client 
+2019-08-03T22:48:21.939+0800	DEBUG	---------------- HTTP 请求 URL -------------
+2019-08-03T22:48:21.940+0800	DEBUG	12345678	{&quot;http request URL &gt; &quot;: &quot;http://127.0.0.1:3001/uri/?id=1&amp;where=%E4%B8%AD%E5%9B%BD%E6%B7%B1%E5%9C%B3&amp;who=tsingson&quot;}
+2019-08-03T22:48:21.941+0800	DEBUG	---------------- HTTP 响应消耗时间-------------
+2019-08-03T22:48:21.941+0800	DEBUG	12345678	{&quot;elapsed&quot;: &quot;939.037µs&quot;}
+2019-08-03T22:48:21.941+0800	DEBUG	---------------- HTTP 响应状态码 -------------
+2019-08-03T22:48:21.941+0800	DEBUG	12345678	{&quot;http status code&quot;: 200}
+2019-08-03T22:48:21.941+0800	DEBUG	---------------- HTTP 响应 header 与 payload -------------
+2019-08-03T22:48:21.941+0800	DEBUG	---------------- HTTP header 每一个键值对-------------
+2019-08-03T22:48:21.941+0800	DEBUG	12345678	{&quot;key&quot;: &quot;Content-Length&quot;, &quot;value&quot;: &quot;15&quot;}
+2019-08-03T22:48:21.941+0800	DEBUG	12345678	{&quot;key&quot;: &quot;Content-Type&quot;, &quot;value&quot;: &quot;text/plain; charset=utf8&quot;}
+2019-08-03T22:48:21.941+0800	DEBUG	12345678	{&quot;key&quot;: &quot;Server&quot;, &quot;value&quot;: &quot;hello-world server&quot;}
+2019-08-03T22:48:21.941+0800	DEBUG	12345678	{&quot;key&quot;: &quot;Date&quot;, &quot;value&quot;: &quot;Sat, 03 Aug 2019 14:48:21 GMT&quot;}
+2019-08-03T22:48:21.941+0800	DEBUG	12345678	{&quot;key&quot;: &quot;Transactionid&quot;, &quot;value&quot;: &quot;12345678&quot;}
+2019-08-03T22:48:21.941+0800	DEBUG	12345678	{&quot;key&quot;: &quot;Connection&quot;, &quot;value&quot;: &quot;close&quot;}
+2019-08-03T22:48:21.941+0800	DEBUG	---------------- HTTP payload -------------
+2019-08-03T22:48:21.941+0800	DEBUG	12345678	{&quot;http payload&quot;: &quot;Hello, tsingson&quot;}
+/Users/qinshen/go/bin   
+</code></pre>
+
+<p>服务端</p>
+
+<pre><code>/Users/qinshen/go/bin   ./hello-server 
+2019-08-03T22:48:12.234+0800	DEBUG	------------------ fasthttp 服务器尝试启动------ 
+2019-08-03T22:48:21.940+0800	DEBUG	HTTP 访问 TCP 连接 ID  1
+2019-08-03T22:48:21.940+0800	DEBUG	---------------- HTTP URI -------------
+2019-08-03T22:48:21.940+0800	DEBUG	 HTTP 请求 URL 原始数据 &gt; 	{&quot;request&quot;: &quot;#0000000100000001 - 127.0.0.1:3001&lt;-&gt;127.0.0.1:51927 - GET http://127.0.0.1:3001/uri/?id=1&amp;where=%E4%B8%AD%E5%9B%BD%E6%B7%B1%E5%9C%B3&amp;who=tsingson&quot;}
+2019-08-03T22:48:21.940+0800	DEBUG	---------------- HTTP URI 参数 -------------
+2019-08-03T22:48:21.940+0800	DEBUG	在 URI 中的原始数据 &gt; id=1&amp;where=%E4%B8%AD%E5%9B%BD%E6%B7%B1%E5%9C%B3&amp;who=tsingson
+2019-08-03T22:48:21.940+0800	DEBUG	---------------- HTTP URI 每一个键值对 -------------
+2019-08-03T22:48:21.940+0800	DEBUG	12345678	{&quot;key&quot;: &quot;id&quot;, &quot;value&quot;: &quot;1&quot;}
+2019-08-03T22:48:21.940+0800	DEBUG	12345678	{&quot;key&quot;: &quot;where&quot;, &quot;value&quot;: &quot;中国深圳&quot;}
+2019-08-03T22:48:21.940+0800	DEBUG	12345678	{&quot;key&quot;: &quot;who&quot;, &quot;value&quot;: &quot;tsingson&quot;}
+2019-08-03T22:48:21.940+0800	DEBUG	---------------- HTTP header 每一个键值对-------------
+2019-08-03T22:48:21.940+0800	DEBUG	12345678	{&quot;key&quot;: &quot;Host&quot;, &quot;value&quot;: &quot;127.0.0.1:3001&quot;}
+2019-08-03T22:48:21.940+0800	DEBUG	12345678	{&quot;key&quot;: &quot;Content-Length&quot;, &quot;value&quot;: &quot;0&quot;}
+2019-08-03T22:48:21.940+0800	DEBUG	12345678	{&quot;key&quot;: &quot;Content-Type&quot;, &quot;value&quot;: &quot;text/plain; charset=utf8&quot;}
+2019-08-03T22:48:21.940+0800	DEBUG	12345678	{&quot;key&quot;: &quot;User-Agent&quot;, &quot;value&quot;: &quot;fasthttp-example web client&quot;}
+2019-08-03T22:48:21.941+0800	DEBUG	12345678	{&quot;key&quot;: &quot;Accept&quot;, &quot;value&quot;: &quot;text/plain; charset=utf8&quot;}
+2019-08-03T22:48:21.941+0800	DEBUG	12345678	{&quot;key&quot;: &quot;Transactionid&quot;, &quot;value&quot;: &quot;12345678&quot;}
+2019-08-03T22:48:21.941+0800	DEBUG	---------------- HTTP payload -------------
+2019-08-03T22:48:21.941+0800	DEBUG	12345678	{&quot;http payload&quot;: &quot;&quot;}
+2019-08-03T22:48:21.941+0800	DEBUG	---------------- HTTP 响应 -------------
+</code></pre>
+
+<h2 id="6-小结">6. 小结</h2>
+
+<p>对比第1章节,第 5章节 以 fasthttp 实现了一个 web 版本的 hello world:
+1. fasthttp web 客户端处理请求:
+    &gt; * 构造了 URL, 并在 URL 中加上 key=value 键值对的数据
+    &gt; * 设置 HTTP header, 注意 header 中的 TransactionID 字段
+    &gt; * 设置了 GET 请求方法
+    &gt; * 多余设置了 HTTP payload ------------ 注意, 服务器把 GET 方法的 HTTP payload 丢掉了
+    &gt; * ------ 发出请求
+1. fasthttp web 服务端处理响应:
+    &gt; * 设置了 HTTP status code
+    &gt; * 设置 HTTP header, 注意 header 中的 TransactionID 字段
+    &gt; * 设置 HTTP payload
+    &gt; * ------ 发出响应
+1. fasthttp 处理请求与响应, 遵从了 HTTP 规范, 非常相似</p>
+
+<p>那么, 看起了很繁琐, 好吧, 后续文章我们再来谈, 如何简化, 以及如何得到高性能执行效率的同时, 能提高开发效率</p>
 
 <p>_</p>
+
+<p>_</p>
+
+<p>_</p>
+
+<h2 id="7-推荐">7. 推荐</h2>
+
+<ul>
+<li>推荐谢大的小工具 <a href="https://github.com/astaxie/bat">https://github.com/astaxie/bat</a>
+_</li>
+</ul>
 
 <h3 id="关于我">关于我</h3>
 
