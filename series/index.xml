@@ -6,10 +6,19 @@
     <description>Recent content in Series on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 02 Aug 2019 02:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 03 Aug 2019 02:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>golang</title>
+      <link>/series/golang/</link>
+      <pubDate>Sat, 03 Aug 2019 02:02:57 +0800</pubDate>
+      
+      <guid>/series/golang/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>fasthttp</title>
@@ -35,15 +44,6 @@
       <pubDate>Sat, 01 Jun 2019 02:02:57 +0800</pubDate>
       
       <guid>/series/goim/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>“golang&#34;</title>
-      <link>/series/golang/</link>
-      <pubDate>Tue, 14 May 2019 12:02:57 +0800</pubDate>
-      
-      <guid>/series/golang/</guid>
       <description></description>
     </item>
     

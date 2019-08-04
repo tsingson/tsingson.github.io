@@ -6,10 +6,21 @@
     <description>Recent content in golang on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 02 Aug 2019 02:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 03 Aug 2019 02:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>go语言的 error handling 是不是一个败笔</title>
+      <link>/tech/golang-error-handling/</link>
+      <pubDate>Sat, 03 Aug 2019 02:02:57 +0800</pubDate>
+      
+      <guid>/tech/golang-error-handling/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;../../../../../../../../../&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;go语言的 error handling 是不是一个败笔?  这是知乎上的一个提问, 我写了一些看法: 过于简单, 但不算败笔.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>fasthttp系列文章(01)</title>
