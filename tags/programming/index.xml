@@ -17,7 +17,7 @@
       <pubDate>Sat, 03 Aug 2019 02:02:57 +0800</pubDate>
       
       <guid>/tech/golang-error-handling/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;../../../../../../../../../&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;go语言的 error handling 是不是一个败笔?  这是知乎上的一个提问, 我写了一些看法: 过于简单, 但不算败笔.&lt;/p&gt;</description>
     </item>

@@ -6,10 +6,27 @@
     <description>Recent content in golang on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 03 Aug 2019 02:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 04 Aug 2019 12:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/series/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>编程为什么不用中文？兼谈如何学习编程</title>
+      <link>/tech/program-music/</link>
+      <pubDate>Sun, 04 Aug 2019 12:02:57 +0800</pubDate>
+      
+      <guid>/tech/program-music/</guid>
+      <description>&lt;p&gt;&amp;quot;编程为什么不用中文？兼谈如何学习编程&amp;quot;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;相关文章, &lt;a href=&#34;https://juejin.im/post/5d37efc6f265da1b7c615b39&#34;&gt;中文编程兴起的必然性&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;[摘要] 知乎上有个问题&lt;a href=&#34;https://www.zhihu.com/question/337465148/answer/776165277&#34;&gt;编程为什么不用中文？&lt;/a&gt;    有点意思, 我把回复单独整理后, 写在这了: 编程语言是个符号系统, 能否广泛使用要看使用人员基数&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>go语言的 error handling 是不是一个败笔</title>
@@ -17,7 +34,7 @@
       <pubDate>Sat, 03 Aug 2019 02:02:57 +0800</pubDate>
       
       <guid>/tech/golang-error-handling/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;../../../../../../../../../&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;go语言的 error handling 是不是一个败笔?  这是知乎上的一个提问, 我写了一些看法: 过于简单, 但不算败笔.&lt;/p&gt;</description>
     </item>
