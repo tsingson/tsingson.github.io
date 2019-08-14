@@ -6,7 +6,7 @@
     <description>Recent content in Series on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 04 Aug 2019 12:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Aug 2019 12:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>golang</title>
       <link>/series/golang/</link>
-      <pubDate>Sun, 04 Aug 2019 12:02:57 +0800</pubDate>
+      <pubDate>Wed, 07 Aug 2019 12:02:57 +0800</pubDate>
       
       <guid>/series/golang/</guid>
       <description></description>
@@ -44,6 +44,15 @@
       <pubDate>Sat, 01 Jun 2019 02:02:57 +0800</pubDate>
       
       <guid>/series/goim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>“mac&#34;</title>
+      <link>/series/mac/</link>
+      <pubDate>Thu, 30 May 2019 22:02:57 +0800</pubDate>
+      
+      <guid>/series/mac/</guid>
       <description></description>
     </item>
     

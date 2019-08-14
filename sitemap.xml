@@ -4,44 +4,42 @@
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2019-08-04T12:02:57+08:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-08-07T12:02:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/development/</loc>
-    <lastmod>2019-08-04T12:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/series/</loc>
-    <lastmod>2019-08-04T12:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2019-08-04T12:02:57+08:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-08-07T12:02:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/golang/</loc>
-    <lastmod>2019-08-04T12:02:57+08:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-08-07T12:02:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>/series/golang/</loc>
-    <lastmod>2019-08-04T12:02:57+08:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-08-07T12:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/series/</loc>
+    <lastmod>2019-08-07T12:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2019-08-07T12:02:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>/</loc>
-    <lastmod>2019-08-04T12:02:57+08:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-08-07T12:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tech/https-setup/</loc>
+    <lastmod>2019-08-07T12:02:57+08:00</lastmod>
   </url>
   
   <url>
@@ -57,13 +55,11 @@
   <url>
     <loc>/tags/programming/</loc>
     <lastmod>2019-08-03T02:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/series/fasthttp/</loc>
     <lastmod>2019-08-02T02:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -74,18 +70,11 @@
   <url>
     <loc>/tags/postgres/</loc>
     <lastmod>2019-08-01T12:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tech/postgres11/</loc>
-    <lastmod>2019-08-01T12:02:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>/series/postgres/</loc>
     <lastmod>2019-08-01T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -96,13 +85,11 @@
   <url>
     <loc>/series/goim/</loc>
     <lastmod>2019-06-01T02:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/goim/</loc>
-    <lastmod>2019-05-30T23:02:57+08:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-05-31T23:02:57+08:00</lastmod>
   </url>
   
   <url>
@@ -111,32 +98,33 @@
   </url>
   
   <url>
+    <loc>/tags/mac/</loc>
+    <lastmod>2019-05-30T22:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/series/mac/</loc>
+    <lastmod>2019-05-30T22:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tech/hot-golang/</loc>
     <lastmod>2019-05-14T12:02:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/restful/</loc>
-    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/tags/aaa/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/android/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/flatbuffers/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -147,25 +135,26 @@
   <url>
     <loc>/tags/grpc/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/register/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/restful/</loc>
+    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/ums/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/websocket/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -176,55 +165,46 @@
   <url>
     <loc>/tags/aperture/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/capture-one/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/lightroom/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/phase-one/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/photography/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/series/photography/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/photography/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/%E6%91%84%E5%BD%B1/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/%E6%91%84%E5%BD%B1%E5%90%8E%E6%9C%9F/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -255,13 +235,11 @@
   <url>
     <loc>/tags/%E7%BA%AA%E5%AE%9E%E6%91%84%E5%BD%B1/</loc>
     <lastmod>2018-12-01T22:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/%E8%A1%97%E5%A4%B4%E6%91%84%E5%BD%B1/</loc>
     <lastmod>2018-12-01T22:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -270,27 +248,23 @@
   </url>
   
   <url>
-    <loc>/series/go-web-dev/</loc>
-    <lastmod>2018-07-28T22:02:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/tags/design/</loc>
     <lastmod>2018-07-28T22:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/gdihf/</loc>
     <lastmod>2018-07-28T22:02:57+08:00</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/series/go-web-dev/</loc>
+    <lastmod>2018-07-28T22:02:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/poster/</loc>
     <lastmod>2018-07-28T22:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -326,25 +300,21 @@
   <url>
     <loc>/tags/blues/</loc>
     <lastmod>2016-05-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/harmonica/</loc>
     <lastmod>2016-05-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/jeep/</loc>
     <lastmod>2016-05-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/tsingson/</loc>
     <lastmod>2016-05-20T22:02:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -363,7 +333,12 @@
   </url>
   
   <url>
-    <loc>/tech/postgresql11/</loc>
+    <loc>/music/pay-back/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tech/engineer-or-coder/</loc>
     <priority>0</priority>
   </url>
   

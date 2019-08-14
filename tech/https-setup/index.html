@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="tsingson"/>
+
+  
+  <meta name="description" content="用 let&#39;s Encrypt 实现 HTTPS 示例( fasthttp 与net/http)"/>
+  
+
+  
+  
+  <meta name="keywords" content="tsingson"/>
+  
+
+  
+  <link rel="canonical" href="/tech/https-setup/"/>
+
+  
+
+  <title>用 let&#39;s Encrypt 实现 HTTPS 示例( fasthttp 与net/http) &middot; 技术.设计.音乐--带来价值与欢乐的三明智</title>
+
+  <link rel="shortcut icon" href="/images/favicon.ico"/>
+  <link rel="stylesheet" href="/css/animate.min.css"/>
+  <link rel="stylesheet" href="/css/remixicon.css"/>
+  <link rel="stylesheet" href="/css/zozo.css"/>
+  <link rel="stylesheet" href="/css/highlight.css"/>
+
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "用 let\x27s Encrypt 实现 HTTPS 示例( fasthttp 与net\/http)",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/tech\/https-setup\/"
+        },
+    
+    "genre": "tech",
+    "keywords": "golang",
+    "wordcount":  879 ,
+    "url": "\/tech\/https-setup\/",
+    "datePublished": "2019-08-07T12:02:57\x2b08:00",
+    "dateModified": "2019-08-07T12:02:57\x2b08:00",
+    
+    
+    "author": {
+    "@type": "Person",
+    "name": "tsingson"
+    },
+    "description": "用 let\x27s Encrypt 实现 HTTPS 示例( fasthttp 与net\/http)"
+    }
+</script>
+
+</head>
+
+<body>
+<div class="main animated">
+    <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/tech/">技术</a>
+      </li>
+      
+      <li>
+        <a href="/photography/">摄影</a>
+      </li>
+      
+      <li>
+        <a href="/design/">设计</a>
+      </li>
+      
+      <li>
+        <a href="/music/">音乐</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">Tags</a>
+      </li>
+      
+      <li>
+        <a href="/about/about-me/">关于</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+    <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="/">
+
+          <img src="/images/logo.svg" width=150px/>   <span>技术.设计.音乐--带来价值与欢乐的三明智</span>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title">programming.design.music</p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/tsingson" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        <a href="https://twitter.com/tsingson" title="twitter" target="_blank"><i class="remixicon-twitter-fill"></i></a>
+        
+        
+        <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="content">
+        <div class="post_page">
+            <div class="post animated fadeInDown">
+                <div class="post_title post_detail_title">
+                    <h2><a href='/tech/https-setup/'>用 let&#39;s Encrypt 实现 HTTPS 示例( fasthttp 与net/http)</a></h2>
+                    <span class="date">2019-08-07</span>
+                </div>
+                <div class="post_content markdown"><p><img src="/tech/assets/go-logo-music.jpg" alt="go-logo-music" /></p>
+
+<p>[摘要] let's Encrypt 是一个免费提供 HTTPS 的签名服务, 这里提供一个示例,用 <a href="https://github.com/mholt/certmagic">certmagic</a> 实现 fasthttp 与 net/http 上支持 HTTPS</p>
+
+<h2 id="0-基本配置">0. 基本配置</h2>
+
+<p>我的域名, 包括 tsingson.io 与 www.tsingson.io , 在 DNS 上加上 A 记录, 指向我的服务器 IP</p>
+
+<p>为了在 let's Encrypt 获取 HTTPS 签名证书, 使用 tsingson_at_me_com 这个邮箱进行管理</p>
+
+<p>服务器上, 把 HTTPS 签名证书文件存在 /home/go/bin/ 路径下</p>
+
+<h2 id="1-使用-certmagic-库获取-https证书-生产模式-另有测试模式">1. 使用 certmagic 库获取 HTTPS证书, 生产模式( 另有测试模式)</h2>
+
+<pre><code>package autotls
+
+import (
+	&quot;github.com/mholt/certmagic&quot;
+	&quot;golang.org/x/xerrors&quot;
+)
+
+// LetsEncryptTLS the management of let's Encrypt to get domain's key and cert file
+// path to save the cache of key/cert file
+// email is your email , to manage domain in let's Encrypt
+// domainName , like tsingson.io / www.tsingson.io ... the domain name list
+func LetsEncryptTLS(path string, email string, domainName ...string) (err error) {
+	config := certmagic.Config{
+		Agreed:  true,
+		Storage: &amp;certmagic.FileStorage{Path: path},
+		CA:      certmagic.LetsEncryptProductionCA, //  use certmagic.LetsEncryptStagingCA for testing
+		Email:   email,                             // your email to management let's Encrypt
+	}
+
+	cache := certmagic.NewCache(certmagic.CacheOptions{
+		GetConfigForCert: func(cert certmagic.Certificate) (certmagic.Config, error) {
+			return config, nil
+		},
+	})
+
+	magic := certmagic.New(cache, config)
+
+	if len(domainName) == 0 {
+		return xerrors.New(&quot;Need one DomainName at least&quot;)
+	}
+	err = magic.Manage(domainName)
+	if err != nil {
+		return
+	}
+
+	return
+}
+</code></pre>
+
+<p>调用方式, 见代码</p>
+
+<pre><code>
+go autotls.LetsEncryptTLS(&quot;/home/go/bin/&quot;, &quot;tsingson@me.com&quot;, &quot;www.tsingson.io&quot;, &quot;tsingson.io&quot;)
+
+time.Sleep(1 * time.Minute) // 等待一下, 让 HTTPS 证书缓存成功........
+
+</code></pre>
+
+<p>首次运行前, 请创建 /home/go/bin 路径</p>
+
+<p>运行时会打印日志, 约有 3秒左右, 会成功获取 HTTPS 签名证书, 存在以下路径( 注: <strong>生产模式</strong> )</p>
+
+<pre><code>
+/home/go/bin/acme #  tree .
+.
+└── acme-v02.api.letsencrypt.org
+    ├── challenge_tokens
+    ├── sites
+    │   ├── tsingson.io
+    │   │   ├── tsingson.io.crt
+    │   │   ├── tsingson.io.json
+    │   │   └── tsingson.io.key
+    │   └── www.tsingson.io
+    │       ├── www.tsingson.io.crt
+    │       ├── www.tsingson.io.json
+    │       └── www.tsingson.io.key
+    └── users
+        └── tsingson@me.com
+            ├── tsingson.json
+            └── tsingson.key
+
+7 directories, 8 files
+
+</code></pre>
+
+<p>certmagic 的 Manage 将来会自动更新 HTTPS 证书</p>
+
+<blockquote>
+<p>注: 测试模式, 缓存的 HTTPS 证书存储路径不太一样, 请自行检查路径</p>
+</blockquote>
+
+<h2 id="2-在-net-http-上使用">2. 在 net/http 上使用</h2>
+
+<pre><code>package main
+
+import (
+    // &quot;fmt&quot;
+    // &quot;io&quot;
+    &quot;net/http&quot;
+    &quot;log&quot;
+    
+    &quot;github.com/tsingson/vk/fast/autotls&quot;
+)
+
+func HelloServer(w http.ResponseWriter, req *http.Request) {
+    w.Header().Set(&quot;Content-Type&quot;, &quot;text/plain&quot;)
+    w.Write([]byte(&quot;This is an example server.\n&quot;))
+    // fmt.Fprintf(w, &quot;This is an example server.\n&quot;)
+    // io.WriteString(w, &quot;This is an example server.\n&quot;)
+}
+
+func main() {
+
+	go autotls.LetsEncryptTLS(&quot;/home/go/bin/&quot;, &quot;tsingson@me.com&quot;, &quot;www.tsingson.io&quot;, &quot;tsingson.io&quot;)
+	time.Sleep(1 * time.Minute)
+	
+    http.HandleFunc(&quot;/hello&quot;, HelloServer)
+    err := http.ListenAndServeTLS(&quot;:443&quot;, &quot;/home/go/bin/acme-v02.api.letsencrypt.org/site/tsingson.io/tsingson.io.crt&quot;, &quot;/home/go/bin/acme-v02.api.letsencrypt.org/site/tsingson.io/tsingson.io.key&quot;, nil)
+    if err != nil {
+        log.Fatal(&quot;ListenAndServe: &quot;, err)
+    }
+}
+
+</code></pre>
+
+<h2 id="3-在-fasthttp-上使用">3. 在 fasthttp 上使用</h2>
+
+<pre><code>package main
+
+import (
+	&quot;log&quot;
+
+	&quot;github.com/valyala/fasthttp&quot;
+	&quot;github.com/tsingson/vk/fast/autotls&quot;
+)
+
+func main() {
+
+	go autotls.LetsEncryptTLS(&quot;/home/go/bin/&quot;, &quot;tsingson@me.com&quot;, &quot;www.tsingson.io&quot;, &quot;tsingson.io&quot;)
+	time.Sleep(1 * time.Minute)
+	
+	fs := &amp;fasthttp.FS{
+		// Path to directory to serve.
+		Root: &quot;/home/www/static-site&quot;,
+
+		// Generate index pages if client requests directory contents.
+		GenerateIndexPages: true,
+
+		// Enable transparent compression to save network traffic.
+		Compress: true,
+	}
+
+	// Create request handler for serving static files.
+	h := fs.NewRequestHandler()
+
+	s := &amp;fasthttp.Server{
+		Handler: h,
+	}
+
+	// Start the server.
+	if err := fasthttp.ListenAndServeTLS(&quot;:443&quot;, &quot;/home/go/bin/acme-v02.api.letsencrypt.org/site/tsingson.io/tsingson.io.crt&quot;, &quot;/home/go/bin/acme-v02.api.letsencrypt.org/site/tsingson.io/tsingson.io.key&quot;, h); err != nil {
+		log.Fatalf(&quot;error in ListenAndServe: %s&quot;, err)
+	}
+}
+
+</code></pre>
+
+<h2 id="4-小结">4. 小结</h2>
+
+<p>浏览器上验证, 步骤省略.........</p>
+
+<p>Done.   完美.......</p>
+
+<blockquote>
+<p>let's Encrypt 的测试模式, 在浏览器上验证, 会提示, 不是安全的 HTTPS 签名证书.</p>
+
+<p>换成生产模式就好了...........</p>
+</blockquote>
+
+<p>_</p>
+
+<p>_</p>
+
+<p>_</p>
+
+<h3 id="关于我">关于我</h3>
+
+<p>网名 tsingson (三明智, 江湖人称3爷)</p>
+
+<p>原 ustarcom IPTV/OTT 事业部播控产品线技术架构湿/解决方案工程湿角色(8年), 自由职业者,</p>
+
+<p>喜欢音乐(口琴,是第三/四/五届广东国际口琴嘉年华的主策划人之一), 摄影与越野,</p>
+
+<p>喜欢 golang 语言 (商用项目中主要用 postgres + golang )</p>
+
+<p>_</p>
+
+<p>_
+ <a href="https://github.com/tsingson">tsingson</a> 写于中国深圳 <a href="https://tsingson.github.io/music/about-studio/">小罗号口琴音乐中心</a>,   2019/08/07</p></div>
+                <div class="post_footer">
+                    
+                    <div class="meta">
+                        <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="/tags/golang/">golang</a>
+                  
+              </span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <br>
+    <br>
+    <span>技术.设计.音乐</span>
+  </div>
+</footer>
+
+
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/zozo.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<link  href="/css/fancybox.min.css" rel="stylesheet">
+<script src="/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

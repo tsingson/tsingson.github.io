@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="tsingson"/>
+
+  
+  <meta name="description" content="_
+程序设计能力.........如何提高, 空谈很难说清楚.
+这基本上得在商用项目中带........
+如果工作是 web &#43; CRUD boy 这一类, 前接触不到客户, 后接触不到运营/运维,
+当前或将来一段时间内都是研发经理这一类的上司或 leader 分配工作任务的话,
+基本上, 谈提高程序设计能力, 那是浪费时间. 看书, 刷题都不可以提高设计能力, 只能加强你的基础技能, 但不能加强你在实际业务场景中选择/使用哪些基础技能的设计能力. 遇到真正现实环境中的&amp;quot;问题&amp;quot; / &amp;quot;故障现象&amp;quot; / &amp;quot;业务需求&amp;quot;, 一样会......无处下手.
+设计能力, 就是, 应用你的基础技能, 去:
+ 发现问题现象( 业务或故障), 分解&amp;quot;问题&amp;quot;, 定位&amp;quot;问题&amp;quot;, 验证&amp;quot;问题&amp;quot;, 最终确认问题------以事实为基础 灵活分析问题, 大胆多种假设解决方案, 并提前评估各种解决方案的优劣--------头脑要清醒, 思考要完整思维要条理化 将优选后的解决方案做出 prototype , 测试运行, 验证最初的问题是否真正解决 ------ 大胆假设, 小心论证 (注:只有第三点, 与写代码有关........)  一个良好的设计, 是问题的终结者. 在 发现真正的问题, 设计解决方案, 验证复查直到真正解决问题过程中, 设计能力自然积累提升.
+如果没有严格结构化的思维, 没有良好的方法论, 没有良好的代码基础, 程序设计能力的提高, 那是空中楼宇, 免谈.
+知道研究生, 尤其是博士为什么受欢迎吗? 最重要的原因是, 这些研究生, 博士 ( 不是买来的那种研究生,博士), 都经历过独立研究课题并做出导师认可的解决, 他们面对&amp;quot;问题&amp;quot; , 解决问题的思维成熟而有效, 就算是他们不太熟悉的领域, 也能快速入手, 边学边用, 给出严谨的&amp;quot;很接近优秀&amp;quot;的假设方案, 不断有计划的实施, 直至解决问题--------- 这就是他们根子里的设计能力.
+上面第三点中的 prototype, 才涉及到编程, 这时, 是评估使用合适的&amp;quot;轮子&amp;quot;, 还是在自己熟悉的代码库上造轮子........... 这已经不重要了, 因为, 解决问题的思路, 会指导你走一条有效率的路.
+至于题主提到的:
+ 1.Java如何提升编程设计能力。 2.golang函数&#43;接口编程，如何编写合理，高扩展性程序。
+ 对问题1 , 大约说一下, 编程能力是编程能力, 设计能力是设计能力, 有编程能力, 两者并不关联."/>
+  
+
+  
+  
+  <meta name="keywords" content="Hugo, theme, zozo"/>
+  
+
+  
+  <link rel="canonical" href="/tech/engineer-or-coder/"/>
+
+  
+
+  <title> &middot; 技术.设计.音乐--带来价值与欢乐的三明智</title>
+
+  <link rel="shortcut icon" href="/images/favicon.ico"/>
+  <link rel="stylesheet" href="/css/animate.min.css"/>
+  <link rel="stylesheet" href="/css/remixicon.css"/>
+  <link rel="stylesheet" href="/css/zozo.css"/>
+  <link rel="stylesheet" href="/css/highlight.css"/>
+
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/tech\/engineer-or-coder\/"
+        },
+    
+    "genre": "tech",
+    
+    "wordcount":  226 ,
+    "url": "\/tech\/engineer-or-coder\/",
+    
+    
+    
+    
+    "author": {
+    "@type": "Person",
+    "name": "tsingson"
+    },
+    "description": ""
+    }
+</script>
+
+</head>
+
+<body>
+<div class="main animated">
+    <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/tech/">技术</a>
+      </li>
+      
+      <li>
+        <a href="/photography/">摄影</a>
+      </li>
+      
+      <li>
+        <a href="/design/">设计</a>
+      </li>
+      
+      <li>
+        <a href="/music/">音乐</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">Tags</a>
+      </li>
+      
+      <li>
+        <a href="/about/about-me/">关于</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+    <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="/">
+
+          <img src="/images/logo.svg" width=150px/>   <span>技术.设计.音乐--带来价值与欢乐的三明智</span>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title">programming.design.music</p>
+      <div class="my_socials">
+        
+        
+        <a href="https://github.com/tsingson" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        <a href="https://twitter.com/tsingson" title="twitter" target="_blank"><i class="remixicon-twitter-fill"></i></a>
+        
+        
+        <a href="/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="content">
+        <div class="post_page">
+            <div class="post animated fadeInDown">
+                <div class="post_title post_detail_title">
+                    <h2><a href='/tech/engineer-or-coder/'></a></h2>
+                    <span class="date">0001-01-01</span>
+                </div>
+                <div class="post_content markdown"><p><img src="https://pic2.zhimg.com/50/v2-bd8ba2dbf1df6e3dfaff5c08a8048d09_b.jpg" alt="img" /></p>
+
+<p>_</p>
+
+<p>程序设计能力.........如何提高, 空谈很难说清楚.</p>
+
+<p>这基本上得在商用项目中带........</p>
+
+<p>如果工作是 web + CRUD boy 这一类, 前接触不到客户, 后接触不到运营/运维,</p>
+
+<p>当前或将来一段时间内都是研发经理这一类的上司或 leader 分配工作任务的话,</p>
+
+<p>基本上, 谈提高程序设计能力, 那是浪费时间. 看书, 刷题都不可以提高设计能力, 只能加强你的基础技能, 但不能加强你在实际业务场景中选择/使用哪些基础技能的<strong>设计能力</strong>. 遇到真正现实环境中的&quot;问题&quot; / &quot;故障现象&quot; / &quot;业务需求&quot;, 一样会......无处下手.</p>
+
+<hr />
+
+<p>设计能力, 就是, 应用你的基础技能, 去:</p>
+
+<ol>
+<li>发现问题现象( 业务或故障), 分解&quot;问题&quot;, 定位&quot;问题&quot;, 验证&quot;问题&quot;, 最终<strong>确认问题-</strong>-----以事实为基础</li>
+<li>灵活分析问题, 大胆多种<strong>假设解决方案</strong>, 并提前评估各种解决方案的优劣--------头脑要清醒, 思考要完整思维要条理化</li>
+<li>将优选后的解决方案做出 prototype , 测试运行, <strong>验证最初的问题是否真正解决</strong> ------ 大胆假设, 小心论证 (注:只有第三点, 与写代码有关........)</li>
+</ol>
+
+<p>一个良好的设计, 是问题的终结者. 在 发现真正的问题, 设计解决方案, 验证复查直到真正解决问题过程中, 设计能力自然积累提升.</p>
+
+<p>如果没有严格结构化的思维, 没有良好的方法论, 没有良好的代码基础, 程序设计能力的提高, 那是空中楼宇, 免谈.</p>
+
+<p>知道研究生, 尤其是博士为什么受欢迎吗? 最重要的原因是, 这些研究生, 博士 ( 不是买来的那种研究生,博士), 都经历过独立研究课题并做出导师认可的解决, 他们面对&quot;问题&quot; , 解决问题的思维成熟而有效, 就算是他们不太熟悉的领域, 也能快速入手, 边学边用, 给出严谨的&quot;很接近优秀&quot;的假设方案, 不断有计划的实施, 直至解决问题--------- 这就是他们根子里的设计能力.</p>
+
+<hr />
+
+<p>上面第三点中的 prototype, 才涉及到编程, 这时, 是评估使用合适的&quot;轮子&quot;, 还是在自己熟悉的代码库上造轮子........... 这已经不重要了, 因为, 解决问题的思路, 会指导你走一条有效率的路.</p>
+
+<p>至于题主提到的:</p>
+
+<blockquote>
+<p>1.Java如何提升编程设计能力。 2.golang函数+接口编程，如何编写合理，高扩展性程序。</p>
+</blockquote>
+
+<p>对问题1 , 大约说一下, 编程能力是编程能力, 设计能力是设计能力, 有编程能力, 两者并不关联. java , 我几年没写了, 提不出有用的建议.</p>
+
+<p>对问题2, 合理, 高扩展性的程序, 这问题, 估计我也回答不了. 虽然我写了 4年 golang 并在几个中型项目持续商用中. 高可展性------这个指向不明, 也给不了什么建议, 是业务功能上的高可展? 还是访问量上的高可展? 没有具体业务场景或技术故障情况下, 没办法确定.</p>
+
+<p>但是, 确定限制条件, &quot;合理&quot;, &quot;高扩展&quot; 就有依据去找一个或多个方案.</p>
+
+<p>我很懒, 没钱收, 或者没有实际需求, 代码就一次过, 不会考虑扩展性.</p>
+
+<p>例如, 明明知道一个平台上的 AAA 应用只是一个对接特定终端, 并且这个终端是 c 语言写的嵌入式小盒子( 比如TVB-T电视盒子, 生产时就自带全球唯一ID ) , 那 AAA 只有用户激活, 用户验证(验证成功进入平台), 两种接口, 就不用写用户注册, 手机号激活, 用户登录, 用户更改资料这些接口了. ----------- 这样的 AAA , 接口简单, 功能也简单, 功能上的扩展好几年都不可能发生. --------如果发生要扩展, 再收笔钱, 重新开发一遍就好啦.</p>
+
+<p>注1: AAA --- Authentication, Authorization, and Accounting</p>
+
+<p>注2: 上面提到的设计能力, 侧重于解决业务相关问题, 或运维/运营相关问题. 技术人员本身对代码重构, 对运维/运营无影响, 甚至不会增加新的业务价值时, 这些重构, 只是个人技能提高, 不算设计能力. --------所以, 什么工厂模式, 第三范式, 这些都不是设计能力, 只是程序应有的基础技能.</p>
+
+<p>以上, 仅供参考............</p>
+
+<p>祝愉快.</p>
+
+<p>2019/08/13 补充:</p>
+
+<p>这小回复之后, 有朋友找我讨论, 提到两个问题:</p>
+
+<ol>
+<li>精通算法是不是程序设计能力? 算不算其中的一种程序设计能力?</li>
+<li>多年的编程开发经验, 难道不算有程序设计能力?</li>
+</ol>
+
+<p>我仔细想了想, 这个两个问题, 换个方式, 可以这样说: 设计 这个词, 很模糊, 不同的人, 不同行业, 不同领域有不同的界定.</p>
+
+<p>在于 软件研发上来说 , programmer / developer / Architect( designer ) / engineer 是有很大不同的. 这从英文招聘的职位描述文档上可以看出区别来.</p>
+
+<p>在我的认识里, programmer / developer 这一类软件开发从业者是与我谈的&quot;设计&quot;能力距离比较远的:</p>
+
+<p>从上面我的文字中,</p>
+</div>
+                <div class="post_footer">
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  <div class="footer_slogan">
+    <br>
+    <br>
+    <span>技术.设计.音乐</span>
+  </div>
+</footer>
+
+
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/zozo.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<link  href="/css/fancybox.min.css" rel="stylesheet">
+<script src="/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

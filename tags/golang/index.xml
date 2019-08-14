@@ -6,10 +6,21 @@
     <description>Recent content in golang on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 04 Aug 2019 12:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Aug 2019 12:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>用 let&#39;s Encrypt 实现 HTTPS 示例( fasthttp 与net/http)</title>
+      <link>/tech/https-setup/</link>
+      <pubDate>Wed, 07 Aug 2019 12:02:57 +0800</pubDate>
+      
+      <guid>/tech/https-setup/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/go-logo-music.jpg&#34; alt=&#34;go-logo-music&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[摘要] let&#39;s Encrypt 是一个免费提供 HTTPS 的签名服务, 这里提供一个示例,用 &lt;a href=&#34;https://github.com/mholt/certmagic&#34;&gt;certmagic&lt;/a&gt; 实现 fasthttp 与 net/http 上支持 HTTPS&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>编程为什么不用中文？兼谈如何学习编程</title>
@@ -72,6 +83,15 @@
     </item>
     
     <item>
+      <title>chrome handless 与golang爬虫</title>
+      <link></link>
+      <pubDate>Fri, 31 May 2019 23:02:57 +0800</pubDate>
+      
+      <guid></guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>goim交流分享会后的小结与QA</title>
       <link>/tech/goim-go-06/</link>
       <pubDate>Thu, 30 May 2019 23:02:57 +0800</pubDate>
@@ -80,6 +100,24 @@
       <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/go-reading.jpg&#34; alt=&#34;go-reading&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;[简述]  &lt;a href=&#34;http://goim.io&#34;&gt;http://goim.io&lt;/a&gt; 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文汇总在 &lt;a href=&#34;https://github.com/developer-learning/reading-go&#34;&gt;go夜读&lt;/a&gt; 组织的 goim 交流分享会后的小结&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>mac 并不适合编程?</title>
+      <link></link>
+      <pubDate>Thu, 30 May 2019 22:02:57 +0800</pubDate>
+      
+      <guid></guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>goim 客户端之消息发送/接收</title>
+      <link></link>
+      <pubDate>Fri, 24 May 2019 12:02:57 +0800</pubDate>
+      
+      <guid></guid>
+      <description></description>
     </item>
     
     <item>
@@ -142,6 +180,15 @@
       <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;[简述]  &lt;a href=&#34;http://goim.io&#34;&gt;http://goim.io&lt;/a&gt; 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文介绍 goim 分布式架构及内部网元接口设计要点, 以及如何定制&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>grpc（2）：Centos 安装 nghttp2 做 grpc 的http2 代理</title>
+      <link></link>
+      <pubDate>Sun, 21 Apr 2019 22:02:57 +0800</pubDate>
+      
+      <guid></guid>
+      <description></description>
     </item>
     
   </channel>
