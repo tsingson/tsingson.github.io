@@ -45,7 +45,7 @@
     
     "genre": "tech",
     "keywords": "goim, golang",
-    "wordcount":  2200 ,
+    "wordcount":  2254 ,
     "url": "\/tech\/goim-go-03\/",
     "datePublished": "2019-04-24T22:02:57\x2b08:00",
     "dateModified": "2019-04-24T22:02:57\x2b08:00",
@@ -138,68 +138,50 @@
                     <span class="date">2019-04-24</span>
                 </div>
                 <div class="post_content markdown"><p>[简述] <a href="https://github.com/bilibili/discovery">bilibili/discovery</a> 是用于 <a href="http://goim.io">http://goim.io</a> 的服务注册/发现的依赖网元, 由golang 实现了  <a href="https://github.com/Netflix/eureka">netflix/eureka</a>  , 支持 goim 的分布式部署与动态调度路由, 本文介绍基本概念与配置要点</p>
-
-<hr />
-
+<hr>
 <blockquote>
-<p>goim 文章系列(共5篇):
-* <a href="/tech/goim-go-01/index.html">goim 架构与定制</a>
-* <a href="/tech/goim-go-02/index.html">从goim定制, 浅谈 golang 的 interface 解耦合与gRPC</a>
-* <a href="/tech/goim-go-03/index.html">goim中的 bilibili/discovery (eureka)基本概念及应用</a>
-* <a href="/tech/goim-go-04/index.html">goim 的 data flow 数据流</a>
-* <a href="/tech/goim-go-06/index.html">goim的业务集成(分享会小结与QA)</a></p>
-
+<p>goim 文章系列(共5篇):</p>
+<ul>
+<li><a href="/tech/goim-go-01/index.html">goim 架构与定制</a></li>
+<li><a href="/tech/goim-go-02/index.html">从goim定制, 浅谈 golang 的 interface 解耦合与gRPC</a></li>
+<li><a href="/tech/goim-go-03/index.html">goim中的 bilibili/discovery (eureka)基本概念及应用</a></li>
+<li><a href="/tech/goim-go-04/index.html">goim 的 data flow 数据流</a></li>
+<li><a href="/tech/goim-go-06/index.html">goim的业务集成(分享会小结与QA)</a></li>
+</ul>
 <p>有个 slack 频道, 不少朋友在交流 goim , 欢迎加入<a href="https://join.slack.com/t/reading-go/shared_invite/enQtMjgwNTU5MTE5NjgxLTA5NDQwYzE4NGNhNDI3N2E0ZmYwOGM2MWNjMDUyNjczY2I0OThiNzA5ZTk0MTc1MGYyYzk0NTA0MjM4OTZhYWE">slack #goim</a></p>
 </blockquote>
-
-<h2 id="0-背景与动机">0. 背景与动机</h2>
-
+<h2 id="0-">0. 背景与动机</h2>
 <p>在学习 goim 过程中, <a href="https://github.com/bilibili/discovery">bilibili/discovery</a> 是一个服务注册/发现的依赖网元, golang 实现了 <a href="https://github.com/Netflix/eureka">netflix/eureka</a> 并作了一些扩展改进</p>
-
 <p>这里顺带记录了对  <a href="https://github.com/bilibili/discovery">bilibili/discovery</a> 学习过程中的一些理解</p>
-
-<h2 id="1-discovery-在goim-中的角色与作用">1. discovery 在goim 中的角色与作用</h2>
-
-<p><img src="https://user-gold-cdn.xitu.io/2019/4/25/16a522a08fd354cd?w=1329&amp;h=831&amp;f=png&amp;s=92443" alt="" /></p>
-
+<h2 id="1-discovery-goim-">1. discovery 在goim 中的角色与作用</h2>
+<p><img src="https://user-gold-cdn.xitu.io/2019/4/25/16a522a08fd354cd?w=1329&amp;h=831&amp;f=png&amp;s=92443" alt=""></p>
 <p>上图标示了  <a href="https://github.com/bilibili/discovery">bilibili/discovery</a> 在 <a href="https://github.com/Terry-Mao/goim">goim</a> 中的位置, 与作用(以 comet / job 为例):</p>
-
-<p><img src="https://user-gold-cdn.xitu.io/2019/4/25/16a531eb473f3ba8?w=1079&amp;h=619&amp;f=png&amp;s=60681" alt="" /></p>
-
+<p><img src="https://user-gold-cdn.xitu.io/2019/4/25/16a531eb473f3ba8?w=1079&amp;h=619&amp;f=png&amp;s=60681" alt=""></p>
 <ul>
 <li>部署一到多分 discovery 作为服务注册/发现网元 ( discovery 相互间会同步注册数据,细节见后)</li>
 <li>comet 一到多个部署, 这里是一个 comet gRPC server 服务端
-
 <ul>
-<li>comet 启动果, 每一个部署向 discovery 进行--&gt; <strong>服务注册</strong></li>
+<li>comet 启动果, 每一个部署向 discovery 进行&ndash;&gt; <strong>服务注册</strong></li>
 <li>注册成功后与 discovery 之间保持一个健康状态同步( renew ), 见标示 1</li>
 <li>comet 如果下线, discovery 会标示下线状态</li>
-</ul></li>
-<li>job 一到多个部署, 这里是一个 comet gRPC client 客户端
-
-<ul>
-<li>job 启动后, 向 discovery 进行 polls 获取 goim-comet 所有服务实例列表--&gt; <strong>服务发现</strong></li>
-<li>job 持续监听 discovery 中的 goim-conet 服务节点列表, 同步到本地</li>
-<li>job 向 goim-comet 实例( 整个列表) 分发 goim 消息 ---&gt; <strong>job 的主体业务功能</strong></li>
-</ul></li>
 </ul>
-
+</li>
+<li>job 一到多个部署, 这里是一个 comet gRPC client 客户端
+<ul>
+<li>job 启动后, 向 discovery 进行 polls 获取 goim-comet 所有服务实例列表&ndash;&gt; <strong>服务发现</strong></li>
+<li>job 持续监听 discovery 中的 goim-conet 服务节点列表, 同步到本地</li>
+<li>job 向 goim-comet 实例( 整个列表) 分发 goim 消息 &mdash;&gt; <strong>job 的主体业务功能</strong></li>
+</ul>
+</li>
+</ul>
 <p>如果 discovery 网元不存在, 那很简单, job 在配置文件中写死 comet 地址( 一到多个), job 的 comet-gRPC-client 直接向 comet 的 comet-gRPC-server 进行互通完成业务. 这样就失去了分布式的动态扩展能力</p>
-
-<hr />
-
+<hr>
 <p>discovery 之间, 会同步注册的服务实例信息</p>
-
 <p><strong>注意</strong>
 在 bilibili/discovery 中, discovery 本身被标记为</p>
-
 <pre><code>_appid = &quot;infra.discovery&quot;
-</code></pre>
-
-<p>相互之间一样进行相互注册/更新, 同在相互之间同步 名为&quot;infra.discovery&quot; 与其他 app 的实例信息</p>
-
+</code></pre><p>相互之间一样进行相互注册/更新, 同在相互之间同步 名为&quot;infra.discovery&rdquo; 与其他 app 的实例信息</p>
 <p>在 discovery 的配置文件中, discovery 实例被称为 node , 由 nodes 参数进行配置, 配置定义如下</p>
-
 <pre><code>// Config discovery configures.
 type Config struct {
 	Nodes  []string  # ******************** 这是配置一到多个 discovery 实例的定义
@@ -208,35 +190,24 @@ type Config struct {
 	Env    string
 	Host   string
 }
-</code></pre>
-
-<h2 id="2-discovery-eureka-的基本概念">2. discovery / eureka 的基本概念</h2>
-
-<h3 id="2-1-基本概念">2.1 基本概念</h3>
-
-<p><img src="https://user-gold-cdn.xitu.io/2019/4/25/16a531f0be908f57?w=1079&amp;h=703&amp;f=png&amp;s=125303" alt="" /></p>
-
-<p>discovery / eureka 中的基本概念, 如上图所示, 就是一个分区进行注册/调度的简单划分
-* Region 地区, 例如, 中国区, 南美区, 北美区...
-* Zone 可用区域, 例如中国区下的 gd 广东地区, sh 上海地区, 一般是指骨干 IDC 机房, 或者跨地区的逻辑区域, 这是同区内调度的主要划分点. 一般是同区内调度, 不会跨区调度
-* Env 再划分小一点的运行环境划分, 比如 Env = dev 开发环境, Env = trial 试商用...
-* appID 这是注册应用的名称, 服务注册与发现, 依赖的是 name ----&gt; address 名称到地址的注册(写入/更新) 与发现( 获取名称对应的服务地址或服务地址列表)</p>
-
-<hr />
-
+</code></pre><h2 id="2-discovery--eureka-">2. discovery / eureka 的基本概念</h2>
+<h3 id="21-">2.1 基本概念</h3>
+<p><img src="https://user-gold-cdn.xitu.io/2019/4/25/16a531f0be908f57?w=1079&amp;h=703&amp;f=png&amp;s=125303" alt=""></p>
+<p>discovery / eureka 中的基本概念, 如上图所示, 就是一个分区进行注册/调度的简单划分</p>
+<ul>
+<li>Region 地区, 例如, 中国区, 南美区, 北美区&hellip;</li>
+<li>Zone 可用区域, 例如中国区下的 gd 广东地区, sh 上海地区, 一般是指骨干 IDC 机房, 或者跨地区的逻辑区域, 这是同区内调度的主要划分点. 一般是同区内调度, 不会跨区调度</li>
+<li>Env 再划分小一点的运行环境划分, 比如 Env = dev 开发环境, Env = trial 试商用&hellip;</li>
+<li>appID 这是注册应用的名称, 服务注册与发现, 依赖的是 name &mdash;-&gt; address 名称到地址的注册(写入/更新) 与发现( 获取名称对应的服务地址或服务地址列表)</li>
+</ul>
+<hr>
 <blockquote>
-<p><strong>注</strong>: bilibili/discovery 是以 http 方式提供注册/更新/发现/同步...等服务注册与发现等业务功能</p>
+<p><strong>注</strong>: bilibili/discovery 是以 http 方式提供注册/更新/发现/同步&hellip;等服务注册与发现等业务功能</p>
 </blockquote>
-
 <p>所以, 可以看到 discorevy 获取一个服务器节点, 是如下方式</p>
-
 <pre><code>curl 'http://127.0.0.1:7171/discovery/fetch?zone=gd&amp;env=dev&amp;appid=goim.comet&amp;status=1'
-</code></pre>
-
-<p>上面 URL 中, zone 对应就是获取 gd 广东区域内, 环境定义为 dev , appID 为 goim.comet 的服务器实例, 当然, status 是附加约束, 这里 status=1 表示过滤名称为 goim.comet 的服务器实例状态要求为 status = 1 ( 即接收服务请求的 goim.comet 实例<strong>列表</strong>)</p>
-
+</code></pre><p>上面 URL 中, zone 对应就是获取 gd 广东区域内, 环境定义为 dev , appID 为 goim.comet 的服务器实例, 当然, status 是附加约束, 这里 status=1 表示过滤名称为 goim.comet 的服务器实例状态要求为 status = 1 ( 即接收服务请求的 goim.comet 实例<strong>列表</strong>)</p>
 <p>上面的 curl 会返回以下结果</p>
-
 <pre><code>{
     &quot;code&quot;: 0,
     &quot;data&quot;: {
@@ -268,22 +239,17 @@ type Config struct {
         &quot;latest_timestamp&quot;: 1525948301833084700
     }
 }
-</code></pre>
-
-<p>discovery/ eureka 换成 DNS 域名 可以在逻辑上表示为 schema://appID.Env.Zone.Region , 类似于 grpc://goim.comet.dev.gd.china.xxxxx.com</p>
-
-<p>换成 etcd 可以表示为 /Region/Zone/Env/appID, 例如  &quot;/china/gd/dev/goim.comet&quot;</p>
-
-<h3 id="2-2-小结与配置建议">2.2 小结与配置建议</h3>
-
-<p>由上小节可知, bilibili/discovery 或 netflix/eureka 的配置中, 以下4个关键参数, 需要一一对应
-* region
-* zone
-* env 或 deployEnv
-* appID</p>
-
+</code></pre><p>discovery/ eureka 换成 DNS 域名 可以在逻辑上表示为 schema://appID.Env.Zone.Region , 类似于 grpc://goim.comet.dev.gd.china.xxxxx.com</p>
+<p>换成 etcd 可以表示为 /Region/Zone/Env/appID, 例如  &ldquo;/china/gd/dev/goim.comet&rdquo;</p>
+<h3 id="22-">2.2 小结与配置建议</h3>
+<p>由上小节可知, bilibili/discovery 或 netflix/eureka 的配置中, 以下4个关键参数, 需要一一对应</p>
+<ul>
+<li>region</li>
+<li>zone</li>
+<li>env 或 deployEnv</li>
+<li>appID</li>
+</ul>
 <p>在 goim 中, appID 已经在代码中标记为常量, 如下</p>
-
 <pre><code># github.com/Terry-Mao/goim/cmd/comet/main.go
 
 const (
@@ -297,18 +263,12 @@ const (
 	appid = &quot;goim.logic&quot;
 )
 
-</code></pre>
-
-<h2 id="3-goim-中使用-bilibili-discovery">3. goim 中使用 bilibili/discovery</h2>
-
+</code></pre><h2 id="3-goim--bilibilidiscovery">3. goim 中使用 bilibili/discovery</h2>
 <p>还是以 logic / comet 之间的 gRPC 为例</p>
-
 <p>所有使用 bilibili/discovery 的配置是类似的, 在配置中, 包含以下定义</p>
-
 <blockquote>
 <p>原始定义在 <a href="https://github.com/bilibili/discovery/blob/master/naming/client.go">https://github.com/bilibili/discovery/blob/master/naming/client.go</a> 第 46行开始</p>
 </blockquote>
-
 <pre><code>// Config discovery configures.
 type Config struct {
 	Nodes  []string  # ******************** 这是配置一到多个 discovery 实例的定义
@@ -317,14 +277,10 @@ type Config struct {
 	Env    string
 	Host   string
 }
-</code></pre>
-
-<p>在 comet 配置中定义为</p>
-
+</code></pre><p>在 comet 配置中定义为</p>
 <blockquote>
 <p>在 comet 配置源文件中 <a href="https://github.com/Terry-Mao/goim/blob/master/internal/comet/conf/conf.go">https://github.com/Terry-Mao/goim/blob/master/internal/comet/conf/conf.go</a> 第 112 行</p>
 </blockquote>
-
 <pre><code>// Config is comet config.
 type Config struct {
 	Debug     bool
@@ -338,12 +294,9 @@ type Config struct {
 	RPCServer *RPCServer
 	Whitelist *Whitelist
 }
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>在 job 配置源文件中 <a href="https://github.com/Terry-Mao/goim/blob/master/internal/job/conf/conf.go">https://github.com/Terry-Mao/goim/blob/master/internal/job/conf/conf.go</a> 第 59 行</p>
 </blockquote>
-
 <pre><code>// Config is job config.
 type Config struct {
 	Env       *Env            # ******************** 这里这里这里
@@ -352,61 +305,44 @@ type Config struct {
 	Comet     *Comet
 	Room      *Room
 }
-</code></pre>
-
-<p>就像第二节所说的, regoin / zone / env ,  所以, 重点关注 Env / Discovery 两个配置定义, 重点在 Discovery 配置naming.Config 即可</p>
-
-<h3 id="3-1-在-comet-中的服务注册-与服务更新">3.1 在 comet 中的服务注册, 与服务更新</h3>
-
-<h4 id="3-1-1-注册如下">3.1.1 注册如下</h4>
-
+</code></pre><p>就像第二节所说的, regoin / zone / env ,  所以, 重点关注 Env / Discovery 两个配置定义, 重点在 Discovery 配置naming.Config 即可</p>
+<h3 id="31--comet--">3.1 在 comet 中的服务注册, 与服务更新</h3>
+<h4 id="311-">3.1.1 注册如下</h4>
 <blockquote>
 <p>源代码见 <a href="https://github.com/Terry-Mao/goim/blob/master/cmd/comet/main.go">https://github.com/Terry-Mao/goim/blob/master/cmd/comet/main.go</a> 第42/43 行</p>
 </blockquote>
-
 <pre><code>	// register discovery
 	dis := naming.New(conf.Conf.Discovery)
 	resolver.Register(dis)
 	
-</code></pre>
-
-<h4 id="3-1-2-更新如下">3.1.2 更新如下</h4>
-
+</code></pre><h4 id="312-">3.1.2 更新如下</h4>
 <p>该 comet 的注册信息更新代码放在一个 goroutine 中, 每10秒更新一次</p>
-
 <blockquote>
 <p>源代码见 <a href="https://github.com/Terry-Mao/goim/blob/master/cmd/comet/main.go">https://github.com/Terry-Mao/goim/blob/master/cmd/comet/main.go</a> 第42/43 行</p>
 </blockquote>
-
 <pre><code>			if err = dis.Set(ins); err != nil {
 				log.Errorf(&quot;dis.Set(%+v) error(%v)&quot;, ins, err)
 				time.Sleep(time.Second)
 				continue
 			}
 			time.Sleep(time.Second * 10)
-</code></pre>
-
-<p>### 3.2 在 job 中的服务发现</p>
-
-<p>#### 3.2.1 job 中的注册代码, 实际是无用代码
- 在 job 代码中, 含有服务注册代码, 实际上是无用代码, 原因是, 只有服务端才需要进行服务注册, 而 job 实际上只有两个业务关联逻辑
- 1. 对 kafka 进行消息订阅
- 2. 向 tomet 中的 comet gRPC server 进行消息 push 推送</p>
-
+</code></pre><h3 id="32--job-">3.2 在 job 中的服务发现</h3>
+<h4 id="321-job--">3.2.1 job 中的注册代码, 实际是无用代码</h4>
+<p>在 job 代码中, 含有服务注册代码, 实际上是无用代码, 原因是, 只有服务端才需要进行服务注册, 而 job 实际上只有两个业务关联逻辑</p>
+<ol>
+<li>对 kafka 进行消息订阅</li>
+<li>向 tomet 中的 comet gRPC server 进行消息 push 推送</li>
+</ol>
 <blockquote>
 <p>代码在 <a href="https://github.com/Terry-Mao/goim/blob/master/cmd/job/main.go">https://github.com/Terry-Mao/goim/blob/master/cmd/job/main.go</a> 第 28行</p>
 </blockquote>
-
 <pre><code>	// grpc register naming
 	dis := naming.New(conf.Conf.Discovery)
 	resolver.Register(dis)
-</code></pre>
-
-<h4 id="3-2-2-job-中的服务发现代码">3.2.2 job 中的服务发现代码</h4>
-
+</code></pre><h4 id="322-job-">3.2.2 job 中的服务发现代码</h4>
 <blockquote>
 <p>代码在 <a href="https://github.com/Terry-Mao/goim/blob/master/internal/job/job.go">https://github.com/Terry-Mao/goim/blob/master/internal/job/job.go</a> 第 85行</p>
-
+</blockquote>
 <pre><code>
 func (j *Job) watchComet(c *naming.Config) {
 	dis := naming.New(c)       # **************************** 构造符合 gRPC 要求的服务发现实例
@@ -443,34 +379,19 @@ func (j *Job) watchComet(c *naming.Config) {
 		}
 	}()
 }
-</code></pre>
-</blockquote>
-
-<h2 id="4-bilibili-discovery-架构与实现简要解读">4. bilibili/discovery 架构与实现简要解读</h2>
-
-<p>.............稍后一一道来, 哈, 先去挣点钱先.............</p>
-
+</code></pre><h2 id="4-bilibilidiscovery-">4. bilibili/discovery 架构与实现简要解读</h2>
+<p>&hellip;&hellip;&hellip;&hellip;.稍后一一道来, 哈, 先去挣点钱先&hellip;&hellip;&hellip;&hellip;.</p>
 <p>.</p>
-
 <p>.</p>
-
 <p>.</p>
-
-<p>欢迎交流与批评.....
+<p>欢迎交流与批评&hellip;..
 .</p>
-
 <p>.</p>
-
-<h2 id="关于我">关于我</h2>
-
+<h2 id="heading">关于我</h2>
 <p>网名 tsingson (三明智, 江湖人称3爷)</p>
-
 <p>原 ustarcom IPTV/OTT 事业部播控产品线技术架构湿/解决方案工程湿角色(8年), 自由职业者,</p>
-
 <p>喜欢音乐(口琴,是第三/四/五届广东国际口琴嘉年华的主策划人之一), 摄影与越野,</p>
-
 <p>喜欢 golang 语言 (商用项目中主要用 postgres + golang )</p>
-
 <p><a href="https://github.com/tsingson">tsingson</a> 写于中国深圳 <a href="https://zhuanlan.zhihu.com/tsingsonqin">小罗号口琴音乐中心</a>, 2019/04/25</p></div>
                 <div class="post_footer">
                     

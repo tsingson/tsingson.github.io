@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 技术.设计.音乐--带来价值与欢乐的三明智</title>
@@ -6,7 +6,7 @@
     <description>Recent content in Categories on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 07 Aug 2019 12:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jan 2020 22:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Development</title>
       <link>/categories/development/</link>
-      <pubDate>Wed, 07 Aug 2019 12:02:57 +0800</pubDate>
+      <pubDate>Thu, 02 Jan 2020 22:02:57 +0800</pubDate>
       
       <guid>/categories/development/</guid>
       <description></description>

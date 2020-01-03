@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn" >
 <head>
-	<meta name="generator" content="Hugo 0.57.0" />
+	<meta name="generator" content="Hugo 0.62.1" />
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -131,13 +131,50 @@
 
 <div class="post animated fadeInDown">
   <div class="post_title">
+    <h2><a href='/tech/flatbuffers/'>websocket ( go srv / JS client) 使用flatbuffers 交互</a></h2>
+  </div>
+  
+  <div class="list">
+    <div class="post_content markdown" style="padding-left: 50px;padding-right: 50px;">
+      <p><p><img src="/tech/assets/photo-desk.jpg" alt="photo-desk"></p>
+<p>[简述]   在 go websocket server 与 javascript websocket client 交互中使用 flatbuffers</p></p>
+    </div>
+  </div>
+  
+  <div class="post_footer">
+    <div class="meta">
+      <div class="info">
+        <span class="field">
+          <i class="remixicon-map-pin-time-line"></i>
+          <span class="date">2020-01-02</span>
+        </span>
+        
+        <span class="field tags">
+          <i class="remixicon-stack-line"></i>
+          
+          <a href="/tags/grpc/">gRPC</a>
+          
+          <a href="/tags/flatbuffers/">flatbuffers</a>
+          
+          <a href="/tags/websocket/">websocket</a>
+          
+          <a href="/tags/golang/">golang</a>
+          
+        </span>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="post animated fadeInDown">
+  <div class="post_title">
     <h2><a href='/tech/https-setup/'>用 let&#39;s Encrypt 实现 HTTPS 示例( fasthttp 与net/http)</a></h2>
   </div>
   
   <div class="list">
     <div class="post_content markdown" style="padding-left: 50px;padding-right: 50px;">
-      <p><p><img src="/tech/assets/go-logo-music.jpg" alt="go-logo-music" /></p>
-
+      <p><p><img src="/tech/assets/go-logo-music.jpg" alt="go-logo-music"></p>
 <p>[摘要] let's Encrypt 是一个免费提供 HTTPS 的签名服务, 这里提供一个示例,用 <a href="https://github.com/mholt/certmagic">certmagic</a> 实现 fasthttp 与 net/http 上支持 HTTPS</p></p>
     </div>
   </div>
@@ -169,14 +206,11 @@
   
   <div class="list">
     <div class="post_content markdown" style="padding-left: 50px;padding-right: 50px;">
-      <p><p>&quot;编程为什么不用中文？兼谈如何学习编程&quot;</p>
-
-<p><img src="/tech/assets/photo-desk.jpg" alt="photo-desk" /></p>
-
+      <p><p>&ldquo;编程为什么不用中文？兼谈如何学习编程&rdquo;</p>
+<p><img src="/tech/assets/photo-desk.jpg" alt="photo-desk"></p>
 <blockquote>
 <p>相关文章, <a href="https://juejin.im/post/5d37efc6f265da1b7c615b39">中文编程兴起的必然性</a></p>
 </blockquote>
-
 <p>[摘要] 知乎上有个问题<a href="https://www.zhihu.com/question/337465148/answer/776165277">编程为什么不用中文？</a>    有点意思, 我把回复单独整理后, 写在这了: 编程语言是个符号系统, 能否广泛使用要看使用人员基数</p></p>
     </div>
   </div>
@@ -208,8 +242,7 @@
   
   <div class="list">
     <div class="post_content markdown" style="padding-left: 50px;padding-right: 50px;">
-      <p><p><img src="/tech/assets/photo-desk.jpg" alt="photo-desk" /></p>
-
+      <p><p><img src="/tech/assets/photo-desk.jpg" alt="photo-desk"></p>
 <p>go语言的 error handling 是不是一个败笔?  这是知乎上的一个提问, 我写了一些看法: 过于简单, 但不算败笔.</p></p>
     </div>
   </div>
@@ -243,20 +276,20 @@
   
   <div class="list">
     <div class="post_content markdown" style="padding-left: 50px;padding-right: 50px;">
-      <p><p><img src="/tech/assets/photo-desk.jpg" alt="photo-desk" /></p>
-
+      <p><p><img src="/tech/assets/photo-desk.jpg" alt="photo-desk"></p>
 <blockquote>
-<p>fasthttp 文章系列:
-*  fasthttp 概述与 Hello World(本文)
-*  fasthttp 客户端与服务端的封装, 日志与路由
-*  fasthttp 所谓 RESTful (兼介绍fastjson)
-*  fasthttp 中间件( 简单认证/ session会话...)
-*  fasthttp 处理 JWT (及 JWT安全性)
-*  fasthttp 对接非标准 web client (作为AAA, 数据加解密)
-*  fasthttp 缓存/proxy代理/反向代理
-*  fasthttp 部署</p>
+<p>fasthttp 文章系列:</p>
+<ul>
+<li>fasthttp 概述与 Hello World(本文)</li>
+<li>fasthttp 客户端与服务端的封装, 日志与路由</li>
+<li>fasthttp 所谓 RESTful (兼介绍fastjson)</li>
+<li>fasthttp 中间件( 简单认证/ session会话&hellip;)</li>
+<li>fasthttp 处理 JWT (及 JWT安全性)</li>
+<li>fasthttp 对接非标准 web client (作为AAA, 数据加解密)</li>
+<li>fasthttp 缓存/proxy代理/反向代理</li>
+<li>fasthttp 部署</li>
+</ul>
 </blockquote>
-
 <p>[简述]  <a href="https://github.com/valyala/fasthttp">github.com/valyala/fasthttp</a> 是 golang 中一个标志性的高性能 HTTP库, 主要用于 webserver 开发, 以及 web client / proxy 等. fasthttp 的高性能开发思路, 启发了很多开发者.</p></p>
     </div>
   </div>
@@ -323,8 +356,7 @@
   
   <div class="list">
     <div class="post_content markdown" style="padding-left: 50px;padding-right: 50px;">
-      <p><p><img src="/tech/assets/go-reading.jpg" alt="go-reading" /></p>
-
+      <p><p><img src="/tech/assets/go-reading.jpg" alt="go-reading"></p>
 <p>[简述]  <a href="http://goim.io">http://goim.io</a> 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文汇总在 <a href="https://github.com/developer-learning/reading-go">go夜读</a> 组织的 goim 交流分享会后的小结</p></p>
     </div>
   </div>
@@ -358,8 +390,7 @@
   
   <div class="list">
     <div class="post_content markdown" style="padding-left: 50px;padding-right: 50px;">
-      <p><p><img src="/tech/assets/go-logo-music.jpg" alt="go-logo-music" /></p>
-
+      <p><p><img src="/tech/assets/go-logo-music.jpg" alt="go-logo-music"></p>
 <blockquote>
 <p>在 知乎 的一个问题<a href="https://www.zhihu.com/question/46755408/answer/586812009">为什么 Go 语言能在中国这么火？ https://www.zhihu.com/question/46755408/answer/586812009</a> 的回复, 整理后发在这里了</p>
 </blockquote></p>
@@ -393,8 +424,7 @@
   
   <div class="list">
     <div class="post_content markdown" style="padding-left: 50px;padding-right: 50px;">
-      <p><p><img src="/tech/assets/self.jpg" alt="self" /></p>
-
+      <p><p><img src="/tech/assets/self.jpg" alt="self"></p>
 <p>[简述]  一个从零开始的小项目, 持续推进. go-ums 开发目标是一个开源项目, 核心由 golang 开发,  提供用户管理(user-management-subsystem) / AAA 认证/鉴权/授 / 多业务会话共享与管理等, 以支持分布式部署及云部署为主要目标</p></p>
     </div>
   </div>
@@ -586,8 +616,7 @@
   
   <div class="list">
     <div class="post_content markdown" style="padding-left: 50px;padding-right: 50px;">
-      <p><p><img src="/tech/assets/photo-desk.jpg" alt="photo-desk" /></p>
-
+      <p><p><img src="/tech/assets/photo-desk.jpg" alt="photo-desk"></p>
 <p>[简述]  <a href="http://goim.io">http://goim.io</a> 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文介绍 goim 分布式架构及内部网元接口设计要点, 以及如何定制</p></p>
     </div>
   </div>
@@ -631,43 +660,6 @@
         <span class="field">
           <i class="remixicon-map-pin-time-line"></i>
           <span class="date">2018-12-01</span>
-        </span>
-        
-        <span class="field tags">
-          <i class="remixicon-stack-line"></i>
-          
-          <a href="/tags/photography/">photography</a>
-          
-          <a href="/tags/%E8%A1%97%E5%A4%B4%E6%91%84%E5%BD%B1/">街头摄影</a>
-          
-          <a href="/tags/%E7%BA%AA%E5%AE%9E%E6%91%84%E5%BD%B1/">纪实摄影</a>
-          
-        </span>
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="post animated fadeInDown">
-  <div class="post_title">
-    <h2><a href='/photography/hongkong-photography-20181124/'>香港街头摄影</a></h2>
-  </div>
-  
-  <div class="list">
-    <div class="post_content markdown" style="padding-left: 50px;padding-right: 50px;">
-      <p><p><img src="/photography/assets/street.jpg" alt="street" /></p>
-
-<p>[简述] 2018年11月24日, 赴香港参与摄影展, 香港街头</p></p>
-    </div>
-  </div>
-  
-  <div class="post_footer">
-    <div class="meta">
-      <div class="info">
-        <span class="field">
-          <i class="remixicon-map-pin-time-line"></i>
-          <span class="date">2018-11-28</span>
         </span>
         
         <span class="field tags">

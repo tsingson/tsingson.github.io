@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>设计 on 技术.设计.音乐--带来价值与欢乐的三明智</title>
@@ -12,13 +12,22 @@
     
     
     <item>
+      <title>websocket ( go srv / JS client) 使用flatbuffers 交互</title>
+      <link>/tech/flatbuffers/</link>
+      <pubDate>Thu, 02 Jan 2020 22:02:57 +0800</pubDate>
+      
+      <guid>/tech/flatbuffers/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34;&gt;&lt;/p&gt;
+&lt;p&gt;[简述]   在 go websocket server 与 javascript websocket client 交互中使用 flatbuffers&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>用 let&#39;s Encrypt 实现 HTTPS 示例( fasthttp 与net/http)</title>
       <link>/tech/https-setup/</link>
       <pubDate>Wed, 07 Aug 2019 12:02:57 +0800</pubDate>
       
       <guid>/tech/https-setup/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/go-logo-music.jpg&#34; alt=&#34;go-logo-music&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/go-logo-music.jpg&#34; alt=&#34;go-logo-music&#34;&gt;&lt;/p&gt;
 &lt;p&gt;[摘要] let&#39;s Encrypt 是一个免费提供 HTTPS 的签名服务, 这里提供一个示例,用 &lt;a href=&#34;https://github.com/mholt/certmagic&#34;&gt;certmagic&lt;/a&gt; 实现 fasthttp 与 net/http 上支持 HTTPS&lt;/p&gt;</description>
     </item>
     
@@ -28,14 +37,11 @@
       <pubDate>Sun, 04 Aug 2019 12:02:57 +0800</pubDate>
       
       <guid>/tech/program-music/</guid>
-      <description>&lt;p&gt;&amp;quot;编程为什么不用中文？兼谈如何学习编程&amp;quot;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&amp;ldquo;编程为什么不用中文？兼谈如何学习编程&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;相关文章, &lt;a href=&#34;https://juejin.im/post/5d37efc6f265da1b7c615b39&#34;&gt;中文编程兴起的必然性&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;[摘要] 知乎上有个问题&lt;a href=&#34;https://www.zhihu.com/question/337465148/answer/776165277&#34;&gt;编程为什么不用中文？&lt;/a&gt;    有点意思, 我把回复单独整理后, 写在这了: 编程语言是个符号系统, 能否广泛使用要看使用人员基数&lt;/p&gt;</description>
     </item>
     
@@ -45,8 +51,7 @@
       <pubDate>Sat, 03 Aug 2019 02:02:57 +0800</pubDate>
       
       <guid>/tech/golang-error-handling/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34;&gt;&lt;/p&gt;
 &lt;p&gt;go语言的 error handling 是不是一个败笔?  这是知乎上的一个提问, 我写了一些看法: 过于简单, 但不算败笔.&lt;/p&gt;</description>
     </item>
     
@@ -56,20 +61,20 @@
       <pubDate>Fri, 02 Aug 2019 02:02:57 +0800</pubDate>
       
       <guid>/tech/fasthttp01/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;fasthttp 文章系列:
-*  fasthttp 概述与 Hello World(本文)
-*  fasthttp 客户端与服务端的封装, 日志与路由
-*  fasthttp 所谓 RESTful (兼介绍fastjson)
-*  fasthttp 中间件( 简单认证/ session会话...)
-*  fasthttp 处理 JWT (及 JWT安全性)
-*  fasthttp 对接非标准 web client (作为AAA, 数据加解密)
-*  fasthttp 缓存/proxy代理/反向代理
-*  fasthttp 部署&lt;/p&gt;
+&lt;p&gt;fasthttp 文章系列:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fasthttp 概述与 Hello World(本文)&lt;/li&gt;
+&lt;li&gt;fasthttp 客户端与服务端的封装, 日志与路由&lt;/li&gt;
+&lt;li&gt;fasthttp 所谓 RESTful (兼介绍fastjson)&lt;/li&gt;
+&lt;li&gt;fasthttp 中间件( 简单认证/ session会话&amp;hellip;)&lt;/li&gt;
+&lt;li&gt;fasthttp 处理 JWT (及 JWT安全性)&lt;/li&gt;
+&lt;li&gt;fasthttp 对接非标准 web client (作为AAA, 数据加解密)&lt;/li&gt;
+&lt;li&gt;fasthttp 缓存/proxy代理/反向代理&lt;/li&gt;
+&lt;li&gt;fasthttp 部署&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;[简述]  &lt;a href=&#34;https://github.com/valyala/fasthttp&#34;&gt;github.com/valyala/fasthttp&lt;/a&gt; 是 golang 中一个标志性的高性能 HTTP库, 主要用于 webserver 开发, 以及 web client / proxy 等. fasthttp 的高性能开发思路, 启发了很多开发者.&lt;/p&gt;</description>
     </item>
     
@@ -88,8 +93,7 @@
       <pubDate>Thu, 30 May 2019 23:02:57 +0800</pubDate>
       
       <guid>/tech/goim-go-06/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/go-reading.jpg&#34; alt=&#34;go-reading&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/go-reading.jpg&#34; alt=&#34;go-reading&#34;&gt;&lt;/p&gt;
 &lt;p&gt;[简述]  &lt;a href=&#34;http://goim.io&#34;&gt;http://goim.io&lt;/a&gt; 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文汇总在 &lt;a href=&#34;https://github.com/developer-learning/reading-go&#34;&gt;go夜读&lt;/a&gt; 组织的 goim 交流分享会后的小结&lt;/p&gt;</description>
     </item>
     
@@ -99,8 +103,7 @@
       <pubDate>Tue, 14 May 2019 12:02:57 +0800</pubDate>
       
       <guid>/tech/hot-golang/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/go-logo-music.jpg&#34; alt=&#34;go-logo-music&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/go-logo-music.jpg&#34; alt=&#34;go-logo-music&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;在 知乎 的一个问题&lt;a href=&#34;https://www.zhihu.com/question/46755408/answer/586812009&#34;&gt;为什么 Go 语言能在中国这么火？ https://www.zhihu.com/question/46755408/answer/586812009&lt;/a&gt; 的回复, 整理后发在这里了&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -112,8 +115,7 @@
       <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
       <guid>/tech/ums-step-by-step/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/self.jpg&#34; alt=&#34;self&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/self.jpg&#34; alt=&#34;self&#34;&gt;&lt;/p&gt;
 &lt;p&gt;[简述]  一个从零开始的小项目, 持续推进. go-ums 开发目标是一个开源项目, 核心由 golang 开发,  提供用户管理(user-management-subsystem) / AAA 认证/鉴权/授 / 多业务会话共享与管理等, 以支持分布式部署及云部署为主要目标&lt;/p&gt;</description>
     </item>
     
@@ -150,31 +152,8 @@
       <pubDate>Sun, 21 Apr 2019 22:02:57 +0800</pubDate>
       
       <guid>/tech/goim-go-01/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34;&gt;&lt;/p&gt;
 &lt;p&gt;[简述]  &lt;a href=&#34;http://goim.io&#34;&gt;http://goim.io&lt;/a&gt; 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文介绍 goim 分布式架构及内部网元接口设计要点, 以及如何定制&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/tech/engineer-or-coder/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/tech/engineer-or-coder/</guid>
-      <description>_
-程序设计能力.........如何提高, 空谈很难说清楚.
-这基本上得在商用项目中带........
-如果工作是 web + CRUD boy 这一类, 前接触不到客户, 后接触不到运营/运维,
-当前或将来一段时间内都是研发经理这一类的上司或 leader 分配工作任务的话,
-基本上, 谈提高程序设计能力, 那是浪费时间. 看书, 刷题都不可以提高设计能力, 只能加强你的基础技能, 但不能加强你在实际业务场景中选择/使用哪些基础技能的设计能力. 遇到真正现实环境中的&amp;quot;问题&amp;quot; / &amp;quot;故障现象&amp;quot; / &amp;quot;业务需求&amp;quot;, 一样会......无处下手.
-设计能力, 就是, 应用你的基础技能, 去:
- 发现问题现象( 业务或故障), 分解&amp;quot;问题&amp;quot;, 定位&amp;quot;问题&amp;quot;, 验证&amp;quot;问题&amp;quot;, 最终确认问题------以事实为基础 灵活分析问题, 大胆多种假设解决方案, 并提前评估各种解决方案的优劣--------头脑要清醒, 思考要完整思维要条理化 将优选后的解决方案做出 prototype , 测试运行, 验证最初的问题是否真正解决 ------ 大胆假设, 小心论证 (注:只有第三点, 与写代码有关........)  一个良好的设计, 是问题的终结者. 在 发现真正的问题, 设计解决方案, 验证复查直到真正解决问题过程中, 设计能力自然积累提升.
-如果没有严格结构化的思维, 没有良好的方法论, 没有良好的代码基础, 程序设计能力的提高, 那是空中楼宇, 免谈.
-知道研究生, 尤其是博士为什么受欢迎吗? 最重要的原因是, 这些研究生, 博士 ( 不是买来的那种研究生,博士), 都经历过独立研究课题并做出导师认可的解决, 他们面对&amp;quot;问题&amp;quot; , 解决问题的思维成熟而有效, 就算是他们不太熟悉的领域, 也能快速入手, 边学边用, 给出严谨的&amp;quot;很接近优秀&amp;quot;的假设方案, 不断有计划的实施, 直至解决问题--------- 这就是他们根子里的设计能力.
-上面第三点中的 prototype, 才涉及到编程, 这时, 是评估使用合适的&amp;quot;轮子&amp;quot;, 还是在自己熟悉的代码库上造轮子........... 这已经不重要了, 因为, 解决问题的思路, 会指导你走一条有效率的路.
-至于题主提到的:
- 1.Java如何提升编程设计能力。 2.golang函数+接口编程，如何编写合理，高扩展性程序。
- 对问题1 , 大约说一下, 编程能力是编程能力, 设计能力是设计能力, 有编程能力, 两者并不关联.</description>
     </item>
     
   </channel>

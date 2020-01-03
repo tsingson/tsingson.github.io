@@ -45,7 +45,7 @@
     
     "genre": "tech",
     "keywords": "goim, golang",
-    "wordcount":  1652 ,
+    "wordcount":  1635 ,
     "url": "\/tech\/goim-go-04\/",
     "datePublished": "2019-05-07T12:02:57\x2b08:00",
     "dateModified": "2019-05-07T12:02:57\x2b08:00",
@@ -138,50 +138,41 @@
                     <span class="date">2019-05-07</span>
                 </div>
                 <div class="post_content markdown"><p>[简述]  <a href="http://goim.io">http://goim.io</a> 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文介绍 goim 中的数据定义与 data flow 数据流转</p>
-
-<hr />
-
+<hr>
 <blockquote>
-<p>goim 文章系列(共5篇):
-* <a href="/tech/goim-go-01/index.html">goim 架构与定制</a>
-* <a href="/tech/goim-go-02/index.html">从goim定制, 浅谈 golang 的 interface 解耦合与gRPC</a>
-* <a href="/tech/goim-go-03/index.html">goim中的 bilibili/discovery (eureka)基本概念及应用</a>
-* <a href="/tech/goim-go-04/index.html">goim 的 data flow 数据流</a>
-* <a href="/tech/goim-go-06/index.html">goim的业务集成(分享会小结与QA)</a></p>
-
+<p>goim 文章系列(共5篇):</p>
+<ul>
+<li><a href="/tech/goim-go-01/index.html">goim 架构与定制</a></li>
+<li><a href="/tech/goim-go-02/index.html">从goim定制, 浅谈 golang 的 interface 解耦合与gRPC</a></li>
+<li><a href="/tech/goim-go-03/index.html">goim中的 bilibili/discovery (eureka)基本概念及应用</a></li>
+<li><a href="/tech/goim-go-04/index.html">goim 的 data flow 数据流</a></li>
+<li><a href="/tech/goim-go-06/index.html">goim的业务集成(分享会小结与QA)</a></li>
+</ul>
 <p>有个 slack 频道, 不少朋友在交流 goim , 欢迎加入<a href="https://join.slack.com/t/reading-go/shared_invite/enQtMjgwNTU5MTE5NjgxLTA5NDQwYzE4NGNhNDI3N2E0ZmYwOGM2MWNjMDUyNjczY2I0OThiNzA5ZTk0MTc1MGYyYzk0NTA0MjM4OTZhYWE">slack #goim</a></p>
 </blockquote>
-
-<h2 id="1-goim-中的-data-flow-数据流转">1. goim 中的 data flow 数据流转</h2>
-
-<h3 id="1-1-架构中的数据流转">1.1 架构中的数据流转</h3>
-
+<h2 id="1-goim--data-flow-">1. goim 中的 data flow 数据流转</h2>
+<h3 id="11-">1.1 架构中的数据流转</h3>
 <p>看图</p>
-
-<p><img src="/tech/assets/goim-architecture-dataflow.png" alt="goim-architecture-dataflow" /></p>
-
-<p>数据流转
-1. http 接口向 logic 发送数据
-2. logic 从 redis 中获取会话数据, 以 protobuf 序列化数据, 发送到 MQ
-3. job 从 MQ 中订阅数据, 取出 im 发送数据中的 server / room 向指定 server 的 comet 发送数据
-4. comet 接收 job 分发的数据后, 存入 指定 channel 的 ring buffer , 再转为 tcp/websocket 数据包, 发送到指定 channel 的客户端</p>
-
-<h2 id="1-2-简化后的数据流转细节">1.2 简化后的数据流转细节</h2>
-
-<p><img src="/tech/assets/goim-architecture-dataflow-detail.png" alt="goim-architecture-dataflow-detail" /></p>
-
-<p>上示意图标注了 goim 中的关键数据结构:
-1. 标注了 im 发送数据构成, 注意, 这个数据结构是被logic 以 protobuf 序列化后发到 MQ , 并在 job 中反序列化后, 分发到 comet
-2. 这里的会话信息, 主要是 mid --&gt; server 与 room--&gt;server 的对应关系, 存在 redis 中
-3. comet 中的 im 信息, 由 job 从 MQ 中反序列化后, 取出 server / room / keys( 一到多个key , 对应 channel ) 发送到指定 comet server
-4. comet 以 tcp / websocket 封装数据包, 发送给终端用户, 终端解包后显示</p>
-
-<h2 id="2-goim-中的数据定义">2. goim 中的数据定义</h2>
-
-<h3 id="2-1-logic-发送-im-信息">2.1. logic 发送 im 信息</h3>
-
+<p><img src="/tech/assets/goim-architecture-dataflow.png" alt="goim-architecture-dataflow"></p>
+<p>数据流转</p>
+<ol>
+<li>http 接口向 logic 发送数据</li>
+<li>logic 从 redis 中获取会话数据, 以 protobuf 序列化数据, 发送到 MQ</li>
+<li>job 从 MQ 中订阅数据, 取出 im 发送数据中的 server / room 向指定 server 的 comet 发送数据</li>
+<li>comet 接收 job 分发的数据后, 存入 指定 channel 的 ring buffer , 再转为 tcp/websocket 数据包, 发送到指定 channel 的客户端</li>
+</ol>
+<h2 id="12-">1.2 简化后的数据流转细节</h2>
+<p><img src="/tech/assets/goim-architecture-dataflow-detail.png" alt="goim-architecture-dataflow-detail"></p>
+<p>上示意图标注了 goim 中的关键数据结构:</p>
+<ol>
+<li>标注了 im 发送数据构成, 注意, 这个数据结构是被logic 以 protobuf 序列化后发到 MQ , 并在 job 中反序列化后, 分发到 comet</li>
+<li>这里的会话信息, 主要是 mid &ndash;&gt; server 与 room&ndash;&gt;server 的对应关系, 存在 redis 中</li>
+<li>comet 中的 im 信息, 由 job 从 MQ 中反序列化后, 取出 server / room / keys( 一到多个key , 对应 channel ) 发送到指定 comet server</li>
+<li>comet 以 tcp / websocket 封装数据包, 发送给终端用户, 终端解包后显示</li>
+</ol>
+<h2 id="2-goim-">2. goim 中的数据定义</h2>
+<h3 id="21-logic--im-">2.1. logic 发送 im 信息</h3>
 <p>发布 im 信息定义( 在 protobuf 中的定义)</p>
-
 <pre><code>message PushMsg {
     enum Type {
         PUSH = 0;
@@ -196,48 +187,31 @@
     repeated string keys = 6;
     bytes msg = 7;
 }
-</code></pre>
-
-<h3 id="2-2-会话数据">2.2 会话数据</h3>
-
+</code></pre><h3 id="22-">2.2 会话数据</h3>
 <p>当 tcp client 或 websocket client 连接 comet server 时, comet 以 gRPC 向 logic 进行内部通讯, 生成会话数据, 存在 redis 中, 具体细节不展开, 看代码</p>
-
-<p>当 http client 向 logic 发送 im 消息时, logic 向 redis 查询会话数据, 对于已经存在的 room--&gt; server / mid ( memberID) --&gt; server 即发送消息到 MQ , 该部分代码比较清楚, 也不再加说明</p>
-
-<h3 id="2-3-tcp-websocket-数据包定义">2.3.  tcp / websocket 数据包定义</h3>
-
+<p>当 http client 向 logic 发送 im 消息时, logic 向 redis 查询会话数据, 对于已经存在的 room&ndash;&gt; server / mid ( memberID) &ndash;&gt; server 即发送消息到 MQ , 该部分代码比较清楚, 也不再加说明</p>
+<h3 id="23--tcp--websocket-">2.3.  tcp / websocket 数据包定义</h3>
 <p>推送 im 信息,  对象名称为 proto,  在 protobuf 中定义</p>
-
 <pre><code>message Proto {
     int32 ver = 1 [(gogoproto.jsontag) = &quot;ver&quot;];
     int32 op = 2 [(gogoproto.jsontag) = &quot;op&quot;];
     int32 seq = 3 [(gogoproto.jsontag) = &quot;seq&quot;];
     bytes body = 4 [(gogoproto.jsontag) = &quot;body&quot;];
 }
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>protobuf 文件 <a href="https://github.com/Terry-Mao/goim/blob/master/api/comet/grpc/api.proto">https://github.com/Terry-Mao/goim/blob/master/api/comet/grpc/api.proto</a> 中第12行</p>
-
+</blockquote>
+<blockquote>
 <p>tcp / websocket 数据包组包/折包操作在 <a href="https://github.com/Terry-Mao/goim/blob/master/api/comet/grpc/protocol.go">/api/comet/grpc/protocol.go</a></p>
 </blockquote>
-
-<p><img src="/tech/assets/goim-pockage-define-7216912.png" alt="goim-pockage-define" /></p>
-
+<p><img src="/tech/assets/goim-pockage-define-7216912.png" alt="goim-pockage-define"></p>
 <p>由上图可见,  goim 在 tcp /websocket 数据包的数据包定义, 与 go 中 proto 定义, 多了, 数据包总长度 / 包头长度两个字段</p>
-
-<h2 id="3-comet-中的处理">3. comet 中的处理</h2>
-
-<p><img src="/tech/assets/goim-dataflow-detail.png" alt="goim-dataflow-detail" /></p>
-
+<h2 id="3-comet-">3. comet 中的处理</h2>
+<p><img src="/tech/assets/goim-dataflow-detail.png" alt="goim-dataflow-detail"></p>
 <p>简化数据流转, 从发送端数据到 接收端数据, 可以看到,  serverID / roomID / channel ( 用 mid 或 key 来指示) 的主要作用作为分流/分发用, 在最后推送数据包中, 就不在包含这三个字段了.</p>
-
 <p>同时,  comet 中使用了 ring buffer 来缓存一个 channel 送达的多条信息并推送到终端, 这里, 并没有看到对推送下发的信息作更多处理.</p>
-
-<hr />
-
+<hr>
 <p><strong>看代码, 补充细节</strong></p>
-
 <pre><code>// Channel used by message pusher send msg to write goroutine.
 type Channel struct {
 	c        *conf.CometConfig
@@ -256,53 +230,36 @@ type Channel struct {
 
 	mutex sync.RWMutex
 }
-</code></pre>
-
-<p>这里:
-1. mid 就是 memberID , 当前 channel ( 用户端与 comet 的长连接) 是哪个用户连接上的
-该长连接使用 key 作为长连接的会话标识, 换个方式说, key 也就标定了一个 im 信息要发给哪个/哪几个在线长连接对端的用户
-2. key 就是长连接的会话ID, 可以这么理解, 就算是 sessionID 吧
-3. watchOps 是一个map 映射表, 其中的 int32 是房间号.  map 多个房间号, map 结构是用来查询房间号是否在 map 中存在或不存在. watchOps 是当前长连接用户用来监听当前客户端接收哪个房间的 im 消息推送, 换个方式说, 一个 goim 终端可以接收多个房间发送来的 im 消息
-4. watchOps 初始化是在 tcp / websocket 客户端进行首次连接时处理的, 细节看代码.</p>
-
-<hr />
-
+</code></pre><p>这里:</p>
+<ol>
+<li>mid 就是 memberID , 当前 channel ( 用户端与 comet 的长连接) 是哪个用户连接上的
+该长连接使用 key 作为长连接的会话标识, 换个方式说, key 也就标定了一个 im 信息要发给哪个/哪几个在线长连接对端的用户</li>
+<li>key 就是长连接的会话ID, 可以这么理解, 就算是 sessionID 吧</li>
+<li>watchOps 是一个map 映射表, 其中的 int32 是房间号.  map 多个房间号, map 结构是用来查询房间号是否在 map 中存在或不存在. watchOps 是当前长连接用户用来监听当前客户端接收哪个房间的 im 消息推送, 换个方式说, 一个 goim 终端可以接收多个房间发送来的 im 消息</li>
+<li>watchOps 初始化是在 tcp / websocket 客户端进行首次连接时处理的, 细节看代码.</li>
+</ol>
+<hr>
 <p>从 logic 自 http 的 post 请求中, 获取发布 im 信息后, 序列化发到 MQ, 在 job 中拆包反序列化, 再组包, 这一步骤对性能是否有影响, 需发测试数据来定位, 但个人感觉, 这几次拆包组包, 有点重复.</p>
-
-<h2 id="4-小结">4. 小结</h2>
-
+<h2 id="4-">4. 小结</h2>
 <p>以上, 应开源社区的朋友要求, 对内部数据结构作了一个简化分析, 花时不多,水平有限,  或有考虑不周或分析不当, 欢迎批评指点.</p>
-
 <p>最后,  <a href="http://goim.io">http://goim.io</a>  在网络上相关文章不少, 好文不少, 给我启迪, 一并感谢.</p>
-
 <p>推荐以下文章:</p>
-
 <ul>
 <li><a href="https://alexstocks.github.io/html/im.html">https://alexstocks.github.io/html/im.html</a> 作者 AlexStcks, 非常棒的文章, 集思践行, 很有深度</li>
 <li><a href="https://github.com/LinkinStars/simple-chatroom">https://github.com/LinkinStars/simple-chatroom</a> 作者:  LinkinStars, 这个值得一看</li>
-<li><a href="https://moonshining.github.io/2018/03/09/goim-comet模块源码分析/">https://moonshining.github.io/2018/03/09/goim-comet模块源码分析/</a>  写得很细致</li>
+<li><a href="https://moonshining.github.io/2018/03/09/goim-comet%E6%A8%A1%E5%9D%97%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">https://moonshining.github.io/2018/03/09/goim-comet模块源码分析/</a>  写得很细致</li>
 </ul>
-
-<hr />
-
+<hr>
 <p><strong>再一次, 感谢 <a href="https://www.bilibili.com">https://www.bilibili.com</a> 的开源 &amp;  <a href="https://github.com/Terry-Mao/">毛剑</a>  及众多开源社区的前辈们,朋友们</strong></p>
-
 <p>_</p>
-
-<h2 id="关于我">关于我</h2>
-
+<h2 id="heading">关于我</h2>
 <p>网名 tsingson (三明智, 江湖人称3爷)</p>
-
 <p>原 ustarcom IPTV/OTT 事业部播控产品线技术架构湿/解决方案工程湿角色(8年), 自由职业者,</p>
-
 <p>喜欢音乐(口琴,是第三/四/五届广东国际口琴嘉年华的主策划人之一), 摄影与越野,</p>
-
 <p>喜欢 golang 语言 (商用项目中主要用 postgres + golang )</p>
-
 <p>_</p>
-
 <p>_
- <a href="https://github.com/tsingson">tsingson</a> 写于中国深圳 <a href="https://tsingson.github.io/music/about-studio/">小罗号口琴音乐中心</a>,   2019/05/07</p></div>
+<a href="https://github.com/tsingson">tsingson</a> 写于中国深圳 <a href="https://tsingson.github.io/music/about-studio/">小罗号口琴音乐中心</a>,   2019/05/07</p></div>
                 <div class="post_footer">
                     
                     <div class="meta">

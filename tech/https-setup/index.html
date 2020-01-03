@@ -45,7 +45,7 @@
     
     "genre": "tech",
     "keywords": "golang",
-    "wordcount":  879 ,
+    "wordcount":  919 ,
     "url": "\/tech\/https-setup\/",
     "datePublished": "2019-08-07T12:02:57\x2b08:00",
     "dateModified": "2019-08-07T12:02:57\x2b08:00",
@@ -137,20 +137,13 @@
                     <h2><a href='/tech/https-setup/'>用 let&#39;s Encrypt 实现 HTTPS 示例( fasthttp 与net/http)</a></h2>
                     <span class="date">2019-08-07</span>
                 </div>
-                <div class="post_content markdown"><p><img src="/tech/assets/go-logo-music.jpg" alt="go-logo-music" /></p>
-
+                <div class="post_content markdown"><p><img src="/tech/assets/go-logo-music.jpg" alt="go-logo-music"></p>
 <p>[摘要] let's Encrypt 是一个免费提供 HTTPS 的签名服务, 这里提供一个示例,用 <a href="https://github.com/mholt/certmagic">certmagic</a> 实现 fasthttp 与 net/http 上支持 HTTPS</p>
-
-<h2 id="0-基本配置">0. 基本配置</h2>
-
-<p>我的域名, 包括 tsingson.io 与 www.tsingson.io , 在 DNS 上加上 A 记录, 指向我的服务器 IP</p>
-
+<h2 id="0-">0. 基本配置</h2>
+<p>我的域名, 包括 tsingson.io 与 <a href="http://www.tsingson.io">www.tsingson.io</a> , 在 DNS 上加上 A 记录, 指向我的服务器 IP</p>
 <p>为了在 let's Encrypt 获取 HTTPS 签名证书, 使用 tsingson_at_me_com 这个邮箱进行管理</p>
-
 <p>服务器上, 把 HTTPS 签名证书文件存在 /home/go/bin/ 路径下</p>
-
-<h2 id="1-使用-certmagic-库获取-https证书-生产模式-另有测试模式">1. 使用 certmagic 库获取 HTTPS证书, 生产模式( 另有测试模式)</h2>
-
+<h2 id="1--certmagic--https--">1. 使用 certmagic 库获取 HTTPS证书, 生产模式( 另有测试模式)</h2>
 <pre><code>package autotls
 
 import (
@@ -188,21 +181,14 @@ func LetsEncryptTLS(path string, email string, domainName ...string) (err error)
 
 	return
 }
-</code></pre>
-
-<p>调用方式, 见代码</p>
-
+</code></pre><p>调用方式, 见代码</p>
 <pre><code>
 go autotls.LetsEncryptTLS(&quot;/home/go/bin/&quot;, &quot;tsingson@me.com&quot;, &quot;www.tsingson.io&quot;, &quot;tsingson.io&quot;)
 
 time.Sleep(1 * time.Minute) // 等待一下, 让 HTTPS 证书缓存成功........
 
-</code></pre>
-
-<p>首次运行前, 请创建 /home/go/bin 路径</p>
-
+</code></pre><p>首次运行前, 请创建 /home/go/bin 路径</p>
 <p>运行时会打印日志, 约有 3秒左右, 会成功获取 HTTPS 签名证书, 存在以下路径( 注: <strong>生产模式</strong> )</p>
-
 <pre><code>
 /home/go/bin/acme #  tree .
 .
@@ -224,16 +210,11 @@ time.Sleep(1 * time.Minute) // 等待一下, 让 HTTPS 证书缓存成功.......
 
 7 directories, 8 files
 
-</code></pre>
-
-<p>certmagic 的 Manage 将来会自动更新 HTTPS 证书</p>
-
+</code></pre><p>certmagic 的 Manage 将来会自动更新 HTTPS 证书</p>
 <blockquote>
 <p>注: 测试模式, 缓存的 HTTPS 证书存储路径不太一样, 请自行检查路径</p>
 </blockquote>
-
-<h2 id="2-在-net-http-上使用">2. 在 net/http 上使用</h2>
-
+<h2 id="2--nethttp-">2. 在 net/http 上使用</h2>
 <pre><code>package main
 
 import (
@@ -264,10 +245,7 @@ func main() {
     }
 }
 
-</code></pre>
-
-<h2 id="3-在-fasthttp-上使用">3. 在 fasthttp 上使用</h2>
-
+</code></pre><h2 id="3--fasthttp-">3. 在 fasthttp 上使用</h2>
 <pre><code>package main
 
 import (
@@ -306,40 +284,24 @@ func main() {
 	}
 }
 
-</code></pre>
-
-<h2 id="4-小结">4. 小结</h2>
-
-<p>浏览器上验证, 步骤省略.........</p>
-
-<p>Done.   完美.......</p>
-
+</code></pre><h2 id="4-">4. 小结</h2>
+<p>浏览器上验证, 步骤省略&hellip;&hellip;&hellip;</p>
+<p>Done.   完美&hellip;&hellip;.</p>
 <blockquote>
 <p>let's Encrypt 的测试模式, 在浏览器上验证, 会提示, 不是安全的 HTTPS 签名证书.</p>
-
-<p>换成生产模式就好了...........</p>
+<p>换成生产模式就好了&hellip;&hellip;&hellip;..</p>
 </blockquote>
-
 <p>_</p>
-
 <p>_</p>
-
 <p>_</p>
-
-<h3 id="关于我">关于我</h3>
-
+<h3 id="heading">关于我</h3>
 <p>网名 tsingson (三明智, 江湖人称3爷)</p>
-
 <p>原 ustarcom IPTV/OTT 事业部播控产品线技术架构湿/解决方案工程湿角色(8年), 自由职业者,</p>
-
 <p>喜欢音乐(口琴,是第三/四/五届广东国际口琴嘉年华的主策划人之一), 摄影与越野,</p>
-
 <p>喜欢 golang 语言 (商用项目中主要用 postgres + golang )</p>
-
 <p>_</p>
-
 <p>_
- <a href="https://github.com/tsingson">tsingson</a> 写于中国深圳 <a href="https://tsingson.github.io/music/about-studio/">小罗号口琴音乐中心</a>,   2019/08/07</p></div>
+<a href="https://github.com/tsingson">tsingson</a> 写于中国深圳 <a href="https://tsingson.github.io/music/about-studio/">小罗号口琴音乐中心</a>,   2019/08/07</p></div>
                 <div class="post_footer">
                     
                     <div class="meta">

@@ -1,39 +1,64 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2019-08-07T12:02:57+08:00</lastmod>
+    <lastmod>2020-01-02T22:02:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/development/</loc>
-    <lastmod>2019-08-07T12:02:57+08:00</lastmod>
+    <lastmod>2020-01-02T22:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/flatbuffers/</loc>
+    <lastmod>2020-01-02T22:02:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/golang/</loc>
-    <lastmod>2019-08-07T12:02:57+08:00</lastmod>
+    <lastmod>2020-01-02T22:02:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>/series/golang/</loc>
-    <lastmod>2019-08-07T12:02:57+08:00</lastmod>
+    <loc>/tags/grpc/</loc>
+    <lastmod>2020-01-02T22:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/series/grpc/</loc>
+    <lastmod>2020-01-02T22:02:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>/series/</loc>
-    <lastmod>2019-08-07T12:02:57+08:00</lastmod>
+    <lastmod>2020-01-02T22:02:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2019-08-07T12:02:57+08:00</lastmod>
+    <lastmod>2020-01-02T22:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/websocket/</loc>
+    <lastmod>2020-01-02T22:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tech/flatbuffers/</loc>
+    <lastmod>2020-01-02T22:02:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>/</loc>
+    <lastmod>2020-01-02T22:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/series/golang/</loc>
     <lastmod>2019-08-07T12:02:57+08:00</lastmod>
   </url>
   
@@ -68,16 +93,6 @@
   </url>
   
   <url>
-    <loc>/tags/postgres/</loc>
-    <lastmod>2019-08-01T12:02:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/series/postgres/</loc>
-    <lastmod>2019-08-01T12:02:57+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tech/go-performance/</loc>
     <lastmod>2019-06-01T02:02:57+08:00</lastmod>
   </url>
@@ -89,22 +104,12 @@
   
   <url>
     <loc>/tags/goim/</loc>
-    <lastmod>2019-05-31T23:02:57+08:00</lastmod>
+    <lastmod>2019-05-30T23:02:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>/tech/goim-go-06/</loc>
     <lastmod>2019-05-30T23:02:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/mac/</loc>
-    <lastmod>2019-05-30T22:02:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/series/mac/</loc>
-    <lastmod>2019-05-30T22:02:57+08:00</lastmod>
   </url>
   
   <url>
@@ -123,17 +128,7 @@
   </url>
   
   <url>
-    <loc>/tags/flatbuffers/</loc>
-    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tech/ums-step-by-step/</loc>
-    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/grpc/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
   </url>
   
@@ -149,11 +144,6 @@
   
   <url>
     <loc>/tags/ums/</loc>
-    <lastmod>2019-05-11T12:02:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/websocket/</loc>
     <lastmod>2019-05-11T12:02:57+08:00</lastmod>
   </url>
   
@@ -183,17 +173,17 @@
   </url>
   
   <url>
+    <loc>/categories/photography/</loc>
+    <lastmod>2019-05-01T12:02:57+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/photography/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
   </url>
   
   <url>
     <loc>/series/photography/</loc>
-    <lastmod>2019-05-01T12:02:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/photography/</loc>
     <lastmod>2019-05-01T12:02:57+08:00</lastmod>
   </url>
   
@@ -333,17 +323,12 @@
   </url>
   
   <url>
+    <loc>/design/tech-skill/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/music/pay-back/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tech/engineer-or-coder/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/techpostgresql11/</loc>
     <priority>0</priority>
   </url>
   

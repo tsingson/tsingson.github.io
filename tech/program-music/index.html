@@ -45,7 +45,7 @@
     
     "genre": "tech",
     "keywords": "golang",
-    "wordcount":  2792 ,
+    "wordcount":  3018 ,
     "url": "\/tech\/program-music\/",
     "datePublished": "2019-08-04T12:02:57\x2b08:00",
     "dateModified": "2019-08-04T12:02:57\x2b08:00",
@@ -137,202 +137,138 @@
                     <h2><a href='/tech/program-music/'>编程为什么不用中文？兼谈如何学习编程</a></h2>
                     <span class="date">2019-08-04</span>
                 </div>
-                <div class="post_content markdown"><p>&quot;编程为什么不用中文？兼谈如何学习编程&quot;</p>
-
-<p><img src="/tech/assets/photo-desk.jpg" alt="photo-desk" /></p>
-
+                <div class="post_content markdown"><p>&ldquo;编程为什么不用中文？兼谈如何学习编程&rdquo;</p>
+<p><img src="/tech/assets/photo-desk.jpg" alt="photo-desk"></p>
 <blockquote>
 <p>相关文章, <a href="https://juejin.im/post/5d37efc6f265da1b7c615b39">中文编程兴起的必然性</a></p>
 </blockquote>
-
 <p>[摘要] 知乎上有个问题<a href="https://www.zhihu.com/question/337465148/answer/776165277">编程为什么不用中文？</a>    有点意思, 我把回复单独整理后, 写在这了: 编程语言是个符号系统, 能否广泛使用要看使用人员基数</p>
-
 <p>_</p>
-
-<h2 id="0-概述">0. 概述</h2>
-
+<h2 id="0-">0. 概述</h2>
 <p>题主是一个挺好的程序员, 独立思考, 提出疑问也有意思, 只是问题本身的表达, 比较多是在陈述一个事实, 以及题主的思考:</p>
-
 <blockquote>
 <ol>
-<li><p>编程开发语言( 强调可读性) 当前很少用中文表述.</p></li>
-
-<li><p>题主认为: 中文对于我们中文母语的开发者, 更直观明了啊......</p></li>
+<li>
+<p>编程开发语言( 强调可读性) 当前很少用中文表述.</p>
+</li>
+<li>
+<p>题主认为: 中文对于我们中文母语的开发者, 更直观明了啊&hellip;&hellip;</p>
+</li>
 </ol>
 </blockquote>
-
 <p>我个人呢, 不太谦虚的说, 是平面设计者, 自由职业程序开发者, 同时非常喜欢音乐(有个音乐培训小机构), 在这一基础上陈述一下个人观点</p>
-
-<h2 id="1-编程语言是一个符号系统">1. 编程语言是一个符号系统</h2>
-
+<h2 id="1-">1. 编程语言是一个符号系统</h2>
 <p>就像音乐的乐谱, 音乐家们写出乐谱, 演奏家们按谱演奏出音乐家所表达的音乐.  注:  音乐是一个不同强弱的声音(包含休止), 以时间长短构成的声音序列.</p>
-
-<p>程序员们以某种现代计算机开发语言, 写出程序源代码, 表达了自己想让计算机以及计算机构成的网络, 相关的工作网元如打印机,  去执行程序希望实施的某些工作或任务, 这些程序源代码, 最终转化为二进制 CPU 执行指令序列, 交由计算机( 们.....) 去执行</p>
-
+<p>程序员们以某种现代计算机开发语言, 写出程序源代码, 表达了自己想让计算机以及计算机构成的网络, 相关的工作网元如打印机,  去执行程序希望实施的某些工作或任务, 这些程序源代码, 最终转化为二进制 CPU 执行指令序列, 交由计算机( 们&hellip;..) 去执行</p>
 <blockquote>
-<p>演奏人或电声音设备演奏的声音序列  &lt;----&gt;  音乐符号集 &lt;---&gt; 乐谱 ( 音符构成的表达符号序列)</p>
-
-<p>可执行的 CPU/GPU 二进制指令序列 &lt;---&gt;   开发语言指令符号集 &lt;---&gt; 程序源码( 开发语言符号系统构成的源代码序列)</p>
+<p>演奏人或电声音设备演奏的声音序列  &lt;&mdash;-&gt;  音乐符号集 &lt;&mdash;&gt; 乐谱 ( 音符构成的表达符号序列)</p>
+<p>可执行的 CPU/GPU 二进制指令序列 &lt;&mdash;&gt;   开发语言指令符号集 &lt;&mdash;&gt; 程序源码( 开发语言符号系统构成的源代码序列)</p>
 </blockquote>
-
-<p>JAVA 语言的符号系统转换, 如下:
-&gt; 某CPU/GPU 二进制指令序列 &lt;---&gt; 汇编语言&lt;---&gt; java中间码&lt; ---&gt; Java 符号指令集 &lt;-----&gt; java 程序源代码集合( 与数据)</p>
-
+<p>JAVA 语言的符号系统转换, 如下:</p>
+<blockquote>
+<p>某CPU/GPU 二进制指令序列 &lt;&mdash;&gt; 汇编语言&lt;&mdash;&gt; java中间码&lt; &mdash;&gt; Java 符号指令集 &lt;&mdash;&ndash;&gt; java 程序源代码集合( 与数据)</p>
+</blockquote>
 <p>现代音乐的五线谱:</p>
-
 <blockquote>
-<p>演奏人或电声音设备演奏的声音序列: 音乐 &lt;-------&gt; 五线谱定义的音符&lt;-------&gt; 国际标准通用五线乐谱</p>
+<p>演奏人或电声音设备演奏的声音序列: 音乐 &lt;&mdash;&mdash;-&gt; 五线谱定义的音符&lt;&mdash;&mdash;-&gt; 国际标准通用五线乐谱</p>
 </blockquote>
-
 <p>因为历史发展原因, 编程语言的符号系统, 也一直在发生变化, 但总体变化就两个方向:</p>
-
 <ol>
 <li>让人更容易读, 更轻松而有效率地去表达, 符号系统构成准确/科学/精练</li>
 <li>符号系统转化后的二进制代码序列, 被CPU/GPU 执行起来准确而有效率</li>
 </ol>
-
-<h2 id="2-由于历史与文化变迁-现代开发语言一直在新增-消退-及快速进化发展">2. 由于历史与文化变迁, 现代开发语言一直在新增/消退, 及快速进化发展</h2>
-
-<p>这就不多说了,  rust 与 golang 的出现及持续普及, typescript 加强了 javascript, 而 wasm 是 java 中间码思想在浏览器内嵌语言的华丽重生..............以及 LLVM 的持续得到重视与广泛使用</p>
-
+<h2 id="2---">2. 由于历史与文化变迁, 现代开发语言一直在新增/消退, 及快速进化发展</h2>
+<p>这就不多说了,  rust 与 golang 的出现及持续普及, typescript 加强了 javascript, 而 wasm 是 java 中间码思想在浏览器内嵌语言的华丽重生&hellip;&hellip;&hellip;&hellip;..以及 LLVM 的持续得到重视与广泛使用</p>
 <blockquote>
-<p>cpu 指令集  &lt;-----&gt;(  汇编语言---------&gt;  LLVM.........) &lt;----&gt; 高级开发语言 ( 强调易读, 强调效率, 强调安全性,强调多态抽象智能........ )</p>
+<p>cpu 指令集  &lt;&mdash;&ndash;&gt;(  汇编语言&mdash;&mdash;&mdash;&gt;  LLVM&hellip;&hellip;&hellip;) &lt;&mdash;-&gt; 高级开发语言 ( 强调易读, 强调效率, 强调安全性,强调多态抽象智能&hellip;&hellip;.. )</p>
 </blockquote>
-
-<p>高级开发语言, 有 js / java / c / c++ ................. 当然可以有中文编程语言</p>
-
-<h2 id="3-影响现代编程语言的因素-只有两个因数-人员基数及使用领域">3. 影响现代编程语言的因素, 只有两个因数, 人员基数及使用领域</h2>
-
+<p>高级开发语言, 有 js / java / c / c++ &hellip;&hellip;&hellip;&hellip;&hellip;.. 当然可以有中文编程语言</p>
+<h2 id="3---">3. 影响现代编程语言的因素, 只有两个因数, 人员基数及使用领域</h2>
 <p>有些领域开发语言, 是某领域的特殊需要, 但也有人员基数在主导, 比如生物基因研究领域, perl 依然是主力, 而机器学习, python 占有一席之地, 对于数据抽取, sql 是当然的皇者</p>
-
 <p>而通用编程语言, 主要是人员基数在起决定作用, 比较 erlang / haskell 与 java / php 的使用人员基数就知道了</p>
-
 <blockquote>
 <p><strong>注意, 走的人多了, 没有路的地方, 也就成了路.</strong></p>
 </blockquote>
-
-<p>相关:
-&gt; 我乎有人提类似问题, 为什么广东人对取消粤语这个提法, 反应很大?<br />
-&gt;
-&gt; 我个人看法是,  广东人祖祖辈辈都在用的粤语, 关你外人什么事?
-&gt; 为什么要来取缔广东人自己的语言?<br />
-&gt;
-&gt; 历史是不容否定的,并且应该尊重.
-&gt;
-&gt; 粤语作为广东人传承, 粤语,粤剧,粤菜,南岭文化....... 是一体的, 并且在全球范围都被承认是优秀的传承.  广东人保护自己的传承, 我个人非常非常支持.<br />
-&gt;
-&gt; ---------------- 以上表述, 来自我, tsingson  ( 2019/08/04 深圳南山)</p>
-
+<p>相关:</p>
+<blockquote>
+<p>我乎有人提类似问题, 为什么广东人对取消粤语这个提法, 反应很大?</p>
+<p>我个人看法是,  广东人祖祖辈辈都在用的粤语, 关你外人什么事?
+为什么要来取缔广东人自己的语言?</p>
+<p>历史是不容否定的,并且应该尊重.</p>
+<p>粤语作为广东人传承, 粤语,粤剧,粤菜,南岭文化&hellip;&hellip;. 是一体的, 并且在全球范围都被承认是优秀的传承.  广东人保护自己的传承, 我个人非常非常支持.</p>
+<p>&mdash;&mdash;&mdash;&mdash;&mdash;- 以上表述, 来自我, tsingson  ( 2019/08/04 深圳南山)</p>
+</blockquote>
 <p>那么,
 影响中文成为编程语言的因素, 只有一个,有多少人在用或将会使用?</p>
-
 <p>所以, 如果让中文成为使用人多的开发语言, 第一个问题, 用中文表示的符号系统(假设完美的定义出来了) , 真的好到能让很多人认可并使用吗?</p>
-
 <p>对比:</p>
-
 <pre><code>   int var1, var2, var3,var4
    if var1 == var2 then var4=var3 
-</code></pre>
-
-<p>中文?</p>
-
+</code></pre><p>中文?</p>
 <pre><code>  自然数 变量一, 变量二, 变量三, 变量四
   如果  变量一 等于 变量二  那么 变量三 赋值给 变量四
-</code></pre>
-
-<p>来, 我们来构建一个中文开发语言的符号系统
-come on.......................................</p>
-
-<p>大家一起来努力 .........</p>
-
-<h2 id="4-关于中文作为编程语言">4. 关于中文作为编程语言</h2>
-
-<p>相关:
-&gt; 或许有人想翻翻我的&quot;黑&quot;历史 ( 自嘲地笑.......... ) 就知道, 我是最早 perlchina 组建者之一.
-&gt; perl 是优秀的开发语言, 自1999到2005年, 用了6年,最终放弃了, 因为 perl 非常优秀, 但部分语法有点晦涩难读.
-&gt;
-&gt;
-&gt;
-&gt; java 也是我以前常用的开发语言, 符号系统完整而精确, 表达力一流,  看看 java 的泛型, 漂亮啊............  但 java 的 OOP 被某些 OOPer 过份的强调可重用性而让代码层层嵌套,  所以, 个人不喜欢用 java 的某些 framework 们但又不得承认 java 的规范与优秀
-&gt;
-&gt;
-&gt;
-&gt; 当然, 用过 python , 在用 javascript / typescript , 在用 haskell , 在用 plpgsql..........
-&gt;
-&gt;
-&gt;
-&gt; 但 go 语言出现了, 我转到了 go , 因为 go 语言的符号系统, 简明直白,  难有歧义, 而且使用 go 的同道者一直在增长.</p>
-
+</code></pre><p>来, 我们来构建一个中文开发语言的符号系统
+come on&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;</p>
+<p>大家一起来努力 &hellip;&hellip;&hellip;</p>
+<h2 id="4-">4. 关于中文作为编程语言</h2>
+<p>相关:</p>
+<blockquote>
+<p>或许有人想翻翻我的&quot;黑&quot;历史 ( 自嘲地笑&hellip;&hellip;&hellip;. ) 就知道, 我是最早 perlchina 组建者之一.
+perl 是优秀的开发语言, 自1999到2005年, 用了6年,最终放弃了, 因为 perl 非常优秀, 但部分语法有点晦涩难读.</p>
+<p>java 也是我以前常用的开发语言, 符号系统完整而精确, 表达力一流,  看看 java 的泛型, 漂亮啊&hellip;&hellip;&hellip;&hellip;  但 java 的 OOP 被某些 OOPer 过份的强调可重用性而让代码层层嵌套,  所以, 个人不喜欢用 java 的某些 framework 们但又不得承认 java 的规范与优秀</p>
+<p>当然, 用过 python , 在用 javascript / typescript , 在用 haskell , 在用 plpgsql&hellip;&hellip;&hellip;.</p>
+<p>但 go 语言出现了, 我转到了 go , 因为 go 语言的符号系统, 简明直白,  难有歧义, 而且使用 go 的同道者一直在增长.</p>
+</blockquote>
 <p>纵观计算机的历史发展, 英语有先发优势, 英语做为国际通用语言, 使用人数不少, 英语成为编程语言符号系统, 有历史与人员基础两大原因</p>
-
-<p>所以, 想要中文成为某种高级编程语言, 需要用中文编写一个符号系统, 下接 llvm , 上编译中文编程代码.......   个人认为挺有意义, 但没什么建议</p>
-
+<p>所以, 想要中文成为某种高级编程语言, 需要用中文编写一个符号系统, 下接 llvm , 上编译中文编程代码&hellip;&hellip;.   个人认为挺有意义, 但没什么建议</p>
 <p>而将来的历史, 由我们去创造, 题主与支持中文编程的朋友们, 期待中文编程语言的广泛普及.</p>
-
 <p>_</p>
-
 <p>_</p>
-
-<p>( 注: golang 有 google 大厂背书, 发展了10年...........现在这个样子, 依然有人不看好, 呵呵) .</p>
-
+<p>( 注: golang 有 google 大厂背书, 发展了10年&hellip;&hellip;&hellip;..现在这个样子, 依然有人不看好, 呵呵) .</p>
 <p>_</p>
-
 <p>_</p>
-
-<h2 id="5-关于学习编程-以及其他">5. 关于学习编程, 以及其他</h2>
-
-<p>关于如何编程, 我认为,
- &gt; 1. 学习某种编程语言的符号系统, 以及这种编程语言附带的定义问题, 解决问题的哲学, 以及这种语言一些约定俗成的&quot;习惯&quot;, &quot;规范&quot;, &quot;范式&quot;, &quot;模式&quot;....... 套路
- &gt;
- &gt; 1. 自己要精于发现问题, 定义问题的内涵与外延 ( 边界) , 精确定义解决问题的方法(算法)与步骤.......
- &gt;
- &gt; 1. 学会用你学的这种编程语言, 转化, 表达成为解决问题或指派计算机(们....) 去干活的编程源代码.........</p>
-
+<h2 id="5--">5. 关于学习编程, 以及其他</h2>
+<p>关于如何编程, 我认为,</p>
+<blockquote>
+<ol>
+<li>
+<p>学习某种编程语言的符号系统, 以及这种编程语言附带的定义问题, 解决问题的哲学, 以及这种语言一些约定俗成的&quot;习惯&rdquo;, &ldquo;规范&rdquo;, &ldquo;范式&rdquo;, &ldquo;模式&rdquo;&hellip;&hellip;. 套路</p>
+</li>
+<li>
+<p>自己要精于发现问题, 定义问题的内涵与外延 ( 边界) , 精确定义解决问题的方法(算法)与步骤&hellip;&hellip;.</p>
+</li>
+<li>
+<p>学会用你学的这种编程语言, 转化, 表达成为解决问题或指派计算机(们&hellip;.) 去干活的编程源代码&hellip;&hellip;&hellip;</p>
+</li>
+</ol>
+</blockquote>
 <p>所以, 实现编程, 你有需要,</p>
-
 <blockquote>
 <ol>
 <li>了解事物本身, 比如, 了解行业基础, 了解业务场景, 了解业务流程, 了解业务过程中各细分过程的各数据以及数据处理方式与限制条件( 边界)</li>
 <li>用编程语言去表达, 你了解的事物与解决流程</li>
 </ol>
 </blockquote>
-
-<p>最后, 只要精通一种编程语言( 解决问题的方法, 以及用程序语言表达) , 其他编程语言基本只要熟悉特有的符号系统与&quot;套路&quot;, 基本是可以用了 (当然, 用好, 还得多码多用............)</p>
-
+<p>最后, 只要精通一种编程语言( 解决问题的方法, 以及用程序语言表达) , 其他编程语言基本只要熟悉特有的符号系统与&quot;套路&rdquo;, 基本是可以用了 (当然, 用好, 还得多码多用&hellip;&hellip;&hellip;&hellip;)</p>
 <p>_</p>
-
 <p>_</p>
-
 <blockquote>
 <p>“Any fool can write code that a computer can understand. Good programmers write code that humans can understand.”</p>
-
-<p>---------------Martin Fowler</p>
+<p>&mdash;&mdash;&mdash;&mdash;&mdash;Martin Fowler</p>
 </blockquote>
-
-<p>最后, 祝大家码钱愉快.........</p>
-
-<p>ps:  编程不为挣钱, 纯为兴趣爱好?  嗯哼, 偶表示不太相信..........吼哈............</p>
-
+<p>最后, 祝大家码钱愉快&hellip;&hellip;&hellip;</p>
+<p>ps:  编程不为挣钱, 纯为兴趣爱好?  嗯哼, 偶表示不太相信&hellip;&hellip;&hellip;.吼哈&hellip;&hellip;&hellip;&hellip;</p>
 <p>_</p>
-
 <p>_</p>
-
 <p>_</p>
-
-<h3 id="关于我">关于我</h3>
-
+<h3 id="heading">关于我</h3>
 <p>网名 tsingson (三明智, 江湖人称3爷)</p>
-
 <p>原 ustarcom IPTV/OTT 事业部播控产品线技术架构湿/解决方案工程湿角色(8年), 自由职业者,</p>
-
 <p>喜欢音乐(口琴,是第三/四/五届广东国际口琴嘉年华的主策划人之一), 摄影与越野,</p>
-
 <p>喜欢 golang 语言 (商用项目中主要用 postgres + golang )</p>
-
 <p>_</p>
-
 <p>_
- <a href="https://github.com/tsingson">tsingson</a> 写于中国深圳 <a href="https://tsingson.github.io/music/about-studio/">小罗号口琴音乐中心</a>,   2019/08/05</p></div>
+<a href="https://github.com/tsingson">tsingson</a> 写于中国深圳 <a href="https://tsingson.github.io/music/about-studio/">小罗号口琴音乐中心</a>,   2019/08/05</p></div>
                 <div class="post_footer">
                     
                     <div class="meta">

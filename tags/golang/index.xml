@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>golang on 技术.设计.音乐--带来价值与欢乐的三明智</title>
@@ -6,10 +6,20 @@
     <description>Recent content in golang on 技术.设计.音乐--带来价值与欢乐的三明智</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 07 Aug 2019 12:02:57 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jan 2020 22:02:57 +0800</lastBuildDate>
     
 	<atom:link href="/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>websocket ( go srv / JS client) 使用flatbuffers 交互</title>
+      <link>/tech/flatbuffers/</link>
+      <pubDate>Thu, 02 Jan 2020 22:02:57 +0800</pubDate>
+      
+      <guid>/tech/flatbuffers/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34;&gt;&lt;/p&gt;
+&lt;p&gt;[简述]   在 go websocket server 与 javascript websocket client 交互中使用 flatbuffers&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>用 let&#39;s Encrypt 实现 HTTPS 示例( fasthttp 与net/http)</title>
@@ -17,8 +27,7 @@
       <pubDate>Wed, 07 Aug 2019 12:02:57 +0800</pubDate>
       
       <guid>/tech/https-setup/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/go-logo-music.jpg&#34; alt=&#34;go-logo-music&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/go-logo-music.jpg&#34; alt=&#34;go-logo-music&#34;&gt;&lt;/p&gt;
 &lt;p&gt;[摘要] let&#39;s Encrypt 是一个免费提供 HTTPS 的签名服务, 这里提供一个示例,用 &lt;a href=&#34;https://github.com/mholt/certmagic&#34;&gt;certmagic&lt;/a&gt; 实现 fasthttp 与 net/http 上支持 HTTPS&lt;/p&gt;</description>
     </item>
     
@@ -28,14 +37,11 @@
       <pubDate>Sun, 04 Aug 2019 12:02:57 +0800</pubDate>
       
       <guid>/tech/program-music/</guid>
-      <description>&lt;p&gt;&amp;quot;编程为什么不用中文？兼谈如何学习编程&amp;quot;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&amp;ldquo;编程为什么不用中文？兼谈如何学习编程&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;相关文章, &lt;a href=&#34;https://juejin.im/post/5d37efc6f265da1b7c615b39&#34;&gt;中文编程兴起的必然性&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;[摘要] 知乎上有个问题&lt;a href=&#34;https://www.zhihu.com/question/337465148/answer/776165277&#34;&gt;编程为什么不用中文？&lt;/a&gt;    有点意思, 我把回复单独整理后, 写在这了: 编程语言是个符号系统, 能否广泛使用要看使用人员基数&lt;/p&gt;</description>
     </item>
     
@@ -45,8 +51,7 @@
       <pubDate>Sat, 03 Aug 2019 02:02:57 +0800</pubDate>
       
       <guid>/tech/golang-error-handling/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34;&gt;&lt;/p&gt;
 &lt;p&gt;go语言的 error handling 是不是一个败笔?  这是知乎上的一个提问, 我写了一些看法: 过于简单, 但不算败笔.&lt;/p&gt;</description>
     </item>
     
@@ -56,20 +61,20 @@
       <pubDate>Fri, 02 Aug 2019 02:02:57 +0800</pubDate>
       
       <guid>/tech/fasthttp01/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;fasthttp 文章系列:
-*  fasthttp 概述与 Hello World(本文)
-*  fasthttp 客户端与服务端的封装, 日志与路由
-*  fasthttp 所谓 RESTful (兼介绍fastjson)
-*  fasthttp 中间件( 简单认证/ session会话...)
-*  fasthttp 处理 JWT (及 JWT安全性)
-*  fasthttp 对接非标准 web client (作为AAA, 数据加解密)
-*  fasthttp 缓存/proxy代理/反向代理
-*  fasthttp 部署&lt;/p&gt;
+&lt;p&gt;fasthttp 文章系列:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fasthttp 概述与 Hello World(本文)&lt;/li&gt;
+&lt;li&gt;fasthttp 客户端与服务端的封装, 日志与路由&lt;/li&gt;
+&lt;li&gt;fasthttp 所谓 RESTful (兼介绍fastjson)&lt;/li&gt;
+&lt;li&gt;fasthttp 中间件( 简单认证/ session会话&amp;hellip;)&lt;/li&gt;
+&lt;li&gt;fasthttp 处理 JWT (及 JWT安全性)&lt;/li&gt;
+&lt;li&gt;fasthttp 对接非标准 web client (作为AAA, 数据加解密)&lt;/li&gt;
+&lt;li&gt;fasthttp 缓存/proxy代理/反向代理&lt;/li&gt;
+&lt;li&gt;fasthttp 部署&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;[简述]  &lt;a href=&#34;https://github.com/valyala/fasthttp&#34;&gt;github.com/valyala/fasthttp&lt;/a&gt; 是 golang 中一个标志性的高性能 HTTP库, 主要用于 webserver 开发, 以及 web client / proxy 等. fasthttp 的高性能开发思路, 启发了很多开发者.&lt;/p&gt;</description>
     </item>
     
@@ -83,41 +88,13 @@
     </item>
     
     <item>
-      <title>chrome handless 与golang爬虫</title>
-      <link></link>
-      <pubDate>Fri, 31 May 2019 23:02:57 +0800</pubDate>
-      
-      <guid></guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>goim交流分享会后的小结与QA</title>
       <link>/tech/goim-go-06/</link>
       <pubDate>Thu, 30 May 2019 23:02:57 +0800</pubDate>
       
       <guid>/tech/goim-go-06/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/go-reading.jpg&#34; alt=&#34;go-reading&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/go-reading.jpg&#34; alt=&#34;go-reading&#34;&gt;&lt;/p&gt;
 &lt;p&gt;[简述]  &lt;a href=&#34;http://goim.io&#34;&gt;http://goim.io&lt;/a&gt; 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文汇总在 &lt;a href=&#34;https://github.com/developer-learning/reading-go&#34;&gt;go夜读&lt;/a&gt; 组织的 goim 交流分享会后的小结&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>mac 并不适合编程?</title>
-      <link></link>
-      <pubDate>Thu, 30 May 2019 22:02:57 +0800</pubDate>
-      
-      <guid></guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>goim 客户端之消息发送/接收</title>
-      <link></link>
-      <pubDate>Fri, 24 May 2019 12:02:57 +0800</pubDate>
-      
-      <guid></guid>
-      <description></description>
     </item>
     
     <item>
@@ -126,8 +103,7 @@
       <pubDate>Tue, 14 May 2019 12:02:57 +0800</pubDate>
       
       <guid>/tech/hot-golang/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/go-logo-music.jpg&#34; alt=&#34;go-logo-music&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/go-logo-music.jpg&#34; alt=&#34;go-logo-music&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;在 知乎 的一个问题&lt;a href=&#34;https://www.zhihu.com/question/46755408/answer/586812009&#34;&gt;为什么 Go 语言能在中国这么火？ https://www.zhihu.com/question/46755408/answer/586812009&lt;/a&gt; 的回复, 整理后发在这里了&lt;/p&gt;
 &lt;/blockquote&gt;</description>
@@ -139,8 +115,7 @@
       <pubDate>Sat, 11 May 2019 12:02:57 +0800</pubDate>
       
       <guid>/tech/ums-step-by-step/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/self.jpg&#34; alt=&#34;self&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/self.jpg&#34; alt=&#34;self&#34;&gt;&lt;/p&gt;
 &lt;p&gt;[简述]  一个从零开始的小项目, 持续推进. go-ums 开发目标是一个开源项目, 核心由 golang 开发,  提供用户管理(user-management-subsystem) / AAA 认证/鉴权/授 / 多业务会话共享与管理等, 以支持分布式部署及云部署为主要目标&lt;/p&gt;</description>
     </item>
     
@@ -177,18 +152,8 @@
       <pubDate>Sun, 21 Apr 2019 22:02:57 +0800</pubDate>
       
       <guid>/tech/goim-go-01/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34; /&gt;&lt;/p&gt;
-
+      <description>&lt;p&gt;&lt;img src=&#34;/tech/assets/photo-desk.jpg&#34; alt=&#34;photo-desk&#34;&gt;&lt;/p&gt;
 &lt;p&gt;[简述]  &lt;a href=&#34;http://goim.io&#34;&gt;http://goim.io&lt;/a&gt; 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文介绍 goim 分布式架构及内部网元接口设计要点, 以及如何定制&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>grpc（2）：Centos 安装 nghttp2 做 grpc 的http2 代理</title>
-      <link></link>
-      <pubDate>Sun, 21 Apr 2019 22:02:57 +0800</pubDate>
-      
-      <guid></guid>
-      <description></description>
     </item>
     
   </channel>

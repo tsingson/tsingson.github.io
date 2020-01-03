@@ -45,7 +45,7 @@
     
     "genre": "tech",
     "keywords": "goim, golang",
-    "wordcount":  2398 ,
+    "wordcount":  2397 ,
     "url": "\/tech\/goim-go-01\/",
     "datePublished": "2019-04-21T22:02:57\x2b08:00",
     "dateModified": "2019-04-21T22:02:57\x2b08:00",
@@ -137,61 +137,39 @@
                     <h2><a href='/tech/goim-go-01/'>goim 架构与定制</a></h2>
                     <span class="date">2019-04-21</span>
                 </div>
-                <div class="post_content markdown"><p><img src="/tech/assets/photo-desk.jpg" alt="photo-desk" /></p>
-
+                <div class="post_content markdown"><p><img src="/tech/assets/photo-desk.jpg" alt="photo-desk"></p>
 <p>[简述]  <a href="http://goim.io">http://goim.io</a> 是 非常成功的 IM (Instance Message) 即时消息平台 , 本文介绍 goim 分布式架构及内部网元接口设计要点, 以及如何定制</p>
-
-<hr />
-
+<hr>
 <blockquote>
-<p>goim 文章系列(共5篇):
-* <a href="/tech/goim-go-01/index.html">goim 架构与定制</a>
-* <a href="/tech/goim-go-02/index.html">从goim定制, 浅谈 golang 的 interface 解耦合与gRPC</a>
-* <a href="/tech/goim-go-03/index.html">goim中的 bilibili/discovery (eureka)基本概念及应用</a>
-* <a href="/tech/goim-go-04/index.html">goim 的 data flow 数据流</a>
-* <a href="/tech/goim-go-06/index.html">goim的业务集成(分享会小结与QA)</a></p>
-
+<p>goim 文章系列(共5篇):</p>
+<ul>
+<li><a href="/tech/goim-go-01/index.html">goim 架构与定制</a></li>
+<li><a href="/tech/goim-go-02/index.html">从goim定制, 浅谈 golang 的 interface 解耦合与gRPC</a></li>
+<li><a href="/tech/goim-go-03/index.html">goim中的 bilibili/discovery (eureka)基本概念及应用</a></li>
+<li><a href="/tech/goim-go-04/index.html">goim 的 data flow 数据流</a></li>
+<li><a href="/tech/goim-go-06/index.html">goim的业务集成(分享会小结与QA)</a></li>
+</ul>
 <p>有个 slack 频道, 不少朋友在交流 goim , 欢迎加入<a href="https://join.slack.com/t/reading-go/shared_invite/enQtMjgwNTU5MTE5NjgxLTA5NDQwYzE4NGNhNDI3N2E0ZmYwOGM2MWNjMDUyNjczY2I0OThiNzA5ZTk0MTc1MGYyYzk0NTA0MjM4OTZhYWE">slack #goim</a></p>
 </blockquote>
-
-<h2 id="0-关于-goim-及文章撰写动机">0. 关于 goim 及文章撰写动机</h2>
-
+<h2 id="0--goim-">0. 关于 goim 及文章撰写动机</h2>
 <p>goim 是 非常成功的 IM (Instance Message) 即时消息平台, 依赖项为 kafka ( 消息队列) + zookeeper ( 扩展/均衡 ) + bilibili/discovery( 在 <a href="https://github.com/Netflix/eureka">netflix/eureka</a>上扩展的服务注册与发现, <a href="https://golang.org">golang</a> 实现)</p>
-
 <p>作为一个曾经的架构师(2005~2014, Utstarcom IPTV/OTT 事业部) 与当前自由职业者(你懂的~~~~), 时常在 Golang 圈转转,  有朋友聊到IM 并提到goim, 我作了一些学习与研究</p>
-
 <p>goim 官网 <a href="http://goim.io">http://goim.io</a></p>
-
 <p>goim 源码 <a href="https://github.com/Terry-Mao/goim">https://github.com/Terry-Mao/goim</a></p>
-
-<hr />
-
+<hr>
 <p>中国 B站( BiliBili ) 的技术领军 <a href="https://github.com/Terry-Mao/">毛剑</a> 是我神交以久的技术专家,   <a href="https://github.com/Terry-Mao/goim">goim</a>  是一个非常成功的架构示例, 其模块拆分, 接口设计, 技术选型 ,部署方式 以及持续改进演变, 都是一个互联网商用项目典范.</p>
-
 <p>同时,  另一位技术专家 <a href="https://github.com/alexstocks">Xin.zh</a> 的文章 <a href="https://alexstocks.github.io/html/pubsub.html">一套高可用实时消息系统实现</a>  给我很大启发.</p>
-
 <p>在电信/广电的几年经历, 这一次,  闲来无事, 算是满怀着在巨人肩头的感谢与敬意, 尝试写一些代码来加深学习.</p>
-
 <p><strong>感谢两位技术专家, 感谢开源社区</strong></p>
-
 <p>个人在 Utstarcom 以业务平台架构师/解决方案工程师/ IPTV播控产品线 release manager 角色折腾过比较长一些时间,  除了技术方案的原型代码撰写与现场应急帮忙修bug 以外, 甚少参撰写商用项目中的代码,  这次写写代码也是有趣的练习  :P</p>
-
-<p>欢迎指点/交流....</p>
-
-<h2 id="1-goim-原始构设计">1. goim 原始构设计</h2>
-
+<p>欢迎指点/交流&hellip;.</p>
+<h2 id="1-goim-">1. goim 原始构设计</h2>
 <p>原图在这里</p>
-
-<p><img src="/tech/assets/arch.png" alt="arch" /></p>
-
+<p><img src="/tech/assets/arch.png" alt="arch"></p>
 <p>我重绘了这张图, 把各网元, 及外部网元关系标示清晰一些</p>
-
 <p><strong>说明</strong>: 下图右侧 http client 是 goim push message 接口, 我标注了 backend 只是个人习惯, 事实上这只是个即时消息发送接口, 无所谓前后台</p>
-
-<p><img src="/tech/assets/goim-architecture-001.png" alt="goim-architecture-001" /></p>
-
-<p>### 注意要点:</p>
-
+<p><img src="/tech/assets/goim-architecture-001.png" alt="goim-architecture-001"></p>
+<h3 id="heading">注意要点:</h3>
 <blockquote>
 <ol>
 <li>comet / job / logic 支持多实例部署, 这是 goim 分布式架构设计的精粹. 同时, push message 消息发布接口从 comet 拆分也有一定的考量, 毕竟多数IM 尤其是 bilibili 的业务场景上来说, 发送量少, 而阅读量多, 想想弹幕的业务场景就明白了.</li>
@@ -200,61 +178,44 @@
 <li>测试部署请注意 redis-server 尽量只要部署一个实例或一个集群(相当于单实例), kafka / zookeeper 相对简单, 部署多少都行, 配置对接上就行</li>
 </ol>
 </blockquote>
-
-<h2 id="2-架构细节-内部逻辑组件与接口关系">2. 架构细节(内部逻辑组件与接口关系)</h2>
-
+<h2 id="2-">2. 架构细节(内部逻辑组件与接口关系)</h2>
 <p>goim 源码不多, 阅读简单也算是 golang 语言的特点, 在 goim 尤其如此. ( 推荐用 goland 阅读代码)
 下图中 goim 各网元的内部逻辑组件(逻辑单元), 以及各逻辑接口的相互关系, 可以对照源码自行阅读, 扩展</p>
-
 <blockquote>
 <p>请注意各网元的连接线, 箭头标示了数据/信令的流向</p>
 </blockquote>
-
-<p><img src="/tech/assets/goim-architecture-002.png" alt="goim-architecture-002" /></p>
-
-<h2 id="3-如何定制-集成与扩展">3. 如何定制, 集成与扩展</h2>
-
+<p><img src="/tech/assets/goim-architecture-002.png" alt="goim-architecture-002"></p>
+<h2 id="3--">3. 如何定制, 集成与扩展</h2>
 <p>在学习过程中, 网上问到比较多的定制问题有几个, 分别如下</p>
-
 <ol>
 <li>离线消息如何存储</li>
 <li>用户如何认证, 或如何与自有业务系统对接</li>
 <li>kafka 建议可更换, 比如 nats (我作了这个尝试)</li>
 <li>bilibili/discovery 分离</li>
 </ol>
-
 <p>下面画出 goim 定制扩展, 或优化的一个可行方式</p>
-
-<p><img src="/tech/assets/goim-architecture-004.png" alt="goim-architecture-004" /></p>
-
+<p><img src="/tech/assets/goim-architecture-004.png" alt="goim-architecture-004"></p>
 <ol>
 <li>新增 AAA/LB 与 user management sub-system (UMS) , 支持用户注册/激活/权限等相关管理
 , 尤其是 AAA 需要支持用户登录认证成功后, 向用户返回以下数据
-
 <ol>
 <li>goim 需要的 json 格式 token, 指明当前用户可以进入哪个 room , 可以接收哪个 room 的下发消息</li>
 <li>返回 goim 的 comet 地址( 进入 room 接收 im 消息) , 以及 logic 地址 ( 发送 im 消息)</li>
-</ol></li>
+</ol>
+</li>
 <li>扩展 session server 会话管理, 增加用户上下线状态, 以支持离线消息</li>
 <li>在 logic 上或 comet 上扩展, 增加消息存储及相关管理, 保留服务端群发消息( 广播或组播), 支持聊天机器人, 增加即时消息存储或处理接口, 比如离线消息存储, 用户上线后获取离线消息(后台触发发送)</li>
 <li>增加 room 管理, 开 im room 聊天室, 切换聊天室, 聊天室内的人员管理/群主(管理员等)</li>
 <li>在 comet 上定制扩展,  client 端增加消息发送, 可双向流式发送/接收即时消息</li>
 </ol>
-
-<h3 id="3-0-请注意">3.0. 请注意</h3>
-
+<h3 id="30-">3.0. 请注意</h3>
 <blockquote>
 <p>下面的源码标记出处在 <a href="https://github.com/Terry-Mao/goim">https://github.com/Terry-Mao/goim</a></p>
-
 <p>与我的 repo <a href="https://github.com/tsingson/goim">https://github.com/tsingson/goim</a> 并不相同!!!</p>
-
 <p>我 fork 的代码库中, 消息队列抽象成为golang 的 interface , 并且 discovery 正在抽离处理中</p>
 </blockquote>
-
-<h3 id="3-1-即时消息的存储钩子">3.1. 即时消息的存储钩子</h3>
-
+<h3 id="31-">3.1. 即时消息的存储钩子</h3>
 <p>源码在文件 /internal/logic/dao/kafka.go 中</p>
-
 <pre><code>// PushMsg push a message to databus.
 func (d *Dao) PushMsg(c context.Context, op int32, server string, keys []string, msg []byte) (err error) {
 	pushMsg := &amp;pb.PushMsg{
@@ -285,12 +246,8 @@ func (d *Dao) PushMsg(c context.Context, op int32, server string, keys []string,
 	}
 	return
 }
-</code></pre>
-
-<h3 id="3-2-用户管理与会话管理">3.2. 用户管理与会话管理</h3>
-
+</code></pre><h3 id="32-">3.2. 用户管理与会话管理</h3>
 <p>源码在 /internal/logic/conn.go</p>
-
 <pre><code>
 // Connect connected a conn.
 func (l *Logic) Connect(c context.Context, server, cookie string, token []byte) (mid int64, key, roomID string, accepts []int32, hb int64, err error) {
@@ -341,32 +298,18 @@ func (l *Logic) Connect(c context.Context, server, cookie string, token []byte) 
 	log.Infof(&quot;conn connected key:%s server:%s mid:%d token:%s&quot;, key, server, mid, token)
 	return
 }
-</code></pre>
-
-<h3 id="3-4-我的定制扩展">3.4. 我的定制扩展</h3>
-
+</code></pre><h3 id="34-">3.4. 我的定制扩展</h3>
 <p>由于学习目的, 及深入阅读源码的需求, 简化了 kafka / zk 的复杂部署参数配置与 jvm 依赖, 我 fork 了 goim 并修改为 <a href="https://github.com/nats-io/gnatsd">nats</a> + <del><a href="https://github.com/liftbridge-io/liftbridge">liftbridge</a></del>, 由   <a href="https://github.com/nats-io/gnatsd">nats</a> 实现 简化掉 kafka 队列功能 + zookeeper , <del>由  <a href="https://github.com/liftbridge-io/liftbridge">liftbridge</a>  实现 nats 消息的持久化</del></p>
-
 <p>源码见这里 <a href="https://github.com/tsingson/goim">https://github.com/tsingson/goim</a> 上作一些扩展学习</p>
-
-<hr />
-
-<h2 id="关于我">关于我</h2>
-
+<hr>
+<h2 id="heading-1">关于我</h2>
 <p>网名 tsingson (三明智, 江湖人称3爷)</p>
-
 <p>原 ustarcom IPTV/OTT 事业部播控产品线技术架构湿/解决方案工程湿角色(8年), 自由职业者,</p>
-
 <p>喜欢音乐(口琴,是第三/四/五届广东国际口琴嘉年华的主策划人之一), 摄影与越野,</p>
-
 <p>喜欢 golang 语言 (商用项目中主要用 postgres + golang )</p>
-
 <p>_</p>
-
 <p>_</p>
-
 <p><a href="https://github.com/tsingson">tsingson</a> 写于中国深圳, 2019/04/21</p>
-
 <p>我的博客即将同步至腾讯云+社区，邀请大家一同入驻：<a href="https://cloud.tencent.com/developer/support-plan?invite_code=izu00wdc7lym">https://cloud.tencent.com/developer/support-plan?invite_code=izu00wdc7lym</a></p></div>
                 <div class="post_footer">
                     
